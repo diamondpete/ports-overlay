@@ -1,8 +1,12 @@
 PORTNAME=	curl
 DISTVERSION=	8.18.0
+PORTREVISION=	1
 CATEGORIES=	ftp net www
 MASTER_SITES=	https://github.com/${PORTNAME}/${PORTNAME}/releases/download/curl-${DISTVERSION:S|.|_|g}/ \
 		https://curl.se/download/
+
+PATCH_SITES=    https://github.com/curl/curl/commit/
+PATCHFILES=     cf4164fa8dc3e09b2fb729ba231ecbf7b5d015de.patch:-p1
 
 MAINTAINER=	sunpoet@FreeBSD.org
 COMMENT=	Command line tool and library for transferring data with URLs
@@ -59,6 +63,7 @@ OPTIONS_DEFAULT+=	${OPTIONS_DEFAULT_${OPSYS}_${OSREL:R}}
 OPTIONS_SUB=	yes
 
 ALTSVC_DESC=	HTTP Alternative Services support
+COMPRESSION_DESC=	Compression methods
 COOKIES_DESC=	Cookies support
 CURLDEBUG_DESC=	Enable TrackMemory debug
 DICT_DESC=	DICT (RFC 2229) support
@@ -71,6 +76,7 @@ LIBSSH2_DESC=	SCP/SFTP support via libssh2
 LIBUV_DESC=	Event-based tests
 MQTT_DESC=	MQTT support
 POP3_DESC=	POP3/POP3S support
+PROTOCOL_DESC=	Transmission protocols
 RESOLV_DESC=	DNS resolving options
 SMB_DESC=	SMB/CIFS support
 SMTP_DESC=	SMTP/SMTPS support
