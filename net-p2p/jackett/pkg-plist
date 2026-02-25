@@ -73,6 +73,7 @@
 %%DATADIR%%/Definitions/aither-api.yml
 %%DATADIR%%/Definitions/alingpt.yml
 %%DATADIR%%/Definitions/amigosshare.yml
+%%DATADIR%%/Definitions/animebybelka.yml
 %%DATADIR%%/Definitions/animelayer.yml
 %%DATADIR%%/Definitions/animenosekai.yml
 %%DATADIR%%/Definitions/animetorrentsro.yml
@@ -111,7 +112,6 @@
 %%DATADIR%%/Definitions/bitpalace.yml
 %%DATADIR%%/Definitions/bitporn.yml
 %%DATADIR%%/Definitions/bitru.yml
-%%DATADIR%%/Definitions/bitsearch.yml
 %%DATADIR%%/Definitions/bitturk.yml
 %%DATADIR%%/Definitions/bluebird.yml
 %%DATADIR%%/Definitions/blueroms.yml
@@ -187,7 +187,6 @@
 %%DATADIR%%/Definitions/empornium.yml
 %%DATADIR%%/Definitions/empornium2fa.yml
 %%DATADIR%%/Definitions/emuwarez.yml
-%%DATADIR%%/Definitions/esharenet.yml
 %%DATADIR%%/Definitions/estone.yml
 %%DATADIR%%/Definitions/ex-torrenty.yml
 %%DATADIR%%/Definitions/exitorrent-org.yml
