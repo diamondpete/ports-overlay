@@ -112,6 +112,7 @@
 %%DATADIR%%/Definitions/bitpalace.yml
 %%DATADIR%%/Definitions/bitporn.yml
 %%DATADIR%%/Definitions/bitru.yml
+%%DATADIR%%/Definitions/bitsearch.yml
 %%DATADIR%%/Definitions/bitturk.yml
 %%DATADIR%%/Definitions/bluebird.yml
 %%DATADIR%%/Definitions/blueroms.yml
@@ -160,7 +161,6 @@
 %%DATADIR%%/Definitions/cspt.yml
 %%DATADIR%%/Definitions/cyanbug.yml
 %%DATADIR%%/Definitions/damagnet.yml
-%%DATADIR%%/Definitions/danishbytes-api.yml
 %%DATADIR%%/Definitions/darkpeers.yml
 %%DATADIR%%/Definitions/dasunerwartete-api.yml
 %%DATADIR%%/Definitions/dasunerwartete.yml
@@ -177,6 +177,7 @@
 %%DATADIR%%/Definitions/docspedia.yml
 %%DATADIR%%/Definitions/dreamingtree.yml
 %%DATADIR%%/Definitions/drugari.yml
+%%DATADIR%%/Definitions/ds-reloaded.yml
 %%DATADIR%%/Definitions/dubhe.yml
 %%DATADIR%%/Definitions/dxp.yml
 %%DATADIR%%/Definitions/ebookbay.yml
@@ -208,7 +209,6 @@
 %%DATADIR%%/Definitions/filemood.yml
 %%DATADIR%%/Definitions/finelite.yml
 %%DATADIR%%/Definitions/flood.yml
-%%DATADIR%%/Definitions/fluxzone.yml
 %%DATADIR%%/Definitions/freefarm.yml
 %%DATADIR%%/Definitions/freejavtorrent.yml
 %%DATADIR%%/Definitions/frozenlayer.yml
@@ -306,7 +306,6 @@
 %%DATADIR%%/Definitions/learnflakes.yml
 %%DATADIR%%/Definitions/leech24.yml
 %%DATADIR%%/Definitions/lemonhd-net.yml
-%%DATADIR%%/Definitions/lemonhd.yml
 %%DATADIR%%/Definitions/lesaloon.yml
 %%DATADIR%%/Definitions/lesbians4u.yml
 %%DATADIR%%/Definitions/letseed.yml
@@ -373,9 +372,11 @@
 %%DATADIR%%/Definitions/nobs.yml
 %%DATADIR%%/Definitions/noname-club.yml
 %%DATADIR%%/Definitions/noname-clubl.yml
+%%DATADIR%%/Definitions/nordicbytes.yml
 %%DATADIR%%/Definitions/nordichd.yml
 %%DATADIR%%/Definitions/nordicquality.yml
 %%DATADIR%%/Definitions/nortorrent.yml
+%%DATADIR%%/Definitions/nostradamus.yml
 %%DATADIR%%/Definitions/novahd.yml
 %%DATADIR%%/Definitions/nyaasi.yml
 %%DATADIR%%/Definitions/okpt.yml
@@ -401,6 +402,7 @@
 %%DATADIR%%/Definitions/pixelcove2fa.yml
 %%DATADIR%%/Definitions/playletpt.yml
 %%DATADIR%%/Definitions/plugintorrent.yml
+%%DATADIR%%/Definitions/podzemlje.yml
 %%DATADIR%%/Definitions/polishtorrent.yml
 %%DATADIR%%/Definitions/polishtracker-api.yml
 %%DATADIR%%/Definitions/polskie-torrenty.yml
@@ -477,6 +479,7 @@
 %%DATADIR%%/Definitions/skipthecommercials-api.yml
 %%DATADIR%%/Definitions/sktorrent-org.yml
 %%DATADIR%%/Definitions/sktorrent.yml
+%%DATADIR%%/Definitions/slobitmedia-api.yml
 %%DATADIR%%/Definitions/snowpt.yml
 %%DATADIR%%/Definitions/sosulki.yml
 %%DATADIR%%/Definitions/soulvoice.yml
@@ -493,6 +496,7 @@
 %%DATADIR%%/Definitions/tapochek.yml
 %%DATADIR%%/Definitions/tasmanit.yml
 %%DATADIR%%/Definitions/teamctgame.yml
+%%DATADIR%%/Definitions/teamflix.yml
 %%DATADIR%%/Definitions/teamhd.yml
 %%DATADIR%%/Definitions/teamos.yml
 %%DATADIR%%/Definitions/tekno3d.yml
