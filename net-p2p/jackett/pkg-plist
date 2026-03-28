@@ -112,7 +112,6 @@
 %%DATADIR%%/Definitions/bitpalace.yml
 %%DATADIR%%/Definitions/bitporn.yml
 %%DATADIR%%/Definitions/bitru.yml
-%%DATADIR%%/Definitions/bitsearch.yml
 %%DATADIR%%/Definitions/bitturk.yml
 %%DATADIR%%/Definitions/bluebird.yml
 %%DATADIR%%/Definitions/blueroms.yml
@@ -156,7 +155,9 @@
 %%DATADIR%%/Definitions/crabpt.yml
 %%DATADIR%%/Definitions/crackingpatching.yml
 %%DATADIR%%/Definitions/crazyspirits.yml
+%%DATADIR%%/Definitions/crazyspirits-api.yml
 %%DATADIR%%/Definitions/crnaberza.yml
+%%DATADIR%%/Definitions/crnaberza2fa.yml
 %%DATADIR%%/Definitions/crt2fa.yml
 %%DATADIR%%/Definitions/cspt.yml
 %%DATADIR%%/Definitions/cyanbug.yml
@@ -211,7 +212,6 @@
 %%DATADIR%%/Definitions/flood.yml
 %%DATADIR%%/Definitions/freefarm.yml
 %%DATADIR%%/Definitions/freejavtorrent.yml
-%%DATADIR%%/Definitions/frozenlayer.yml
 %%DATADIR%%/Definitions/funkytorrents.yml
 %%DATADIR%%/Definitions/futuretorrent.yml
 %%DATADIR%%/Definitions/fuzer.yml
@@ -265,7 +265,6 @@
 %%DATADIR%%/Definitions/houseofdevil.yml
 %%DATADIR%%/Definitions/hqmusic.yml
 %%DATADIR%%/Definitions/hudbt.yml
-%%DATADIR%%/Definitions/huntorrent-bithorlo.yml
 %%DATADIR%%/Definitions/huntorrent.yml
 %%DATADIR%%/Definitions/hxpt.yml
 %%DATADIR%%/Definitions/ilcorsaroblu.yml
@@ -307,7 +306,6 @@
 %%DATADIR%%/Definitions/leech24.yml
 %%DATADIR%%/Definitions/lemonhd-net.yml
 %%DATADIR%%/Definitions/lesaloon.yml
-%%DATADIR%%/Definitions/lesbians4u.yml
 %%DATADIR%%/Definitions/letseed.yml
 %%DATADIR%%/Definitions/libranet.yml
 %%DATADIR%%/Definitions/limetorrents.yml
@@ -341,7 +339,6 @@
 %%DATADIR%%/Definitions/mikan.yml
 %%DATADIR%%/Definitions/milkie.yml
 %%DATADIR%%/Definitions/miobt.yml
-%%DATADIR%%/Definitions/mircrew.yml
 %%DATADIR%%/Definitions/mixtapetorrent.yml
 %%DATADIR%%/Definitions/mma-torrents.yml
 %%DATADIR%%/Definitions/mnv.yml
@@ -365,6 +362,7 @@
 %%DATADIR%%/Definitions/newretro.yml
 %%DATADIR%%/Definitions/newstudio.yml
 %%DATADIR%%/Definitions/newstudiol.yml
+%%DATADIR%%/Definitions/nexum-api.yml
 %%DATADIR%%/Definitions/nicept.yml
 %%DATADIR%%/Definitions/nipponsei.yml
 %%DATADIR%%/Definitions/nirvana.yml
@@ -446,6 +444,7 @@
 %%DATADIR%%/Definitions/rastastugan-api.yml
 %%DATADIR%%/Definitions/redstartorrent.yml
 %%DATADIR%%/Definitions/reelflix-api.yml
+%%DATADIR%%/Definitions/retromoviesclub-api.yml
 %%DATADIR%%/Definitions/rgfootball.yml
 %%DATADIR%%/Definitions/rintor.yml
 %%DATADIR%%/Definitions/rintornet.yml
@@ -471,7 +470,6 @@
 %%DATADIR%%/Definitions/shakaw.yml
 %%DATADIR%%/Definitions/shanaproject.yml
 %%DATADIR%%/Definitions/shareisland-api.yml
-%%DATADIR%%/Definitions/sharewood-api.yml
 %%DATADIR%%/Definitions/showrss.yml
 %%DATADIR%%/Definitions/siambit.yml
 %%DATADIR%%/Definitions/siqi.yml
@@ -487,7 +485,6 @@
 %%DATADIR%%/Definitions/spiritofrevolution.yml
 %%DATADIR%%/Definitions/sportscult.yml
 %%DATADIR%%/Definitions/springsunday.yml
-%%DATADIR%%/Definitions/sugoimusic.yml
 %%DATADIR%%/Definitions/sukebeinyaasi.yml
 %%DATADIR%%/Definitions/superbits.yml
 %%DATADIR%%/Definitions/swarmazon-api.yml
