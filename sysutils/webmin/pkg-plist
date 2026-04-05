@@ -215,6 +215,7 @@ lib/webmin/acl/save_pass.cgi
 lib/webmin/acl/save_sql.cgi
 lib/webmin/acl/save_sync.cgi
 lib/webmin/acl/save_twofactor.cgi
+lib/webmin/acl/test_twofactor.cgi
 lib/webmin/acl/save_unix.cgi
 lib/webmin/acl/save_user.cgi
 lib/webmin/acl/schema.cgi
@@ -4300,6 +4301,7 @@ lib/webmin/bsdexports/restart_mountd.cgi
 lib/webmin/bsdexports/save_export.cgi
 lib/webmin/bsdfdisk/CHANGELOG
 lib/webmin/bsdfdisk/bsdfdisk-lib.pl
+lib/webmin/bsdfdisk/change_slice_label.cgi
 lib/webmin/bsdfdisk/create_part.cgi
 lib/webmin/bsdfdisk/create_slice.cgi
 lib/webmin/bsdfdisk/delete_part.cgi
@@ -4411,8 +4413,11 @@ lib/webmin/bsdfdisk/newfs_form.cgi
 lib/webmin/bsdfdisk/part_form.cgi
 lib/webmin/bsdfdisk/save_part.cgi
 lib/webmin/bsdfdisk/save_slice.cgi
+lib/webmin/bsdfdisk/save_slice_label.cgi
 lib/webmin/bsdfdisk/slice_form.cgi
 lib/webmin/bsdfdisk/smart.cgi
+lib/webmin/bsdfdisk/zfs_create.cgi
+lib/webmin/bsdfdisk/zvol_create.cgi
 lib/webmin/change-user/CHANGELOG
 lib/webmin/change-user/acl_security.pl
 lib/webmin/change-user/change-user-lib.pl
