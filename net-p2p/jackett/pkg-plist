@@ -75,7 +75,6 @@
 %%DATADIR%%/Definitions/amigosshare.yml
 %%DATADIR%%/Definitions/animebybelka.yml
 %%DATADIR%%/Definitions/animelayer.yml
-%%DATADIR%%/Definitions/animenosekai.yml
 %%DATADIR%%/Definitions/animetorrentsro.yml
 %%DATADIR%%/Definitions/animeworld-api.yml
 %%DATADIR%%/Definitions/anirena.yml
@@ -111,7 +110,6 @@
 %%DATADIR%%/Definitions/bitmagnet.yml
 %%DATADIR%%/Definitions/bitpalace.yml
 %%DATADIR%%/Definitions/bitporn.yml
-%%DATADIR%%/Definitions/bitru.yml
 %%DATADIR%%/Definitions/bitturk.yml
 %%DATADIR%%/Definitions/bluebird.yml
 %%DATADIR%%/Definitions/blueroms.yml
@@ -139,7 +137,6 @@
 %%DATADIR%%/Definitions/carpt.yml
 %%DATADIR%%/Definitions/cathoderaytube.yml
 %%DATADIR%%/Definitions/catorrent.yml
-%%DATADIR%%/Definitions/cdfile.yml
 %%DATADIR%%/Definitions/ceskeforum.yml
 %%DATADIR%%/Definitions/cgpeers.yml
 %%DATADIR%%/Definitions/chdbits.yml
@@ -154,7 +151,6 @@
 %%DATADIR%%/Definitions/concertos.yml
 %%DATADIR%%/Definitions/crabpt.yml
 %%DATADIR%%/Definitions/crackingpatching.yml
-%%DATADIR%%/Definitions/crazyspirits.yml
 %%DATADIR%%/Definitions/crazyspirits-api.yml
 %%DATADIR%%/Definitions/crnaberza.yml
 %%DATADIR%%/Definitions/crnaberza2fa.yml
@@ -213,6 +209,7 @@
 %%DATADIR%%/Definitions/freefarm.yml
 %%DATADIR%%/Definitions/freejavtorrent.yml
 %%DATADIR%%/Definitions/funkytorrents.yml
+%%DATADIR%%/Definitions/funzone-api.yml
 %%DATADIR%%/Definitions/futuretorrent.yml
 %%DATADIR%%/Definitions/fuzer.yml
 %%DATADIR%%/Definitions/g3minitr4ck3r-api.yml
@@ -267,6 +264,7 @@
 %%DATADIR%%/Definitions/hudbt.yml
 %%DATADIR%%/Definitions/huntorrent.yml
 %%DATADIR%%/Definitions/hxpt.yml
+%%DATADIR%%/Definitions/hydracker-api.yml
 %%DATADIR%%/Definitions/ilcorsaroblu.yml
 %%DATADIR%%/Definitions/ilcorsaronero.yml
 %%DATADIR%%/Definitions/ildragonero.yml
@@ -336,6 +334,7 @@
 %%DATADIR%%/Definitions/mesevilag.yml
 %%DATADIR%%/Definitions/metalguru.yml
 %%DATADIR%%/Definitions/metaltracker.yml
+%%DATADIR%%/Definitions/midnightscene.yml
 %%DATADIR%%/Definitions/mikan.yml
 %%DATADIR%%/Definitions/milkie.yml
 %%DATADIR%%/Definitions/miobt.yml
@@ -388,6 +387,7 @@
 %%DATADIR%%/Definitions/ourbits.yml
 %%DATADIR%%/Definitions/p2pbg.yml
 %%DATADIR%%/Definitions/panda.yml
+%%DATADIR%%/Definitions/pandacd.yml
 %%DATADIR%%/Definitions/parabellumhd-api.yml
 %%DATADIR%%/Definitions/party-tracker.yml
 %%DATADIR%%/Definitions/pctorrent.yml
@@ -461,6 +461,7 @@
 %%DATADIR%%/Definitions/samaritano.yml
 %%DATADIR%%/Definitions/sbpt.yml
 %%DATADIR%%/Definitions/scenerush.yml
+%%DATADIR%%/Definitions/scenetime-api.yml
 %%DATADIR%%/Definitions/seedfile.yml
 %%DATADIR%%/Definitions/seedpool-api.yml
 %%DATADIR%%/Definitions/selezen.yml
@@ -486,6 +487,7 @@
 %%DATADIR%%/Definitions/sportscult.yml
 %%DATADIR%%/Definitions/springsunday.yml
 %%DATADIR%%/Definitions/sukebeinyaasi.yml
+%%DATADIR%%/Definitions/sunnypt.yml
 %%DATADIR%%/Definitions/superbits.yml
 %%DATADIR%%/Definitions/swarmazon-api.yml
 %%DATADIR%%/Definitions/tangmen.yml
@@ -518,7 +520,6 @@
 %%DATADIR%%/Definitions/tlfbits.yml
 %%DATADIR%%/Definitions/tmghub.yml
 %%DATADIR%%/Definitions/tocashare.yml
-%%DATADIR%%/Definitions/tokyopt.yml
 %%DATADIR%%/Definitions/tokyotosho.yml
 %%DATADIR%%/Definitions/tormac.yml
 %%DATADIR%%/Definitions/tornado.yml
@@ -566,6 +567,7 @@
 %%DATADIR%%/Definitions/u3c3.yml
 %%DATADIR%%/Definitions/ubits.yml
 %%DATADIR%%/Definitions/uindex.yml
+%%DATADIR%%/Definitions/ultrabits-api.yml
 %%DATADIR%%/Definitions/ultrahd.yml
 %%DATADIR%%/Definitions/unionfansub.yml
 %%DATADIR%%/Definitions/unlimitz.yml
@@ -596,7 +598,6 @@
 %%DATADIR%%/Definitions/yuscene-api.yml
 %%DATADIR%%/Definitions/zamundarip.yml
 %%DATADIR%%/Definitions/zappateers.yml
-%%DATADIR%%/Definitions/zktorrent.yml
 %%DATADIR%%/Definitions/zmpt.yml
 %%DATADIR%%/Definitions/zrpt.yml
 %%DATADIR%%/Definitions/ztracker.yml
