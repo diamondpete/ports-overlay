@@ -27,9 +27,12 @@ bin/SABnzbd.py
 %%PYTHON_SITELIBDIR%%/sabnzbd/newsunpack.py
 %%PYTHON_SITELIBDIR%%/sabnzbd/newswrapper.py
 %%PYTHON_SITELIBDIR%%/sabnzbd/notifier.py
+%%PYTHON_SITELIBDIR%%/sabnzbd/nzb/__init__.py
+%%PYTHON_SITELIBDIR%%/sabnzbd/nzb/article.py
+%%PYTHON_SITELIBDIR%%/sabnzbd/nzb/file.py
+%%PYTHON_SITELIBDIR%%/sabnzbd/nzb/object.py
 %%PYTHON_SITELIBDIR%%/sabnzbd/nzbparser.py
 %%PYTHON_SITELIBDIR%%/sabnzbd/nzbqueue.py
-%%PYTHON_SITELIBDIR%%/sabnzbd/nzbstuff.py
 %%PYTHON_SITELIBDIR%%/sabnzbd/panic.py
 %%PYTHON_SITELIBDIR%%/sabnzbd/par2file.py
 %%PYTHON_SITELIBDIR%%/sabnzbd/postproc.py
@@ -57,6 +60,10 @@ bin/SABnzbd.py
 %%PYTHON_SITELIBDIR%%/sabnzbd/utils/systrayiconthread.py
 %%PYTHON_SITELIBDIR%%/sabnzbd/version.py
 %%PYTHON_SITELIBDIR%%/sabnzbd/zconfig.py
+%%PORTDOCS%%%%DOCSDIR%%/COPYRIGHT.txt
+%%PORTDOCS%%%%DOCSDIR%%/INSTALL.txt
+%%PORTDOCS%%%%DOCSDIR%%/ISSUES.txt
+%%PORTDOCS%%%%DOCSDIR%%/README.mkd
 %%NLS%%%%DATADIR%%/email/badfetch-cs.tmpl
 %%NLS%%%%DATADIR%%/email/badfetch-da.tmpl
 %%NLS%%%%DATADIR%%/email/badfetch-de.tmpl
