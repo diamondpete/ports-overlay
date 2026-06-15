@@ -1,4 +1,4 @@
-TIMESTAMP = 1780437910
+TIMESTAMP = 1781535427
 SHA256 (nuget/anglesharp.xml.1.0.0.nupkg) = 533c57587eaa1b6044007fd42e8b069149f646182150e82ec954cf625efcb293
 SIZE (nuget/anglesharp.xml.1.0.0.nupkg) = 223916
 SHA256 (nuget/anglesharp.1.4.0.nupkg) = c47a683248584a3ede8de3262367bbca079ff38406661b6d3e360e9cb8c84ddd
@@ -597,5 +597,5 @@ SHA256 (nuget/runtime.unix.system.private.uri.4.3.0.nupkg) = 739b575a113f7d86c95
 SIZE (nuget/runtime.unix.system.private.uri.4.3.0.nupkg) = 75969
 SHA256 (nuget/runtime.unix.system.runtime.extensions.4.3.0.nupkg) = 97c4bd82de9d937a981ba1d8a271ed76562d04ac8f6f6f6e43a3438e6aeddd5e
 SIZE (nuget/runtime.unix.system.runtime.extensions.4.3.0.nupkg) = 54075
-SHA256 (Jackett-Jackett-v0.24.2000_GH0.tar.gz) = cac7455f55a11483fa817c5544c72959a2d52fbd8d92d499bf85983829c0b924
-SIZE (Jackett-Jackett-v0.24.2000_GH0.tar.gz) = 5159564
+SHA256 (Jackett-Jackett-v0.24.2067_GH0.tar.gz) = 509563c0e381107bb716d03809c0df92a6a906d08618f4484b77462bf59b9dc1
+SIZE (Jackett-Jackett-v0.24.2067_GH0.tar.gz) = 5161592

@@ -196,7 +196,6 @@
 %%DATADIR%%/Definitions/eztv.yml
 %%DATADIR%%/Definitions/eztvl.yml
 %%DATADIR%%/Definitions/f1carreras-api.yml
-%%DATADIR%%/Definitions/f1gp.yml
 %%DATADIR%%/Definitions/fanoin.yml
 %%DATADIR%%/Definitions/fappaizuri.yml
 %%DATADIR%%/Definitions/fappaizuri2fa.yml
@@ -293,7 +292,6 @@
 %%DATADIR%%/Definitions/kufirc.yml
 %%DATADIR%%/Definitions/kufirc2fa.yml
 %%DATADIR%%/Definitions/kunlun.yml
-%%DATADIR%%/Definitions/lacale-api.yml
 %%DATADIR%%/Definitions/lajidui.yml
 %%DATADIR%%/Definitions/lastdigitalunderground.yml
 %%DATADIR%%/Definitions/lastfiles.yml
@@ -369,7 +367,6 @@
 %%DATADIR%%/Definitions/noname-club.yml
 %%DATADIR%%/Definitions/noname-clubl.yml
 %%DATADIR%%/Definitions/nordicbytes.yml
-%%DATADIR%%/Definitions/nordichd.yml
 %%DATADIR%%/Definitions/nordicquality.yml
 %%DATADIR%%/Definitions/nostradamus.yml
 %%DATADIR%%/Definitions/novahd.yml
@@ -390,6 +387,7 @@
 %%DATADIR%%/Definitions/party-tracker.yml
 %%DATADIR%%/Definitions/pctorrent.yml
 %%DATADIR%%/Definitions/peeratiko.yml
+%%DATADIR%%/Definitions/peergarden.yml
 %%DATADIR%%/Definitions/peersfm.yml
 %%DATADIR%%/Definitions/phoenixproject.yml
 %%DATADIR%%/Definitions/pier720.yml
@@ -530,6 +528,7 @@
 %%DATADIR%%/Definitions/torrent-pirat.yml
 %%DATADIR%%/Definitions/torrent-turk.yml
 %%DATADIR%%/Definitions/torrent9.yml
+%%DATADIR%%/Definitions/torrentavenue-api.yml
 %%DATADIR%%/Definitions/torrentbd.yml
 %%DATADIR%%/Definitions/torrentby.yml
 %%DATADIR%%/Definitions/torrentccf.yml
@@ -561,7 +560,9 @@
 %%DATADIR%%/Definitions/trancetraffic.yml
 %%DATADIR%%/Definitions/trezzor.yml
 %%DATADIR%%/Definitions/trezzorcookie.yml
+%%DATADIR%%/Definitions/tr4ker.yml
 %%DATADIR%%/Definitions/tribalmixes.yml
+%%DATADIR%%/Definitions/tsdb.yml
 %%DATADIR%%/Definitions/turkseed-api.yml
 %%DATADIR%%/Definitions/turktorrent.yml
 %%DATADIR%%/Definitions/u2.yml
