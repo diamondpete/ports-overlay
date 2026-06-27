@@ -1,5 +1,5 @@
 PORTNAME=	webmin
-PORTVERSION=	2.641
+PORTVERSION=	2.650
 CATEGORIES=	sysutils
 MASTER_SITES=	http://download.webmin.com/updates/:up \
 		SF/webadmin/${PORTNAME}/${PORTVERSION}:sf
@@ -20,8 +20,7 @@ RUN_DEPENDS=	p5-Authen-PAM>=0:security/p5-Authen-PAM \
 USES=		cpe perl5 python shebangfix
 USE_PYTHON=	py3kplist
 USE_RC_SUBR=	webmin
-SHEBANG_FILES=	${WRKSRC}/webmin/acme_tiny.py \
-		${WRKSRC}/nftables/t/run-tests.t
+SHEBANG_FILES=	${WRKSRC}/webmin/acme_tiny.py
 SUB_FILES=	pkg-message
 SUB_LIST=	PERL=${PERL}
 
@@ -29,7 +28,8 @@ WEBMIN_MODULES=
 
 post-extract:
 	@${RM} ${WRKSRC}/mount/freebsd-mounts-? \
-		${WRKSRC}/webmin-gentoo-init
+		${WRKSRC}/webmin-gentoo-init \
+		${WRKSRC}/webmin-openrc-init
 	@if [ "${WEBMIN_MODULES}" != "" ]; then \
 		for webmin_module in ${WEBMIN_MODULES}; do \
 			${ECHO} "===> Unpacking updated module: $${webmin_module}"; \
