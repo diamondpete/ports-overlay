@@ -56,7 +56,6 @@
 %%DATADIR%%/Definitions/1337x.yml
 %%DATADIR%%/Definitions/13city.yml
 %%DATADIR%%/Definitions/1ptbar.yml
-%%DATADIR%%/Definitions/3changtrai.yml
 %%DATADIR%%/Definitions/3dtorrents.yml
 %%DATADIR%%/Definitions/4thd.yml
 %%DATADIR%%/Definitions/52bt.yml
@@ -165,6 +164,7 @@
 %%DATADIR%%/Definitions/dasunerwartete.yml
 %%DATADIR%%/Definitions/datascene-api.yml
 %%DATADIR%%/Definitions/deildu.yml
+%%DATADIR%%/Definitions/depthstudio.yml
 %%DATADIR%%/Definitions/desitorrents-api.yml
 %%DATADIR%%/Definitions/devil-torrents.yml
 %%DATADIR%%/Definitions/diablotorrent.yml
@@ -450,7 +450,6 @@
 %%DATADIR%%/Definitions/rockbox.yml
 %%DATADIR%%/Definitions/rockethd.yml
 %%DATADIR%%/Definitions/romanianmetaltorrents.yml
-%%DATADIR%%/Definitions/rotorrent-api.yml
 %%DATADIR%%/Definitions/rousi-pro.yml
 %%DATADIR%%/Definitions/rudub.yml
 %%DATADIR%%/Definitions/runtheframes-api.yml
@@ -461,6 +460,7 @@
 %%DATADIR%%/Definitions/sbpt.yml
 %%DATADIR%%/Definitions/scenerush.yml
 %%DATADIR%%/Definitions/scenetime-api.yml
+%%DATADIR%%/Definitions/seedcore-api.yml
 %%DATADIR%%/Definitions/seedfile.yml
 %%DATADIR%%/Definitions/seedpool-api.yml
 %%DATADIR%%/Definitions/selezen.yml
@@ -554,13 +554,13 @@
 %%DATADIR%%/Definitions/torrenttrader.yml
 %%DATADIR%%/Definitions/totheglory.yml
 %%DATADIR%%/Definitions/totheglory2fa.yml
+%%DATADIR%%/Definitions/tr4ker.yml
 %%DATADIR%%/Definitions/trackermk.yml
 %%DATADIR%%/Definitions/trackerzero.yml
 %%DATADIR%%/Definitions/traht.yml
 %%DATADIR%%/Definitions/trancetraffic.yml
 %%DATADIR%%/Definitions/trezzor.yml
 %%DATADIR%%/Definitions/trezzorcookie.yml
-%%DATADIR%%/Definitions/tr4ker.yml
 %%DATADIR%%/Definitions/tribalmixes.yml
 %%DATADIR%%/Definitions/tsdb.yml
 %%DATADIR%%/Definitions/turkseed-api.yml
@@ -572,6 +572,7 @@
 %%DATADIR%%/Definitions/uindex.yml
 %%DATADIR%%/Definitions/ultrabits-api.yml
 %%DATADIR%%/Definitions/ultrahd.yml
+%%DATADIR%%/Definitions/unbreakable.yml
 %%DATADIR%%/Definitions/unionfansub.yml
 %%DATADIR%%/Definitions/unlimitz.yml
 %%DATADIR%%/Definitions/uploadcx.yml
