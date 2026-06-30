@@ -1,0 +1,8 @@
+curl_cffi is a Python binding for curl-impersonate via cffi. It can impersonate
+the TLS/JA3 and HTTP/2 fingerprints of real browsers (Chrome, Safari, Firefox,
+...), letting it fetch sites protected by TLS-fingerprint anti-bot systems that
+plain requests/httpx cannot.
+
+This port links the prebuilt FreeBSD libcurl-impersonate (the patched libcurl +
+BoringSSL) that upstream ships starting with the 2.0.0 alpha releases, so no
+BoringSSL build is required.

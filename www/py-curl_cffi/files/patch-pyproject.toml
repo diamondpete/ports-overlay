@@ -1,0 +1,10 @@
+--- pyproject.toml.orig	2026-07-02 00:00:00 UTC
++++ pyproject.toml
+@@ -4,6 +4,5 @@
+ authors = [{ name = "lexiforest", email = "infinitesheldon@gmail.com" }]
+ description = "libcurl ffi bindings for Python, with impersonation support."
+-license = "MIT"
+-license-files = ["LICENSE"]
++license = {text = "MIT"}
+ dependencies = ["cffi>=2.0.0", "certifi>=2024.2.2"]
+ readme = "README.md"
