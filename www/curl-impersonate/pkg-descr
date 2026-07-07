@@ -1,0 +1,5 @@
+curl-impersonate is a fork of curl (by lexiforest) that performs TLS and HTTP/2
+handshakes identical to real browsers (Chrome, Firefox, Safari, Edge), so its
+JA3/JA4 and Akamai HTTP/2 fingerprints match. It builds a patched libcurl
+(libcurl-impersonate) statically linked against BoringSSL, plus per-browser
+curl_* wrapper scripts.

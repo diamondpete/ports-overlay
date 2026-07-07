@@ -1,0 +1,13 @@
+TIMESTAMP = 1783423296
+SHA256 (curl-impersonate/lexiforest-curl-impersonate-v2.0.0a5_GH0.tar.gz) = 7c7604c5504df5509e974c52d8b24d67deeca3f6e0db4ad526b2b310e817d339
+SIZE (curl-impersonate/lexiforest-curl-impersonate-v2.0.0a5_GH0.tar.gz) = 191538
+SHA256 (curl-impersonate/nghttp2-1.63.0.tar.bz2) = 607b174554d22a828bc532d1d734fe0f729b5d5ed207f2f12e96a62e83f29c55
+SIZE (curl-impersonate/nghttp2-1.63.0.tar.bz2) = 2012107
+SHA256 (curl-impersonate/ngtcp2-1.20.0.tar.bz2) = 871ec97ad86803cf312901b0c393b0ee70163e25a87c9b2894d1234341ce4e97
+SIZE (curl-impersonate/ngtcp2-1.20.0.tar.bz2) = 898205
+SHA256 (curl-impersonate/nghttp3-1.15.0.tar.bz2) = c6c491a52804814098e446630e6efc459afc0d3da7952ffe6cbdc0b3f99b2b62
+SIZE (curl-impersonate/nghttp3-1.15.0.tar.bz2) = 519681
+SHA256 (curl-impersonate/boringssl-673e61fc215b178a90c0e67858bbf162c8158993.zip) = edb7d61e8de3f791070172723ee41fbc550fb55080cdb187bb4a05e60e059a22
+SIZE (curl-impersonate/boringssl-673e61fc215b178a90c0e67858bbf162c8158993.zip) = 50681584
+SHA256 (curl-impersonate/curl-curl-8_15_0.tar.gz) = 2937cadde007aa3a52a17c21ac9153ea054700f37926d1d96602bf07e888c847
+SIZE (curl-impersonate/curl-curl-8_15_0.tar.gz) = 3483257

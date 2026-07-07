@@ -1,7 +1,3 @@
 TIMESTAMP = 1782828235
 SHA256 (curl_cffi-0.15.1b2.tar.gz) = ec64bf2a2592f1fa90e05963ba1ac1055a212cbfb0ea6feabb9fd6fdc70bc9f3
 SIZE (curl_cffi-0.15.1b2.tar.gz) = 222298
-SHA256 (libcurl-impersonate-v2.0.0a5.x86_64-freebsd.tar.gz) = ca9c769667d17d53203d27abd151d9d7002e955e2abad2f3c9428a3df176e197
-SIZE (libcurl-impersonate-v2.0.0a5.x86_64-freebsd.tar.gz) = 16430061
-SHA256 (libcurl-impersonate-v2.0.0a5.aarch64-freebsd.tar.gz) = 604e7ae3eac7f5f1f6384d63bc6bc480d754877eb9b861e95982b1a8d26a7f2f
-SIZE (libcurl-impersonate-v2.0.0a5.aarch64-freebsd.tar.gz) = 16247923
