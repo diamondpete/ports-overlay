@@ -1,0 +1,11 @@
+PhoenixAdult is a Plex metadata provider (FastAPI port of the legacy Python
+Plex agent) that scrapes scene metadata -- titles, dates, studios, genres,
+performers and artwork -- from a large set of adult sites and serves it to
+Plex over HTTP.
+
+It exposes a small web UI for configuration and a people-image cache with
+optional face-detection headshot cropping.
+
+Because several of its Python dependencies are not in the ports tree, the
+application is installed into a dedicated per-host virtualenv on first start
+(a one-time network fetch of the PyPI dependencies).

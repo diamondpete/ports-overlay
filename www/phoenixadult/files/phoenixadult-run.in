@@ -1,0 +1,14 @@
+#!/bin/sh
+# Launcher for the phoenixadult service. Runs from the data dir so the app's
+# cwd-relative paths (.env, env.overrides.json, logs/, local/) all resolve
+# there, then execs the interpreter against the installed package. PORT is
+# inherited from the environment.
+: ${PHOENIXADULT_DIR:="/var/db/phoenixadult"}
+
+# daemon(8) can start with a PATH lacking /usr/local/bin, hiding installed
+# helpers like magick (SVG logo rasterization) from subprocess lookups.
+PATH="/usr/local/bin:/usr/local/sbin:${PATH}"
+export PATH
+
+cd "${PHOENIXADULT_DIR}" || exit 1
+exec %%PYTHON_CMD%% -m phoenixadult.main

@@ -1,0 +1,25 @@
+#!/bin/sh
+# Create the service account/group and runtime data dir. Run automatically by
+# pkg as the PRE-INSTALL / POST-INSTALL script. The matching account is left in
+# place on deinstall (it owns /var/db/phoenixadult).
+
+user=phoenixadult
+group=phoenixadult
+home=/var/db/phoenixadult
+
+case $2 in
+PRE-INSTALL)
+	if ! /usr/sbin/pw groupshow "${group}" >/dev/null 2>&1; then
+		/usr/sbin/pw groupadd "${group}" || exit 1
+	fi
+	if ! /usr/sbin/pw usershow "${user}" >/dev/null 2>&1; then
+		/usr/sbin/pw useradd "${user}" -g "${group}" -d "${home}" \
+			-s /usr/sbin/nologin -c "PhoenixAdult provider" -w no || exit 1
+	fi
+	;;
+POST-INSTALL)
+	if [ ! -d "${home}" ]; then
+		install -d -o "${user}" -g "${group}" -m 0750 "${home}"
+	fi
+	;;
+esac

@@ -1,0 +1,68 @@
+#!/bin/sh
+#
+# PROVIDE: phoenixadult
+# REQUIRE: LOGIN NETWORKING
+# KEYWORD: shutdown
+#
+# Add the following lines to /etc/rc.conf to enable phoenixadult:
+#
+# phoenixadult_enable (bool):   Set to YES to enable the service (default NO).
+# phoenixadult_user (str):      User to run as          (default: phoenixadult).
+# phoenixadult_group (str):     Group to run as         (default: phoenixadult).
+# phoenixadult_dir (str):       Working/data dir holding .env, env.overrides.json,
+#                               logs/ and local/ caches
+#                               (default: /var/db/phoenixadult).
+# phoenixadult_port (num):      TCP port to listen on   (default: 3000).
+#
+# The app reads its configuration from ${phoenixadult_dir}/.env and the
+# config-UI overrides file in the same dir; PORT is passed via the environment.
+# The app writes its own rotating log at ${phoenixadult_dir}/logs/agent.log;
+# daemon(8) console output is discarded (-f) rather than duplicated to a
+# second, unrotated file under /var/log.
+
+. /etc/rc.subr
+
+name="phoenixadult"
+rcvar="phoenixadult_enable"
+
+load_rc_config $name
+
+: ${phoenixadult_enable:="NO"}
+: ${phoenixadult_user:="phoenixadult"}
+: ${phoenixadult_group:="phoenixadult"}
+: ${phoenixadult_dir:="/var/db/phoenixadult"}
+: ${phoenixadult_port:="3000"}
+
+datadir="%%DATADIR%%"
+piddir="/var/run/${name}"
+pidfile="${piddir}/${name}.pid"
+
+# Exported so the launcher (run as the service user) inherits them.
+export PHOENIXADULT_DIR="${phoenixadult_dir}"
+export PORT="${phoenixadult_port}"
+
+# Because phoenixadult_user is set, rc.subr(8) drops privileges to that user
+# (via su -m) before running the command -- no daemon -u or chroot needed. su -m
+# uses the caller's shell, so the account's nologin shell is fine, and it does
+# not chdir to the home dir (what daemon -u's LOGIN_SETALL choked on in a jail).
+command="/usr/sbin/daemon"
+command_args="-f -r -P ${pidfile} -t ${name} ${datadir}/phoenixadult-run"
+
+start_precmd="phoenixadult_prestart"
+
+phoenixadult_prestart()
+{
+	# /var/run is not writable by the unprivileged service user, so create
+	# dedicated, pa-owned dirs for the pidfile and data. Done on every start;
+	# install(1) is a no-op if they already exist.
+	for _d in "${phoenixadult_dir}" "${piddir}"; do
+		[ -d "${_d}" ] || install -d -o "${phoenixadult_user}" -g "${phoenixadult_group}" -m 0750 "${_d}"
+	done
+	# The data dir is pkg-installed root-owned, so if STATE_DB_PATH points here the
+	# service user cannot create the database (readonly-db errors). Give it the dir
+	# (not the pkg files inside it) on every start, so a pkg upgrade that re-installs
+	# root-owned self-corrects. Harmless when the DB lives elsewhere.
+	chown "${phoenixadult_user}:${phoenixadult_group}" "${datadir}" 2>/dev/null || true
+}
+
+run_rc_command "$1"
