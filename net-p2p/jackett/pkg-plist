@@ -125,7 +125,6 @@
 %%DATADIR%%/Definitions/btetree.yml
 %%DATADIR%%/Definitions/btnext.yml
 %%DATADIR%%/Definitions/btschool.yml
-%%DATADIR%%/Definitions/btstate.yml
 %%DATADIR%%/Definitions/bwtorrents.yml
 %%DATADIR%%/Definitions/byrbt.yml
 %%DATADIR%%/Definitions/byrutor.yml
@@ -196,6 +195,7 @@
 %%DATADIR%%/Definitions/eztv.yml
 %%DATADIR%%/Definitions/eztvl.yml
 %%DATADIR%%/Definitions/f1carreras-api.yml
+%%DATADIR%%/Definitions/f1gp.yml
 %%DATADIR%%/Definitions/fanoin.yml
 %%DATADIR%%/Definitions/fappaizuri.yml
 %%DATADIR%%/Definitions/fappaizuri2fa.yml
@@ -218,7 +218,6 @@
 %%DATADIR%%/Definitions/generationfree-api.yml
 %%DATADIR%%/Definitions/ggpt.yml
 %%DATADIR%%/Definitions/gigatorrents.yml
-%%DATADIR%%/Definitions/gimmepeers.yml
 %%DATADIR%%/Definitions/girotorrent.yml
 %%DATADIR%%/Definitions/haidan.yml
 %%DATADIR%%/Definitions/haitang.yml
@@ -268,7 +267,6 @@
 %%DATADIR%%/Definitions/ildragonero.yml
 %%DATADIR%%/Definitions/immortuos.yml
 %%DATADIR%%/Definitions/indietorrents.yml
-%%DATADIR%%/Definitions/infinity-api.yml
 %%DATADIR%%/Definitions/infinityhd-api.yml
 %%DATADIR%%/Definitions/infire.yml
 %%DATADIR%%/Definitions/insanetracker.yml
@@ -327,6 +325,7 @@
 %%DATADIR%%/Definitions/mazepa.yml
 %%DATADIR%%/Definitions/mdan.yml
 %%DATADIR%%/Definitions/megapeer.yml
+%%DATADIR%%/Definitions/memphis.yml
 %%DATADIR%%/Definitions/mesevilag.yml
 %%DATADIR%%/Definitions/metalguru.yml
 %%DATADIR%%/Definitions/metaltracker.yml
@@ -358,7 +357,6 @@
 %%DATADIR%%/Definitions/newretro.yml
 %%DATADIR%%/Definitions/newstudio.yml
 %%DATADIR%%/Definitions/newstudiol.yml
-%%DATADIR%%/Definitions/nexum-api.yml
 %%DATADIR%%/Definitions/nicept.yml
 %%DATADIR%%/Definitions/nipponsei.yml
 %%DATADIR%%/Definitions/nirvana.yml
@@ -401,7 +399,6 @@
 %%DATADIR%%/Definitions/polishtracker-api.yml
 %%DATADIR%%/Definitions/polskie-torrenty.yml
 %%DATADIR%%/Definitions/pornbay.yml
-%%DATADIR%%/Definitions/pornbytes-api.yml
 %%DATADIR%%/Definitions/pornolab.yml
 %%DATADIR%%/Definitions/pornotorrent.yml
 %%DATADIR%%/Definitions/pornrips.yml
@@ -478,6 +475,7 @@
 %%DATADIR%%/Definitions/skipthecommercials-api.yml
 %%DATADIR%%/Definitions/sktorrent-org.yml
 %%DATADIR%%/Definitions/sktorrent.yml
+%%DATADIR%%/Definitions/slobitgames.yml
 %%DATADIR%%/Definitions/snowpt.yml
 %%DATADIR%%/Definitions/sosulki.yml
 %%DATADIR%%/Definitions/soulvoice.yml
@@ -486,7 +484,6 @@
 %%DATADIR%%/Definitions/sportscora.yml
 %%DATADIR%%/Definitions/sportscult.yml
 %%DATADIR%%/Definitions/springsunday.yml
-%%DATADIR%%/Definitions/sugoimusic.yml
 %%DATADIR%%/Definitions/sukebeinyaasi.yml
 %%DATADIR%%/Definitions/sunnypt.yml
 %%DATADIR%%/Definitions/superbits.yml
@@ -548,7 +545,6 @@
 %%DATADIR%%/Definitions/torrentmasters.yml
 %%DATADIR%%/Definitions/torrentoyunindir.yml
 %%DATADIR%%/Definitions/torrentproject2.yml
-%%DATADIR%%/Definitions/torrentqq.yml
 %%DATADIR%%/Definitions/torrentsome.yml
 %%DATADIR%%/Definitions/torrenttip.yml
 %%DATADIR%%/Definitions/torrenttrader.yml
@@ -562,7 +558,6 @@
 %%DATADIR%%/Definitions/trezzor.yml
 %%DATADIR%%/Definitions/trezzorcookie.yml
 %%DATADIR%%/Definitions/tribalmixes.yml
-%%DATADIR%%/Definitions/tsdb.yml
 %%DATADIR%%/Definitions/turkseed-api.yml
 %%DATADIR%%/Definitions/turktorrent.yml
 %%DATADIR%%/Definitions/u2.yml
