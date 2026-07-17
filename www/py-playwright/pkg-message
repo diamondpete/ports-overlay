@@ -1,0 +1,32 @@
+[
+{ type: install
+  message: <<EOM
+You installed playwright: API to automate web browsers.
+
+playwright runs Linux browser binaries under the linuxulator. The host must have
+the linux64 kernel module loaded, and the runtime environment must provide:
+
+  - linprocfs on /compat/linux/proc   (browsers resolve themselves via /proc/self/exe)
+  - linsysfs  on /compat/linux/sys
+  - a writable TMPDIR for the launching user (browser profile + shared memory;
+    /tmp is often not writable by a service user)
+
+On a full host:
+  sysrc linux_enable=YES && service linux start
+
+In a jail (module loads on the HOST only):
+  grant the jail mount rights, e.g. iocage:
+    allow_mount=1 allow_mount_linprocfs=1 allow_mount_linsysfs=1 enforce_statfs=1
+  then mount linprocfs/linsysfs inside the jail.
+
+Firefox works with the above. Chromium additionally needs fonts: install
+linux-rl9-fontconfig and place a font under /compat/linux/usr/share/fonts (e.g.
+symlink graphics/dejavu). Chromium is otherwise less reliable on FreeBSD --
+Chrome is broken (https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=289285) and
+WebKit is broken due to missing dependencies.
+
+Run 'playwright install' (or 'playwright install firefox') to download browser
+binaries before you can use playwright.
+EOM
+}
+]
