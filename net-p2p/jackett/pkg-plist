@@ -71,6 +71,7 @@
 %%DATADIR%%/Definitions/aither-api.yml
 %%DATADIR%%/Definitions/alingpt.yml
 %%DATADIR%%/Definitions/amigosshare.yml
+%%DATADIR%%/Definitions/anibt.yml
 %%DATADIR%%/Definitions/animebybelka.yml
 %%DATADIR%%/Definitions/animelayer.yml
 %%DATADIR%%/Definitions/animetorrentsro.yml
@@ -83,7 +84,6 @@
 %%DATADIR%%/Definitions/arabicsource-api.yml
 %%DATADIR%%/Definitions/arabp2p.yml
 %%DATADIR%%/Definitions/arabscene.yml
-%%DATADIR%%/Definitions/arabtorrents-com.yml
 %%DATADIR%%/Definitions/arabtorrents.yml
 %%DATADIR%%/Definitions/asiancinema.yml
 %%DATADIR%%/Definitions/asiandvdclub.yml
@@ -162,6 +162,7 @@
 %%DATADIR%%/Definitions/dasunerwartete-api.yml
 %%DATADIR%%/Definitions/dasunerwartete.yml
 %%DATADIR%%/Definitions/datascene-api.yml
+%%DATADIR%%/Definitions/daxiangjiao.yml
 %%DATADIR%%/Definitions/deildu.yml
 %%DATADIR%%/Definitions/depthstudio.yml
 %%DATADIR%%/Definitions/desitorrents-api.yml
@@ -207,7 +208,6 @@
 %%DATADIR%%/Definitions/flood.yml
 %%DATADIR%%/Definitions/freefarm.yml
 %%DATADIR%%/Definitions/freejavtorrent.yml
-%%DATADIR%%/Definitions/funkytorrents.yml
 %%DATADIR%%/Definitions/funzone-api.yml
 %%DATADIR%%/Definitions/futuretorrent.yml
 %%DATADIR%%/Definitions/fuzer.yml
@@ -262,7 +262,6 @@
 %%DATADIR%%/Definitions/hudbt.yml
 %%DATADIR%%/Definitions/huntorrent.yml
 %%DATADIR%%/Definitions/hxpt.yml
-%%DATADIR%%/Definitions/hydracker-api.yml
 %%DATADIR%%/Definitions/ilcorsaroblu.yml
 %%DATADIR%%/Definitions/ildragonero.yml
 %%DATADIR%%/Definitions/immortuos.yml
@@ -376,6 +375,7 @@
 %%DATADIR%%/Definitions/onlyencodes-api.yml
 %%DATADIR%%/Definitions/opencd.yml
 %%DATADIR%%/Definitions/opensharing.yml
+%%DATADIR%%/Definitions/order66.yml
 %%DATADIR%%/Definitions/oshenpt.yml
 %%DATADIR%%/Definitions/ourbits.yml
 %%DATADIR%%/Definitions/p2pbg.yml
@@ -398,7 +398,6 @@
 %%DATADIR%%/Definitions/polishtorrent.yml
 %%DATADIR%%/Definitions/polishtracker-api.yml
 %%DATADIR%%/Definitions/polskie-torrenty.yml
-%%DATADIR%%/Definitions/pornbay.yml
 %%DATADIR%%/Definitions/pornolab.yml
 %%DATADIR%%/Definitions/pornotorrent.yml
 %%DATADIR%%/Definitions/pornrips.yml
@@ -409,6 +408,7 @@
 %%DATADIR%%/Definitions/proporno.yml
 %%DATADIR%%/Definitions/ptcafe.yml
 %%DATADIR%%/Definitions/ptcc.yml
+%%DATADIR%%/Definitions/ptcdy.yml
 %%DATADIR%%/Definitions/pterclub.yml
 %%DATADIR%%/Definitions/ptfans.yml
 %%DATADIR%%/Definitions/ptfiles.yml
@@ -428,6 +428,7 @@
 %%DATADIR%%/Definitions/pussytorrents.yml
 %%DATADIR%%/Definitions/putao.yml
 %%DATADIR%%/Definitions/pwtorrents.yml
+%%DATADIR%%/Definitions/pwtorrents2fa.yml
 %%DATADIR%%/Definitions/qingwa.yml
 %%DATADIR%%/Definitions/r3vwtf.yml
 %%DATADIR%%/Definitions/racing4everyone-api.yml
@@ -536,10 +537,9 @@
 %%DATADIR%%/Definitions/torrentdownloads.yml
 %%DATADIR%%/Definitions/torrenteros-api.yml
 %%DATADIR%%/Definitions/torrentgalaxyclone.yml
-%%DATADIR%%/Definitions/torrenthr.yml
+%%DATADIR%%/Definitions/torrenthr-api.yml
 %%DATADIR%%/Definitions/torrenting.yml
 %%DATADIR%%/Definitions/torrentkitty.yml
-%%DATADIR%%/Definitions/torrentleech-pl.yml
 %%DATADIR%%/Definitions/torrentleech.yml
 %%DATADIR%%/Definitions/torrentlt.yml
 %%DATADIR%%/Definitions/torrentmasters.yml
@@ -575,6 +575,7 @@
 %%DATADIR%%/Definitions/utopia.yml
 %%DATADIR%%/Definitions/uztracker.yml
 %%DATADIR%%/Definitions/vault-network.yml
+%%DATADIR%%/Definitions/vc-lib.yml
 %%DATADIR%%/Definitions/vietmediaf.yml
 %%DATADIR%%/Definitions/vsthouse.yml
 %%DATADIR%%/Definitions/vstorrent.yml
@@ -591,7 +592,9 @@
 %%DATADIR%%/Definitions/xtorrenty.yml
 %%DATADIR%%/Definitions/xtremebytes.yml
 %%DATADIR%%/Definitions/xwtclassics.yml
+%%DATADIR%%/Definitions/xwtclassics2fa.yml
 %%DATADIR%%/Definitions/xwtorrents.yml
+%%DATADIR%%/Definitions/xwtorrents2fa.yml
 %%DATADIR%%/Definitions/xxxclub.yml
 %%DATADIR%%/Definitions/xxxtor.yml
 %%DATADIR%%/Definitions/yggreborn-api.yml
