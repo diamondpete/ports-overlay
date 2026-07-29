@@ -23142,6 +23142,7 @@ lib/webmin/xinetd/save_serv.cgi
 lib/webmin/xinetd/start.cgi
 lib/webmin/xinetd/xinetd-lib.pl
 lib/webmin/xmlrpc.cgi
+lib/webmin/xmlrpc-lib.pl
 lib/webmin/xterm/acl_security.pl
 lib/webmin/xterm/config
 lib/webmin/xterm/config.info
