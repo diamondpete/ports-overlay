@@ -1,16 +1,16 @@
 PORTNAME=	curl-impersonate
 DISTVERSIONPREFIX=	v
-DISTVERSION=	2.0.0a5
+DISTVERSION=	2.1.0
 CATEGORIES=	www
 MASTER_SITES+=	https://github.com/nghttp2/nghttp2/releases/download/v${NGHTTP2_VERSION}/:dep \
 		https://github.com/ngtcp2/ngtcp2/releases/download/v${NGTCP2_VERSION}/:dep \
 		https://github.com/ngtcp2/nghttp3/releases/download/v${NGHTTP3_VERSION}/:dep \
-		https://codeload.github.com/google/boringssl/zip/${BORING_SSL_COMMIT}?dummy=/:dep \
+		https://codeload.github.com/google/boringssl/zip/${BORINGSSL_COMMIT}?dummy=/:dep \
 		https://codeload.github.com/curl/curl/tar.gz/refs/tags/${CURL_VERSION}?dummy=/:dep
 DISTFILES+=	nghttp2-${NGHTTP2_VERSION}.tar.bz2:dep \
 		ngtcp2-${NGTCP2_VERSION}.tar.bz2:dep \
 		nghttp3-${NGHTTP3_VERSION}.tar.bz2:dep \
-		boringssl-${BORING_SSL_COMMIT}.zip:dep \
+		boringssl-${BORINGSSL_COMMIT}.zip:dep \
 		curl-${CURL_VERSION}.tar.gz:dep
 DIST_SUBDIR=	${PORTNAME}
 EXTRACT_ONLY=	${GH_ACCOUNT}-${PORTNAME}-${DISTVERSIONFULL}_GH0${EXTRACT_SUFX}
@@ -35,16 +35,16 @@ USE_LDCONFIG=	yes
 
 PLIST_SUB=	CURL_SO_VER=4.8.0
 
-BORING_SSL_COMMIT=	673e61fc215b178a90c0e67858bbf162c8158993
+BORINGSSL_COMMIT=	156c7b75ae9b8c3b3f847acf264f17594c3859fb
 NGHTTP2_VERSION=	1.63.0
 NGTCP2_VERSION=		1.20.0
 NGHTTP3_VERSION=	1.15.0
-CURL_VERSION=		curl-8_15_0
+CURL_VERSION=		curl-8_21_0
 
 _DEP_ARCHIVES=	nghttp2-${NGHTTP2_VERSION}.tar.bz2 \
 		ngtcp2-${NGTCP2_VERSION}.tar.bz2 \
 		nghttp3-${NGHTTP3_VERSION}.tar.bz2 \
-		boringssl-${BORING_SSL_COMMIT}.zip curl-${CURL_VERSION}.tar.gz
+		boringssl-${BORINGSSL_COMMIT}.zip curl-${CURL_VERSION}.tar.gz
 
 post-extract:
 	@${MKDIR} ${WRKSRC}/_dist

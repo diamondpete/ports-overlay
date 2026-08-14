@@ -1,23 +1,13 @@
-Build offline and integrate with FreeBSD:
- - read the bundled dependency archives from the port-staged ${WRKSRC}/_dist
-   (no network); brotli, zstd and zlib are unbundled and taken from the ports
-   tree / base system via CMAKE_PREFIX_PATH instead of the vendored copies;
- - add C++ runtime (-lc++) to the curl link on *BSD (BoringSSL is C++; upstream
-   only handles Linux);
- - inject OpenSSL:: imported targets into the curl subproject (FindOpenSSL does
-   not create them for a static BoringSSL on FreeBSD);
- - install curl headers under include/curl-impersonate to coexist with curl.
-
---- CMakeLists.txt.orig
+--- CMakeLists.txt.orig 2026-08-08 12:16:00 UTC
 +++ CMakeLists.txt
-@@ -35,14 +35,14 @@
- set(ZSTD_VERSION "1.5.7")
- set(CURL_VERSION "curl-8_15_0")
- 
+@@ -43,14 +43,14 @@ set(CURL_URL_HASH "SHA256=ec753aa6f408a3ca9f0d6d5f7a77
+ set(CURL_VERSION "curl-8_21_0")
+ set(CURL_URL_HASH "SHA256=ec753aa6f408a3ca9f0d6d5f7a77417aecd1544db13c03ae5d443612bf367364")
+
 -set(ZLIB_URL "https://github.com/madler/zlib/releases/download/v${ZLIB_VERSION}/zlib-${ZLIB_VERSION}.tar.gz")
 -set(ZSTD_URL "https://github.com/facebook/zstd/releases/download/v${ZSTD_VERSION}/zstd-${ZSTD_VERSION}.tar.gz")
 -set(BROTLI_URL "https://github.com/google/brotli/archive/refs/tags/v${BROTLI_VERSION}.tar.gz")
--set(BORINGSSL_URL "https://github.com/google/boringssl/archive/${BORING_SSL_COMMIT}.zip")
+-set(BORINGSSL_URL "https://github.com/google/boringssl/archive/${BORINGSSL_COMMIT}.zip")
 -set(NGHTTP2_URL "https://github.com/nghttp2/nghttp2/releases/download/v${NGHTTP2_VERSION}/nghttp2-${NGHTTP2_VERSION}.tar.bz2")
 -set(NGTCP2_URL "https://github.com/ngtcp2/ngtcp2/releases/download/v${NGTCP2_VERSION}/ngtcp2-${NGTCP2_VERSION}.tar.bz2")
 -set(NGHTTP3_URL "https://github.com/ngtcp2/nghttp3/releases/download/v${NGHTTP3_VERSION}/nghttp3-${NGHTTP3_VERSION}.tar.bz2")
@@ -25,21 +15,22 @@ Build offline and integrate with FreeBSD:
 +set(ZLIB_URL "${CMAKE_SOURCE_DIR}/_dist/zlib-${ZLIB_VERSION}.tar.gz")
 +set(ZSTD_URL "${CMAKE_SOURCE_DIR}/_dist/zstd-${ZSTD_VERSION}.tar.gz")
 +set(BROTLI_URL "${CMAKE_SOURCE_DIR}/_dist/brotli-v${BROTLI_VERSION}.tar.gz")
-+set(BORINGSSL_URL "${CMAKE_SOURCE_DIR}/_dist/boringssl-${BORING_SSL_COMMIT}.zip")
++set(BORINGSSL_URL "${CMAKE_SOURCE_DIR}/_dist/boringssl-${BORINGSSL_COMMIT}.zip")
 +set(NGHTTP2_URL "${CMAKE_SOURCE_DIR}/_dist/nghttp2-${NGHTTP2_VERSION}.tar.bz2")
 +set(NGTCP2_URL "${CMAKE_SOURCE_DIR}/_dist/ngtcp2-${NGTCP2_VERSION}.tar.bz2")
 +set(NGHTTP3_URL "${CMAKE_SOURCE_DIR}/_dist/nghttp3-${NGHTTP3_VERSION}.tar.bz2")
 +set(CURL_URL "${CMAKE_SOURCE_DIR}/_dist/curl-${CURL_VERSION}.tar.gz")
- 
+
  set(_disable_boringssl_asm_default OFF)
  if(WIN32)
-@@ -143,57 +143,6 @@
- 
+@@ -182,61 +182,6 @@ list(JOIN _common_cmake_args " " _common_cmake_args_st
+
  list(JOIN _common_cmake_args " " _common_cmake_args_str)
- 
+
 -# zlib
 -ExternalProject_Add(zlib
 -  URL "${ZLIB_URL}"
+-  URL_HASH "${ZLIB_URL_HASH}"
 -  SOURCE_DIR "${DEPS_SRC_DIR}/zlib"
 -  BINARY_DIR "${DEPS_BUILD_DIR}/zlib"
 -  INSTALL_DIR "${DEPS_INSTALL_DIR}"
@@ -54,6 +45,7 @@ Build offline and integrate with FreeBSD:
 -# zstd
 -ExternalProject_Add(zstd
 -  URL "${ZSTD_URL}"
+-  URL_HASH "${ZSTD_URL_HASH}"
 -  SOURCE_DIR "${DEPS_SRC_DIR}/zstd"
 -  BINARY_DIR "${DEPS_BUILD_DIR}/zstd"
 -  INSTALL_DIR "${DEPS_INSTALL_DIR}"
@@ -70,12 +62,14 @@ Build offline and integrate with FreeBSD:
 -)
 -
 -# brotli
+-_track_external_project_patch(brotli _brotli_patch_file _brotli_patch_changed)
 -ExternalProject_Add(brotli
 -  URL "${BROTLI_URL}"
+-  URL_HASH "${BROTLI_URL_HASH}"
 -  SOURCE_DIR "${DEPS_SRC_DIR}/brotli"
 -  BINARY_DIR "${DEPS_BUILD_DIR}/brotli"
 -  INSTALL_DIR "${DEPS_INSTALL_DIR}"
--  PATCH_COMMAND ${PATCH_EXE} -p1 -i "${CMAKE_SOURCE_DIR}/patches/brotli.patch"
+-  PATCH_COMMAND ${PATCH_EXE} -p1 -i "${_brotli_patch_file}"
 -  CMAKE_ARGS
 -    ${_common_cmake_args}
 -    -DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>
@@ -89,18 +83,18 @@ Build offline and integrate with FreeBSD:
 -)
 -
  # boringssl
- 
+
  # The extra CMAKE_C_FLAGS are needed because otherwise boringssl fails to
-@@ -376,21 +325,13 @@
+@@ -432,21 +377,13 @@ endif()
    list(APPEND _curl_ca_flags "-DCURL_CA_PATH=${CURL_CA_PATH}")
  endif()
- 
+
 -set(_curl_deps zlib zstd brotli boringssl nghttp2 ngtcp2 nghttp3)
 +set(_curl_deps boringssl nghttp2 ngtcp2 nghttp3)
  if(USE_LIBIDN2)
    list(APPEND _curl_deps libidn2)
  endif()
- 
+
 -if(WIN32)
 -  set(_curl_zlib_library "${DEPS_INSTALL_DIR}/lib/zlibstatic.lib")
 -  set(_curl_zstd_library "${DEPS_INSTALL_DIR}/lib/zstd_static.lib")
@@ -115,7 +109,7 @@ Build offline and integrate with FreeBSD:
  )
  if(NOT WIN32)
    set(_curl_c_flags "${CMAKE_C_FLAGS}")
-@@ -403,9 +344,6 @@
+@@ -459,9 +396,6 @@ if(NOT WIN32)
    list(APPEND _curl_staged_dependency_args
      "-DCMAKE_C_FLAGS=${_curl_c_flags}"
      "-DCMAKE_CXX_FLAGS=${_curl_cxx_flags}"
@@ -125,7 +119,7 @@ Build offline and integrate with FreeBSD:
      "-DNGHTTP2_INCLUDE_DIR=${DEPS_INSTALL_DIR}/include"
      "-DNGHTTP2_LIBRARY=${DEPS_INSTALL_DIR}/lib/libnghttp2.a"
      "-DNGHTTP3_INCLUDE_DIR=${DEPS_INSTALL_DIR}/include"
-@@ -456,6 +394,16 @@
+@@ -515,6 +449,16 @@ endif()
    list(APPEND _curl_platform_flags "-DCMAKE_EXE_LINKER_FLAGS=${_curl_exe_linker_flags}")
    list(APPEND _curl_platform_flags "-DCMAKE_SHARED_LINKER_FLAGS=${_curl_shared_linker_flags}")
  endif()
@@ -139,19 +133,18 @@ Build offline and integrate with FreeBSD:
 +  list(APPEND _curl_platform_flags "-DCMAKE_EXE_LINKER_FLAGS=${_curl_exe_linker_flags}")
 +  list(APPEND _curl_platform_flags "-DCMAKE_SHARED_LINKER_FLAGS=${_curl_shared_linker_flags}")
 +endif()
- 
+
  set(_curl_openssl_flags)
  if(CURL_SUBPROJECT_FORCE_OPENSSL_PATHS)
-@@ -469,6 +417,8 @@
+@@ -527,6 +471,7 @@ if(CURL_SUBPROJECT_FORCE_OPENSSL_PATHS)
+     -DHAVE_BORINGSSL=1
      -DHAVE_AWSLC=0
      -DHAVE_LIBRESSL=0
++    -DCMAKE_PROJECT_CURL_INCLUDE=${CMAKE_SOURCE_DIR}/curl-openssl-targets.cmake
    )
-+  list(APPEND _curl_openssl_flags
-+    "-DCMAKE_PROJECT_CURL_INCLUDE=${CMAKE_SOURCE_DIR}/curl-openssl-targets.cmake")
  endif()
- 
- ExternalProject_Add(curl
-@@ -501,12 +451,6 @@
+
+@@ -568,12 +513,6 @@ ExternalProject_Add(curl
        -DHAVE_OPENSSL_SRP=0
        -DCURL_BROTLI=ON
        -DCURL_ZSTD=ON
@@ -164,7 +157,7 @@ Build offline and integrate with FreeBSD:
        -DUSE_NGHTTP2=ON
        -DUSE_NGTCP2=ON
        -DCURL_DISABLE_LDAP=ON
-@@ -576,7 +520,7 @@
+@@ -645,7 +584,7 @@ install(
  endif()
  install(
    DIRECTORY "${DEPS_SRC_DIR}/curl/include/curl"
