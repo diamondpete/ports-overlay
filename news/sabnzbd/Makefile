@@ -1,5 +1,5 @@
 PORTNAME=	sabnzbd
-DISTVERSION=	5.0.4
+DISTVERSION=	5.1.0
 CATEGORIES=	news
 MASTER_SITES=	https://github.com/${PORTNAME}/${PORTNAME}/releases/download/${DISTVERSION}/
 DISTNAME=	SABnzbd-${DISTVERSION}-src
@@ -20,6 +20,7 @@ RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}apprise>0:net-im/py-apprise@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}configobj>=0:devel/py-configobj@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}feedparser>=6.0.0:textproc/py-feedparser@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}guessit>0:multimedia/py-guessit@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}hachoir>0:devel/py-hachoir@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}portend>=0:net/py-portend@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}puremagic>0:sysutils/py-puremagic@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}pybonjour>0:dns/py-pybonjour@${PY_FLAVOR} \
