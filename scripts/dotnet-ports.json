@@ -1,0 +1,16 @@
+{
+    "net-p2p/jackett": {
+        "restore_project": "src/Jackett.Server/Jackett.Server.csproj",
+        "plist_maps": [
+            {
+                "plist": "%%DATADIR%%/Definitions/",
+                "source": "src/Jackett.Common/Definitions/",
+                "include": ["*.yml"]
+            },
+            {
+                "plist": "%%DATADIR%%/Content/",
+                "source": "src/Jackett.Common/Content/"
+            }
+        ]
+    }
+}

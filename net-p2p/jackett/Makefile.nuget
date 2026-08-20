@@ -1,12 +1,12 @@
 NUGET_GROUPS=	NUGET
-NUGET_NUPKGS=	AngleSharp.Xml:1.0.0 \
-		AngleSharp:1.5.2 \
+NUGET_NUPKGS=	AngleSharp.Xml:1.1.0 \
+		AngleSharp:1.7.1 \
 		Autofac.Extensions.DependencyInjection:9.0.0 \
 		Autofac:8.0.0 \
 		BencodeNET:4.0.0 \
 		CommandLineParser:2.9.1 \
 		DotNet4.SocksProxy:1.4.0.1 \
-		FlareSolverrSharp:3.0.7 \
+		FlareSolverrSharp:4.0.0 \
 		Microsoft.AspNetCore.Antiforgery:2.3.9 \
 		Microsoft.AspNetCore.Authentication.Abstractions:2.3.9 \
 		Microsoft.AspNetCore.Authentication.Cookies:2.3.11 \
