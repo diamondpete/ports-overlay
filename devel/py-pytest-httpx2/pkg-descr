@@ -1,0 +1,7 @@
+pytest-httpx2 is a pytest plugin that mocks out httpx2 using respx.
+
+It registers an "httpcore2" respx mocker, which patches the httpcore2
+connection and proxy classes that httpx2 dispatches through, and exposes an
+httpx2_mock fixture returning a respx router. Tests configure the router with
+the standard respx API, so an existing respx suite can cover httpx2 clients
+without a separate mocking layer.
