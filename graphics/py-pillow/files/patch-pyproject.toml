@@ -1,0 +1,21 @@
+--- pyproject.toml.orig	2025-04-12 17:02:40 UTC
++++ pyproject.toml
+@@ -2,7 +2,7 @@
+ build-backend = "backend"
+ requires = [
+   "pybind11",
+-  "setuptools>=77",
++  "setuptools>=61",
+ ]
+ backend-path = [
+   "_custom_build",
+@@ -15,8 +15,7 @@
+ keywords = [
+   "Imaging",
+ ]
+-license = "MIT-CMU"
+-license-files = [ "LICENSE" ]
++license = { text = "MIT-CMU" }
+ authors = [
+   { name = "Jeffrey 'Alex' Clark", email = "aclark@aclark.net" },
+ ]
