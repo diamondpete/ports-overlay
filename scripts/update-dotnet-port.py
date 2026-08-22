@@ -382,8 +382,13 @@ def fetch_nupkg(pid: str, ver: str) -> tuple:
     raise RuntimeError("unreachable")
 
 
-def write_distinfo(port: Port, ordered: list, tarball: str, tar_sha: str, tar_size: int):
-    """Reuse checksums already recorded; only fetch packages that are new."""
+def write_distinfo(port: Port, pkgs, tarball: str, tar_sha: str, tar_size: int):
+    """Reuse checksums already recorded; only fetch packages that are new.
+
+    DISTFILES comes from NUGET_NUPKGS:O, so sort by "id:version" in byte order
+    rather than following the order Makefile.nuget happens to list, which is
+    kept cosmetically stable and drifts out of :O order as entries are added.
+    """
     old = port.read("distinfo")
     known = {}
     for m in re.finditer(r"^SHA256 \((.+?)\) = ([0-9a-f]+)$", old, re.M):
@@ -392,7 +397,7 @@ def write_distinfo(port: Port, ordered: list, tarball: str, tar_sha: str, tar_si
         if m.group(1) in known:
             known[m.group(1)][1] = int(m.group(2))
 
-    wanted = [(pid, ver, distinfo_name(pid, ver)) for pid, ver in ordered]
+    wanted = [(pid, ver, distinfo_name(pid, ver)) for pid, ver in sorted(pkgs, key=sortkey)]
     missing = [w for w in wanted if known.get(w[2], [None, None])[1] is None]
     if missing:
         note("fetching %d new .nupkg%s for checksums" % (len(missing), "" if len(missing) == 1 else "s"))
@@ -495,8 +500,8 @@ def main() -> int:
                 prunable = set()
             source = "api.nuget.org delta walk (UNVERIFIED)"
 
-        ordered = write_nuget_makefile(port, pkgs, previous)
-        write_distinfo(port, ordered, port.tarball(new_version), tar_sha, tar_size)
+        write_nuget_makefile(port, pkgs, previous)
+        write_distinfo(port, pkgs, port.tarball(new_version), tar_sha, tar_size)
         bump_makefile(port, new_version)
     finally:
         if not args.keep_src:

@@ -206,6 +206,7 @@
 %%DATADIR%%/Definitions/flood.yml
 %%DATADIR%%/Definitions/freefarm.yml
 %%DATADIR%%/Definitions/freejavtorrent.yml
+%%DATADIR%%/Definitions/funfile.yml
 %%DATADIR%%/Definitions/funzone-api.yml
 %%DATADIR%%/Definitions/futuretorrent.yml
 %%DATADIR%%/Definitions/fuzer.yml
@@ -570,6 +571,7 @@
 %%DATADIR%%/Definitions/upscalevault.yml
 %%DATADIR%%/Definitions/utopia.yml
 %%DATADIR%%/Definitions/uztracker.yml
+%%DATADIR%%/Definitions/v3x.yml
 %%DATADIR%%/Definitions/vault-network.yml
 %%DATADIR%%/Definitions/vc-lib.yml
 %%DATADIR%%/Definitions/vietmediaf.yml
