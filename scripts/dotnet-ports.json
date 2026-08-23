@@ -1,6 +1,7 @@
 {
     "net-p2p/jackett": {
         "restore_project": "src/Jackett.Server/Jackett.Server.csproj",
+        "keep": ["Microsoft.Extensions.Primitives:8.0.0"],
         "plist_maps": [
             {
                 "plist": "%%DATADIR%%/Definitions/",

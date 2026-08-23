@@ -291,8 +291,56 @@ def walk_delta(old_tree: str, new_tree: str, project: str, baseline: set) -> tup
     return (baseline | gained) - superseded, lost - superseded
 
 
-def walk_packages(srcdir: str, project: str, carry: set) -> set:
-    """Walk api.nuget.org from the project's PackageReferences."""
+def unify(pkgs: set) -> set:
+    """One version per id, the way NuGet's conflict resolution leaves a restore.
+
+    Only ever drops a handful once the walk is scoped to one framework, because
+    NuGet really does fetch versions it later eclipses; the ones it still wants
+    go in the port's keep list.
+    """
+    best: dict = {}
+    for pid, ver in pkgs:
+        lid = pid.lower()
+        if lid not in best or W.vkey(ver) > W.vkey(best[lid][1]):
+            best[lid] = (pid, ver)
+    return set(best.values())
+
+
+def parse_keep(entries: list, port_name: str) -> set:
+    """Packages the prune must hand back however little the walk wants them."""
+    out = set()
+    for entry in entries:
+        pid, _, ver = entry.partition(":")
+        if not pid or not ver:
+            die("%s: keep entry %r is not id:version" % (port_name, entry))
+        out.add((pid, ver))
+    return out
+
+
+def edge_targets(pkgs: set, tfm: str) -> set:
+    """Every version a kept package's dependency range resolves to.
+
+    A restore fetches these even when it goes on to pick something higher, and
+    reports the ones it cannot find as NU1603.  The nuspecs are already cached
+    from the walk, so this costs nothing.
+    """
+    out = set()
+    for pid, ver in pkgs:
+        for dep, rng in W.deps_for(pid, ver, tfm):
+            got = W.resolve_version(dep, rng)
+            if got:
+                out.add((dep, got))
+    return out
+
+
+def walk_packages(srcdir: str, project: str, carry: set,
+                  only_tfm: str = "", unified: bool = False) -> set:
+    """Walk api.nuget.org from the project's PackageReferences.
+
+    only_tfm restricts the walk to the one framework the port publishes, folding
+    the referenced projects in below it rather than walking their own frameworks
+    as well; unified then drops the versions conflict resolution would discard.
+    """
     proj_path = os.path.join(srcdir, project)
     if not os.path.exists(proj_path):
         die("restore project not found under %s: %s" % (srcdir, project))
@@ -306,6 +354,12 @@ def walk_packages(srcdir: str, project: str, carry: set) -> set:
     out: set = set()
     for label, proj in projects:
         tfms = W.project_tfms(proj)
+        if only_tfm:
+            if proj is not root:
+                continue
+            if only_tfm not in tfms:
+                die("%s does not target %s" % (label, only_tfm))
+            tfms = [only_tfm]
         for tfm in tfms:
             roots = W.package_refs(proj, tfm)
             if proj is root:
@@ -318,6 +372,9 @@ def walk_packages(srcdir: str, project: str, carry: set) -> set:
                 roots.append(("NETStandard.Library", W.Range("2.0.3")))
             note("  walking %s/%s (%d direct refs)" % (label, tfm, len(roots)))
             out |= W.walk(roots, tfm, warn=lambda m: note("  ! " + m))
+
+    if unified:
+        out = unify(out)
 
     # RID-specific satellites (runtime.unix.*, runtime.any.*) come from
     # runtime.json inside the nupkgs, which the walk never opens.  Carry over
@@ -441,8 +498,9 @@ def main() -> int:
     ap.add_argument("--keep-src", metavar="DIR",
                     help="extract the new tree here and leave it in place")
     ap.add_argument("--prune", action="store_true",
-                    help="also apply the offline walk's removals; unsafe, since a "
-                         "package it cannot see looks the same as one that is gone")
+                    help="rebuild the package set rather than extending it: walk only "
+                         "DOTNET_TFM, the framework the port publishes, and keep one "
+                         "version per id. Drops packages, so build the port to confirm")
     args = ap.parse_args()
 
     with open(CONFIG, encoding="utf-8") as fh:
@@ -451,6 +509,9 @@ def main() -> int:
     if key not in config:
         die("%s is not described in scripts/dotnet-ports.json" % key)
     spec = config[key]
+
+    if args.prune and args.packages_dir:
+        die("--packages-dir is already an exact set; --prune has nothing to add to it")
 
     port = Port(key)
     old_version = port.var("DISTVERSION")
@@ -479,7 +540,22 @@ def main() -> int:
         previous = parse_nupkgs(port.read("Makefile.nuget"))
         old_pkgs = set(previous)
         prunable: set = set()
-        if args.packages_dir:
+        pins: set = set()
+        stale: set = set()
+        if args.prune:
+            tfm = port.vars.get("DOTNET_TFM")
+            if not tfm:
+                die("%s does not set DOTNET_TFM, so there is no way to tell which "
+                    "framework it publishes; add it to the Makefile and use it in "
+                    "post-patch and the publish line" % key)
+            note("pruning against %s alone, the framework the port publishes" % tfm)
+            pkgs = walk_packages(tree, spec["restore_project"], old_pkgs,
+                                 only_tfm=tfm, unified=True)
+            pins = parse_keep(spec.get("keep", []), key)
+            pkgs |= pins
+            stale = pins - edge_targets(pkgs, tfm)
+            source = "api.nuget.org walk, pruned to %s (UNVERIFIED)" % tfm
+        elif args.packages_dir:
             pkgs = cased_ids(packages_from_dir(args.packages_dir), args.packages_dir)
             source = "packages dir %s" % args.packages_dir
         elif not args.no_restore and sdk_available(args.dotnet):
@@ -495,9 +571,6 @@ def main() -> int:
             fetch_tarball(port, old_tag, oldtar)
             old_tree = extract(oldtar, os.path.join(workdir, "old"))
             pkgs, prunable = walk_delta(old_tree, tree, spec["restore_project"], old_pkgs)
-            if args.prune:
-                pkgs -= prunable
-                prunable = set()
             source = "api.nuget.org delta walk (UNVERIFIED)"
 
         write_nuget_makefile(port, pkgs, previous)
@@ -513,10 +586,23 @@ def main() -> int:
     fresh = sorted(pkgs - old_pkgs, key=sortkey)
     print("\n%s -> %s" % (old_tag, new_tag))
     print("  package set: %d (%s)" % (len(pkgs), source))
-    for label, items in (("added", fresh), ("removed", gone)):
+    sections = [("added", fresh)]
+    if args.prune:
+        kept = {pid.lower() for pid, _ in pkgs}
+        sections += [("removed, eclipsed by a version that stays",
+                      [p for p in gone if p[0].lower() in kept]),
+                     ("removed, off the framework the port builds",
+                      [p for p in gone if p[0].lower() not in kept])]
+    else:
+        sections.append(("removed", gone))
+    for label, items in sections:
         print("  nuget %s (%d):" % (label, len(items)))
         for pid, ver in items:
-            print("    %s %s:%s" % ("+-"[label == "removed"], pid, ver))
+            print("    %s %s:%s" % ("+-"[label.startswith("removed")], pid, ver))
+    if pins:
+        print("  nuget held by the keep list (%d):" % len(pins))
+        for pid, ver in sorted(pins, key=sortkey):
+            print("    = %s:%s" % (pid, ver))
     for label, items in (("added", added), ("removed", removed)):
         print("  plist %s (%d):" % (label, len(items)))
         for entry in sorted(items):
@@ -539,7 +625,19 @@ def main() -> int:
         print("\n  note: the '?' packages above were left in place. The offline walk")
         print("  cannot tell a package that is truly gone from one it fails to reach,")
         print("  and dropping a live one fails the restore with NU1101. A restore")
-        print("  (--packages-dir) prunes them exactly; --prune trusts the walk instead.")
+        print("  (--packages-dir) prunes them exactly; --prune rebuilds the set instead.")
+    if stale:
+        print("\n  note: nothing left in the set resolves to these, so the keep list")
+        print("  in dotnet-ports.json has outlived them and can probably lose them:")
+        for pid, ver in sorted(stale, key=sortkey):
+            print("    ? %s:%s" % (pid, ver))
+    if args.prune:
+        print("\n  note: --prune dropped those on the walk's say-so, and the walk")
+        print("  cannot tell a package that is truly gone from one it failed to")
+        print("  reach. Build the port before committing; a restore that stops with")
+        print("  NU1101 names the package to put back. post-patch has to cut the")
+        print("  other frameworks out of the projects, since publish restores again")
+        print("  on its own and -f does not constrain that restore.")
     if source.endswith("(UNVERIFIED)"):
         print("\n  note: Makefile.nuget came from an offline dependency walk, not a")
         print("  real restore. Build the port, or rerun with --packages-dir, to confirm.")
