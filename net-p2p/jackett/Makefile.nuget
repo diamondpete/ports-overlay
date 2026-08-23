@@ -1,5 +1,5 @@
 NUGET_GROUPS=	NUGET
-NUGET_NUPKGS=	AngleSharp.Xml:1.1.0 \
+NUGET_NUPKGS=	AngleSharp.Xml:1.2.0 \
 		AngleSharp:1.7.1 \
 		Autofac.Extensions.DependencyInjection:9.0.0 \
 		Autofac:8.0.0 \
@@ -7,87 +7,107 @@ NUGET_NUPKGS=	AngleSharp.Xml:1.1.0 \
 		CommandLineParser:2.9.1 \
 		DotNet4.SocksProxy:1.4.0.1 \
 		FlareSolverrSharp:4.0.0 \
-		Microsoft.AspNetCore.Antiforgery:2.3.9 \
-		Microsoft.AspNetCore.Authentication.Abstractions:2.3.9 \
-		Microsoft.AspNetCore.Authentication.Cookies:2.3.11 \
+		Microsoft.AspNetCore.Antiforgery:2.3.10 \
+		Microsoft.AspNetCore.Authentication.Abstractions:2.3.10 \
+		Microsoft.AspNetCore.Authentication.Cookies:2.3.12 \
 		Microsoft.AspNetCore.Authentication.Core:2.3.0 \
-		Microsoft.AspNetCore.Authentication.Core:2.3.10 \
-		Microsoft.AspNetCore.Authentication:2.3.11 \
+		Microsoft.AspNetCore.Authentication.Core:2.3.11 \
+		Microsoft.AspNetCore.Authentication.Core:2.3.9 \
+		Microsoft.AspNetCore.Authentication:2.3.12 \
 		Microsoft.AspNetCore.Authorization.Policy:2.3.0 \
+		Microsoft.AspNetCore.Authorization.Policy:2.3.9 \
 		Microsoft.AspNetCore.Authorization:2.3.0 \
 		Microsoft.AspNetCore.Connections.Abstractions:2.3.0 \
-		Microsoft.AspNetCore.Cors:2.3.9 \
-		Microsoft.AspNetCore.Cryptography.Internal:2.3.9 \
-		Microsoft.AspNetCore.DataProtection.Abstractions:2.3.9 \
+		Microsoft.AspNetCore.Connections.Abstractions:2.3.9 \
+		Microsoft.AspNetCore.Cors:2.3.10 \
+		Microsoft.AspNetCore.Cryptography.Internal:2.3.10 \
+		Microsoft.AspNetCore.DataProtection.Abstractions:2.3.10 \
 		Microsoft.AspNetCore.DataProtection:2.3.0 \
-		Microsoft.AspNetCore.DataProtection:2.3.10 \
-		Microsoft.AspNetCore.Diagnostics.Abstractions:2.3.9 \
+		Microsoft.AspNetCore.DataProtection:2.3.11 \
+		Microsoft.AspNetCore.DataProtection:2.3.9 \
+		Microsoft.AspNetCore.Diagnostics.Abstractions:2.3.10 \
 		Microsoft.AspNetCore.Diagnostics:2.3.0 \
-		Microsoft.AspNetCore.Diagnostics:2.3.10 \
+		Microsoft.AspNetCore.Diagnostics:2.3.11 \
 		Microsoft.AspNetCore.HostFiltering:2.3.0 \
-		Microsoft.AspNetCore.HostFiltering:2.3.10 \
+		Microsoft.AspNetCore.HostFiltering:2.3.11 \
 		Microsoft.AspNetCore.Hosting.Abstractions:2.3.0 \
 		Microsoft.AspNetCore.Hosting.Abstractions:2.3.10 \
+		Microsoft.AspNetCore.Hosting.Abstractions:2.3.11 \
+		Microsoft.AspNetCore.Hosting.Server.Abstractions:2.3.10 \
 		Microsoft.AspNetCore.Hosting.Server.Abstractions:2.3.9 \
 		Microsoft.AspNetCore.Hosting:2.3.0 \
 		Microsoft.AspNetCore.Hosting:2.3.10 \
-		Microsoft.AspNetCore.Html.Abstractions:2.3.9 \
+		Microsoft.AspNetCore.Hosting:2.3.11 \
+		Microsoft.AspNetCore.Html.Abstractions:2.3.10 \
 		Microsoft.AspNetCore.Http.Abstractions:2.1.1 \
 		Microsoft.AspNetCore.Http.Abstractions:2.3.0 \
 		Microsoft.AspNetCore.Http.Abstractions:2.3.10 \
+		Microsoft.AspNetCore.Http.Abstractions:2.3.11 \
 		Microsoft.AspNetCore.Http.Extensions:2.3.0 \
 		Microsoft.AspNetCore.Http.Extensions:2.3.10 \
+		Microsoft.AspNetCore.Http.Extensions:2.3.11 \
+		Microsoft.AspNetCore.Http.Features:2.3.10 \
 		Microsoft.AspNetCore.Http.Features:2.3.9 \
-		Microsoft.AspNetCore.Http:2.3.11 \
+		Microsoft.AspNetCore.Http:2.3.12 \
 		Microsoft.AspNetCore.HttpOverrides:2.1.1 \
+		Microsoft.AspNetCore.JsonPatch:2.3.10 \
 		Microsoft.AspNetCore.JsonPatch:2.3.9 \
-		Microsoft.AspNetCore.JsonPatch:9.0.18 \
-		Microsoft.AspNetCore.Localization:2.3.9 \
+		Microsoft.AspNetCore.JsonPatch:9.0.19 \
+		Microsoft.AspNetCore.Localization:2.3.10 \
 		Microsoft.AspNetCore.Mvc.Abstractions:2.3.0 \
+		Microsoft.AspNetCore.Mvc.Abstractions:2.3.9 \
 		Microsoft.AspNetCore.Mvc.ApiExplorer:2.3.0 \
-		Microsoft.AspNetCore.Mvc.ApiExplorer:2.3.10 \
+		Microsoft.AspNetCore.Mvc.ApiExplorer:2.3.11 \
+		Microsoft.AspNetCore.Mvc.Core:2.3.10 \
 		Microsoft.AspNetCore.Mvc.Core:2.3.9 \
+		Microsoft.AspNetCore.Mvc.Cors:2.3.11 \
 		Microsoft.AspNetCore.Mvc.Cors:2.3.9 \
-		Microsoft.AspNetCore.Mvc.Cors:2.3.10 \
 		Microsoft.AspNetCore.Mvc.DataAnnotations:2.3.0 \
 		Microsoft.AspNetCore.Mvc.DataAnnotations:2.3.10 \
+		Microsoft.AspNetCore.Mvc.DataAnnotations:2.3.11 \
 		Microsoft.AspNetCore.Mvc.Formatters.Json:2.3.0 \
 		Microsoft.AspNetCore.Mvc.Formatters.Json:2.3.10 \
+		Microsoft.AspNetCore.Mvc.Formatters.Json:2.3.11 \
 		Microsoft.AspNetCore.Mvc.Localization:2.3.0 \
-		Microsoft.AspNetCore.Mvc.Localization:2.3.10 \
-		Microsoft.AspNetCore.Mvc.NewtonsoftJson:9.0.18 \
+		Microsoft.AspNetCore.Mvc.Localization:2.3.11 \
+		Microsoft.AspNetCore.Mvc.NewtonsoftJson:9.0.19 \
 		Microsoft.AspNetCore.Mvc.Razor.Extensions:2.3.0 \
 		Microsoft.AspNetCore.Mvc.Razor:2.3.0 \
 		Microsoft.AspNetCore.Mvc.RazorPages:2.3.0 \
 		Microsoft.AspNetCore.Mvc.TagHelpers:2.3.0 \
-		Microsoft.AspNetCore.Mvc.TagHelpers:2.3.10 \
+		Microsoft.AspNetCore.Mvc.TagHelpers:2.3.11 \
 		Microsoft.AspNetCore.Mvc.ViewFeatures:2.3.0 \
-		Microsoft.AspNetCore.Mvc.ViewFeatures:2.3.10 \
-		Microsoft.AspNetCore.Mvc:2.3.11 \
+		Microsoft.AspNetCore.Mvc.ViewFeatures:2.3.11 \
+		Microsoft.AspNetCore.Mvc:2.3.12 \
 		Microsoft.AspNetCore.Razor.Design:2.3.0 \
 		Microsoft.AspNetCore.Razor.Language:2.3.0 \
 		Microsoft.AspNetCore.Razor.Runtime:2.3.0 \
 		Microsoft.AspNetCore.Razor:2.3.0 \
 		Microsoft.AspNetCore.ResponseCaching.Abstractions:2.3.0 \
+		Microsoft.AspNetCore.ResponseCaching.Abstractions:2.3.9 \
 		Microsoft.AspNetCore.ResponseCompression:2.3.0 \
-		Microsoft.AspNetCore.ResponseCompression:2.3.11 \
-		Microsoft.AspNetCore.Rewrite:2.3.11 \
+		Microsoft.AspNetCore.ResponseCompression:2.3.12 \
+		Microsoft.AspNetCore.Rewrite:2.3.12 \
 		Microsoft.AspNetCore.Routing.Abstractions:2.1.1 \
-		Microsoft.AspNetCore.Routing.Abstractions:2.3.9 \
+		Microsoft.AspNetCore.Routing.Abstractions:2.3.10 \
 		Microsoft.AspNetCore.Routing:2.3.0 \
-		Microsoft.AspNetCore.Routing:2.3.10 \
+		Microsoft.AspNetCore.Routing:2.3.11 \
+		Microsoft.AspNetCore.Routing:2.3.9 \
 		Microsoft.AspNetCore.Server.IISIntegration:2.1.7 \
+		Microsoft.AspNetCore.Server.Kestrel.Core:2.3.10 \
 		Microsoft.AspNetCore.Server.Kestrel.Core:2.3.9 \
 		Microsoft.AspNetCore.Server.Kestrel.Https:2.3.0 \
 		Microsoft.AspNetCore.Server.Kestrel.Https:2.3.10 \
+		Microsoft.AspNetCore.Server.Kestrel.Https:2.3.11 \
+		Microsoft.AspNetCore.Server.Kestrel.Transport.Abstractions:2.3.10 \
 		Microsoft.AspNetCore.Server.Kestrel.Transport.Abstractions:2.3.9 \
-		Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets:2.3.10 \
+		Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets:2.3.11 \
 		Microsoft.AspNetCore.Server.Kestrel:2.3.0 \
-		Microsoft.AspNetCore.Server.Kestrel:2.3.10 \
-		Microsoft.AspNetCore.StaticFiles:2.3.11 \
-		Microsoft.AspNetCore.WebUtilities:2.3.11 \
-		Microsoft.AspNetCore:2.3.11 \
-		Microsoft.Bcl.AsyncInterfaces:9.0.18 \
+		Microsoft.AspNetCore.Server.Kestrel:2.3.11 \
+		Microsoft.AspNetCore.StaticFiles:2.3.12 \
+		Microsoft.AspNetCore.WebUtilities:2.3.12 \
+		Microsoft.AspNetCore:2.3.12 \
+		Microsoft.Bcl.AsyncInterfaces:9.0.19 \
 		Microsoft.Bcl.TimeProvider:8.0.0 \
 		Microsoft.CSharp:4.7.0 \
 		Microsoft.CodeAnalysis.Analyzers:1.1.0 \
@@ -99,7 +119,7 @@ NUGET_NUPKGS=	AngleSharp.Xml:1.1.0 \
 		Microsoft.Extensions.Caching.Abstractions:8.0.0 \
 		Microsoft.Extensions.Caching.Memory:8.0.1 \
 		Microsoft.Extensions.Configuration.Abstractions:8.0.0 \
-		Microsoft.Extensions.Configuration.Abstractions:9.0.18 \
+		Microsoft.Extensions.Configuration.Abstractions:9.0.19 \
 		Microsoft.Extensions.Configuration.Binder:8.0.2 \
 		Microsoft.Extensions.Configuration.CommandLine:8.0.0 \
 		Microsoft.Extensions.Configuration.EnvironmentVariables:8.0.0 \
@@ -107,7 +127,7 @@ NUGET_NUPKGS=	AngleSharp.Xml:1.1.0 \
 		Microsoft.Extensions.Configuration.Json:8.0.1 \
 		Microsoft.Extensions.Configuration.UserSecrets:8.0.1 \
 		Microsoft.Extensions.Configuration:8.0.0 \
-		Microsoft.Extensions.Configuration:9.0.18 \
+		Microsoft.Extensions.Configuration:9.0.19 \
 		Microsoft.Extensions.DependencyInjection.Abstractions:8.0.0 \
 		Microsoft.Extensions.DependencyInjection.Abstractions:8.0.2 \
 		Microsoft.Extensions.DependencyInjection:8.0.0 \
@@ -132,13 +152,14 @@ NUGET_NUPKGS=	AngleSharp.Xml:1.1.0 \
 		Microsoft.Extensions.Options.ConfigurationExtensions:8.0.0 \
 		Microsoft.Extensions.Options:8.0.2 \
 		Microsoft.Extensions.Primitives:8.0.0 \
-		Microsoft.Extensions.Primitives:9.0.18 \
+		Microsoft.Extensions.Primitives:9.0.19 \
 		Microsoft.Extensions.WebEncoders:8.0.11 \
 		Microsoft.NETCore.Platforms:1.1.0 \
 		Microsoft.NETCore.Platforms:5.0.0 \
 		Microsoft.NETCore.Targets:1.1.0 \
 		Microsoft.NETFramework.ReferenceAssemblies.net471:1.0.3 \
 		Microsoft.NETFramework.ReferenceAssemblies:1.0.3 \
+		Microsoft.Net.Http.Headers:2.3.11 \
 		Microsoft.Net.Http.Headers:2.3.8 \
 		Microsoft.Net.Http.Headers:2.3.10 \
 		Microsoft.Win32.Primitives:4.3.0 \
@@ -170,7 +191,7 @@ NUGET_NUPKGS=	AngleSharp.Xml:1.1.0 \
 		System.Diagnostics.Debug:4.3.0 \
 		System.Diagnostics.DiagnosticSource:7.0.2 \
 		System.Diagnostics.DiagnosticSource:8.0.1 \
-		System.Diagnostics.EventLog:9.0.18 \
+		System.Diagnostics.EventLog:9.0.19 \
 		System.Diagnostics.FileVersionInfo:4.3.0 \
 		System.Diagnostics.StackTrace:4.3.0 \
 		System.Diagnostics.Tools:4.3.0 \
@@ -187,7 +208,7 @@ NUGET_NUPKGS=	AngleSharp.Xml:1.1.0 \
 		System.IO.FileSystem:4.3.0 \
 		System.IO.Pipelines:4.6.0 \
 		System.IO.Pipelines:5.0.1 \
-		System.IO.Pipelines:9.0.18 \
+		System.IO.Pipelines:9.0.19 \
 		System.IO.Pipelines:9.0.9 \
 		System.IO:4.3.0 \
 		System.Linq.Expressions:4.3.0 \
@@ -230,17 +251,18 @@ NUGET_NUPKGS=	AngleSharp.Xml:1.1.0 \
 		System.Security.Cryptography.Encoding:4.3.0 \
 		System.Security.Cryptography.OpenSsl:4.3.0 \
 		System.Security.Cryptography.Primitives:4.3.0 \
-		System.Security.Cryptography.ProtectedData:9.0.18 \
+		System.Security.Cryptography.ProtectedData:9.0.19 \
 		System.Security.Cryptography.X509Certificates:4.3.0 \
 		System.Security.Cryptography.Xml:8.0.3 \
+		System.Security.Cryptography.Xml:8.0.4 \
 		System.Security.Principal.Windows:5.0.0 \
-		System.ServiceProcess.ServiceController:9.0.18 \
-		System.Text.Encoding.CodePages:9.0.18 \
+		System.ServiceProcess.ServiceController:9.0.19 \
+		System.Text.Encoding.CodePages:9.0.19 \
 		System.Text.Encoding.Extensions:4.3.0 \
 		System.Text.Encoding:4.3.0 \
 		System.Text.Encodings.Web:8.0.0 \
-		System.Text.Encodings.Web:9.0.18 \
-		System.Text.Json:9.0.18 \
+		System.Text.Encodings.Web:9.0.19 \
+		System.Text.Json:9.0.19 \
 		System.Text.RegularExpressions:4.3.0 \
 		System.Threading.Tasks.Extensions:4.3.0 \
 		System.Threading.Tasks.Extensions:4.5.4 \
