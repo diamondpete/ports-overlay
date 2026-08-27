@@ -1,5 +1,5 @@
 PORTNAME=	phoenixadult
-DISTVERSION=	1.0.0a474
+DISTVERSION=	1.0.0a475
 CATEGORIES=	www
 
 MAINTAINER=	ports@FreeBSD.org
@@ -9,7 +9,7 @@ WWW=		https://codeberg.org/PhoenixAdultProvider/PhoenixAdult
 LICENSE=	GPLv3+
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-PA_COMMIT=	7591ce29b9346defda0e87f23c1f865792640377
+PA_COMMIT=	f16ecb609ca02c754ad5fee5c825f00b1d5ab159
 MASTER_SITES=	https://codeberg.org/PhoenixAdultProvider/PhoenixAdult/archive/
 DISTFILES=	${PA_COMMIT}${EXTRACT_SUFX}
 DIST_SUBDIR=	${PORTNAME}
