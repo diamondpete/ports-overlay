@@ -51,12 +51,14 @@
 %%DATADIR%%/Content/login.html
 %%DATADIR%%/DateTimeRoutines.dll
 %%DATADIR%%/DateTimeRoutines.pdb
+%%DATADIR%%/Definitions/0dayfiles-api.yml
 %%DATADIR%%/Definitions/0daykiev.yml
 %%DATADIR%%/Definitions/0magnet.yml
 %%DATADIR%%/Definitions/1337x.yml
 %%DATADIR%%/Definitions/13city.yml
 %%DATADIR%%/Definitions/1ptbar.yml
 %%DATADIR%%/Definitions/3dtorrents.yml
+%%DATADIR%%/Definitions/3dvault-api.yml
 %%DATADIR%%/Definitions/4thd.yml
 %%DATADIR%%/Definitions/52bt.yml
 %%DATADIR%%/Definitions/52pt.yml
@@ -98,7 +100,6 @@
 %%DATADIR%%/Definitions/best-torrents.yml
 %%DATADIR%%/Definitions/bestcore.yml
 %%DATADIR%%/Definitions/bibliotik.yml
-%%DATADIR%%/Definitions/bigbbs.yml
 %%DATADIR%%/Definitions/bigcore.yml
 %%DATADIR%%/Definitions/bigfangroup.yml
 %%DATADIR%%/Definitions/bitbazis.yml
@@ -156,6 +157,7 @@
 %%DATADIR%%/Definitions/cyclingarchiveclub.yml
 %%DATADIR%%/Definitions/czteam-api.yml
 %%DATADIR%%/Definitions/damagnet.yml
+%%DATADIR%%/Definitions/danishbits-api.yml
 %%DATADIR%%/Definitions/darkpeers.yml
 %%DATADIR%%/Definitions/dasunerwartete-api.yml
 %%DATADIR%%/Definitions/dasunerwartete.yml
@@ -171,6 +173,7 @@
 %%DATADIR%%/Definitions/discfan.yml
 %%DATADIR%%/Definitions/dmhy.yml
 %%DATADIR%%/Definitions/docspedia.yml
+%%DATADIR%%/Definitions/draupnirr.yml
 %%DATADIR%%/Definitions/dreadvault-api.yml
 %%DATADIR%%/Definitions/dreamingtree.yml
 %%DATADIR%%/Definitions/drugari.yml
@@ -194,7 +197,6 @@
 %%DATADIR%%/Definitions/eztv.yml
 %%DATADIR%%/Definitions/eztvl.yml
 %%DATADIR%%/Definitions/f1carreras-api.yml
-%%DATADIR%%/Definitions/f1gp.yml
 %%DATADIR%%/Definitions/fanoin.yml
 %%DATADIR%%/Definitions/fappaizuri.yml
 %%DATADIR%%/Definitions/fappaizuri2fa.yml
@@ -231,8 +233,7 @@
 %%DATADIR%%/Definitions/hdclone.yml
 %%DATADIR%%/Definitions/hddolby.yml
 %%DATADIR%%/Definitions/hdfans.yml
-%%DATADIR%%/Definitions/hdforever.yml
-%%DATADIR%%/Definitions/hdforever2fa.yml
+%%DATADIR%%/Definitions/hdforever-api.yml
 %%DATADIR%%/Definitions/hdgalaktik.yml
 %%DATADIR%%/Definitions/hdhome.yml
 %%DATADIR%%/Definitions/hdkylin.yml
@@ -315,7 +316,6 @@
 %%DATADIR%%/Definitions/magnetdownload.yml
 %%DATADIR%%/Definitions/magnetz.yml
 %%DATADIR%%/Definitions/majomparade.yml
-%%DATADIR%%/Definitions/makingoff.yml
 %%DATADIR%%/Definitions/malayabits-api.yml
 %%DATADIR%%/Definitions/march.yml
 %%DATADIR%%/Definitions/marinetracker.yml
@@ -480,9 +480,9 @@
 %%DATADIR%%/Definitions/spiritofrevolution.yml
 %%DATADIR%%/Definitions/sportscora.yml
 %%DATADIR%%/Definitions/sportscult.yml
+%%DATADIR%%/Definitions/sportz247.yml
 %%DATADIR%%/Definitions/springsunday.yml
 %%DATADIR%%/Definitions/sukebeinyaasi.yml
-%%DATADIR%%/Definitions/sunnypt.yml
 %%DATADIR%%/Definitions/superbits.yml
 %%DATADIR%%/Definitions/swarmazon-api.yml
 %%DATADIR%%/Definitions/tangpt.yml
@@ -509,6 +509,7 @@
 %%DATADIR%%/Definitions/therarbg.yml
 %%DATADIR%%/Definitions/theshow.yml
 %%DATADIR%%/Definitions/thevault.yml
+%%DATADIR%%/Definitions/thorhub-api.yml
 %%DATADIR%%/Definitions/tjupt.yml
 %%DATADIR%%/Definitions/tlfbits.yml
 %%DATADIR%%/Definitions/tmghub.yml
