@@ -240,14 +240,15 @@ pre-configure:
 	@${CP} ${WRKSRC_npm_cache}/sdkjs-package.json ${WRKSRC}/sdkjs/package.json
 	@${ECHO_MSG} "  Installed: sdkjs/package.json"
 
-# Copy optimized shrinkwrap files from cache repo, overwriting upstream
-	@${ECHO_MSG} "Installing optimized npm-shrinkwrap.json files..."
+# Copy optimized shrinkwrap files from cache repo as package-lock.json, overwriting upstream (npm 12 ignores npm-shrinkwrap.json)
+	@${ECHO_MSG} "Installing optimized package-lock.json files..."
 	@(cd ${WRKSRC_npm_cache}/shrinkwrap && \
 		${FIND} . -name npm-shrinkwrap.json | while read shrinkwrap; do \
-			rel_path=$${shrinkwrap#./}; \
+			rel_path=$$(dirname "$${shrinkwrap#./}")/package-lock.json; \
 			target="${WRKSRC}/$${rel_path}"; \
 			target_dir=$$(dirname "$$target"); \
 			${MKDIR} "$$target_dir"; \
+			${RM} "$$target_dir/npm-shrinkwrap.json"; \
 			${CP} "$$shrinkwrap" "$$target"; \
 			${ECHO_MSG} "  Installed: $${rel_path}"; \
 		done)
@@ -277,7 +278,7 @@ do-build:
 
 	@${MKDIR} ${WRKSRC}/yao-pkg
 	@${CP} ${WRKSRC_npm_cache}/yao-pkg-package.json      ${WRKSRC}/yao-pkg/package.json
-	@${CP} ${WRKSRC_npm_cache}/yao-pkg-npm-shrinkwrap-${MACHINE_ARCH}.json ${WRKSRC}/yao-pkg/npm-shrinkwrap.json
+	@${CP} ${WRKSRC_npm_cache}/yao-pkg-npm-shrinkwrap-${MACHINE_ARCH}.json ${WRKSRC}/yao-pkg/package-lock.json
 	@cd ${WRKSRC}/yao-pkg ; ${SETENV} ${MAKE_ENV} npm install
 
 	@cd ${WRKSRC} && ${PATCH} -N -s -i ${WRKDIR}/extra-patch-pkg-fetch_lib-es5_build.js
