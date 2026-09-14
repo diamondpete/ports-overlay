@@ -28,7 +28,7 @@ RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}sphinxcontrib-applehelp>=1.0.7:textproc/py-s
 		${PYTHON_PKGNAMEPREFIX}docutils>=0.21,1<0.23,1:textproc/py-docutils@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}snowballstemmer>=2.2:textproc/py-snowballstemmer@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}Babel>=2.13:devel/py-babel@${PY_FLAVOR} \
-		${PYTHON_PKGNAMEPREFIX}alabaster>=0.7.14<0.8:textproc/py-alabaster@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}alabaster>=0.7.14:textproc/py-alabaster@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}imagesize>=1.3:graphics/py-imagesize@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}requests>=2.30.0:www/py-requests@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}roman-numerals>=1.0.0:textproc/py-roman-numerals@${PY_FLAVOR} \
