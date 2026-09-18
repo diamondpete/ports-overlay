@@ -1,0 +1,11 @@
+--- pyproject.toml.orig	2026-09-18 02:35:17 UTC
++++ pyproject.toml
+@@ -6,7 +6,7 @@ readme = "README.rst"
+ name = "puremagic"
+ description = "Pure python implementation of magic file detection"
+ readme = "README.rst"
+-license = "MIT"
++license = { text = "MIT" }
+ authors = [
+   { name = "Chris Griffith", email = "chris@cdgriffith.com" },
+ ]
