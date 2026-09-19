@@ -263,7 +263,8 @@ def restore_packages(dotnet: str, srcdir: str, project: str, workdir: str) -> se
     return cased_ids(packages_from_dir(workdir), workdir)
 
 
-def walk_delta(old_tree: str, new_tree: str, project: str, baseline: set) -> tuple:
+def walk_delta(old_tree: str, new_tree: str, project: str, baseline: set,
+               only_tfm: str = "") -> tuple:
     """What the walk says the bump adds, on top of the list already recorded.
 
     The walk cannot reproduce `dotnet restore`.  It keeps versions NuGet's
@@ -278,9 +279,9 @@ def walk_delta(old_tree: str, new_tree: str, project: str, baseline: set) -> tup
     so removals are only ever reported, unless --prune says otherwise.
     """
     note("walking the new tree")
-    new = walk_packages(new_tree, project, baseline)
+    new = walk_packages(new_tree, project, baseline, only_tfm=only_tfm)
     note("walking the old tree, to subtract the walk's own quirks")
-    old = walk_packages(old_tree, project, baseline)
+    old = walk_packages(old_tree, project, baseline, only_tfm=only_tfm)
     gained, lost = new - old, (old - new) & baseline
 
     # One removal is safe: the version a package is being bumped *from*.  The
@@ -543,7 +544,7 @@ def main() -> int:
         pins: set = set()
         stale: set = set()
         if args.prune:
-            tfm = port.vars.get("DOTNET_TFM")
+            tfm = spec.get("tfm") or port.vars.get("DOTNET_TFM")
             if not tfm:
                 die("%s does not set DOTNET_TFM, so there is no way to tell which "
                     "framework it publishes; add it to the Makefile and use it in "
@@ -570,8 +571,10 @@ def main() -> int:
             oldtar = os.path.join(workdir, "old.tar.gz")
             fetch_tarball(port, old_tag, oldtar)
             old_tree = extract(oldtar, os.path.join(workdir, "old"))
-            pkgs, prunable = walk_delta(old_tree, tree, spec["restore_project"], old_pkgs)
-            source = "api.nuget.org delta walk (UNVERIFIED)"
+            pkgs, prunable = walk_delta(old_tree, tree, spec["restore_project"],
+                                        old_pkgs, only_tfm=spec.get("tfm", ""))
+            source = "api.nuget.org delta walk%s (UNVERIFIED)" % (
+                ", pinned to " + spec["tfm"] if spec.get("tfm") else "")
 
         write_nuget_makefile(port, pkgs, previous)
         write_distinfo(port, pkgs, port.tarball(new_version), tar_sha, tar_size)

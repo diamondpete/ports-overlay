@@ -171,6 +171,7 @@ upstream source trees that feed `pkg-plist`:
 ```json
 "net-p2p/jackett": {
     "restore_project": "src/Jackett.Server/Jackett.Server.csproj",
+    "tfm": "net9.0",
     "keep": ["Microsoft.Extensions.Primitives:8.0.0"],
     "plist_maps": [
         {
@@ -185,6 +186,9 @@ upstream source trees that feed `pkg-plist`:
 `include` and `exclude` are optional lists of shell globs matched against the
 file name — jackett's `Definitions/` ships a `schema.json` that never lands in
 the package, for instance. `keep` is optional and only `--prune` reads it.
+`tfm` is optional: it pins every walk to the one framework the port
+publishes, so a project that multi-targets does not drag in packages only
+its other frameworks need.
 
 ### What it deliberately does not touch
 
