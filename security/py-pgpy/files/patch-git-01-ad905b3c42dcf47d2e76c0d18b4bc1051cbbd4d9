@@ -1,0 +1,33 @@
+From ad905b3c42dcf47d2e76c0d18b4bc1051cbbd4d9 Mon Sep 17 00:00:00 2001
+From: "Nathan J. Mehl" <n@oden.io>
+Date: Thu, 27 Feb 2025 17:56:03 -0500
+Subject: [PATCH] drop use of imghdr
+
+imghdr was removed in python 3.13
+
+(cherry picked from commit 26c95725d460e731b6b900d21a7897da73d6410b)
+---
+ pgpy/constants.py | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/pgpy/constants.py b/pgpy/constants.py
+index 28a4561a..983916d4 100644
+--- pgpy/constants.py
++++ pgpy/constants.py
+@@ -2,7 +2,6 @@
+ """
+ import bz2
+ import hashlib
+-import imghdr
+ import os
+ import zlib
+ import warnings
+@@ -429,8 +428,7 @@ class ImageEncoding(IntEnum):
+ 
+     @classmethod
+     def encodingof(cls, imagebytes):
+-        type = imghdr.what(None, h=imagebytes)
+-        if type == 'jpeg':
++        if imagebytes[6:10] in (b'JFIF', b'Exif') or imagebytes[:4] == b'\xff\xd8\xff\xdb':
+             return ImageEncoding.JPEG
+         return ImageEncoding.Unknown  # pragma: no cover
