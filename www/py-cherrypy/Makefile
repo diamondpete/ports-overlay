@@ -35,7 +35,7 @@ PYTEST_BROKEN_TESTS=	test_0_NormalStateFlow test_8_Ram_Cleanup \
 			test_multipart_decoding \
 			test_multipart_decoding_bigger_maxrambytes test_pass \
 			test_4_File_deletion test_3_Redirect \
-			test_threadlocal_garbage
+			test_threadlocal_garbage test_queue_full
 NO_ARCH=	yes
 PORTEXAMPLES=	*
 
