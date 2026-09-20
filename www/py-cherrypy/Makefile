@@ -27,7 +27,9 @@ TEST_DEPENDS=	${PYTHON_PKGNAMEPREFIX}coverage>=7.2.2:devel/py-coverage@${PY_FLAV
 		${PYTHON_PKGNAMEPREFIX}pytest-sugar>=0.9.7:devel/py-pytest-sugar@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}python-memcached>=1.59:databases/py-python-memcached@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}requests-toolbelt>0:www/py-requests-toolbelt@${PY_FLAVOR} \
-		${PY_SETUPTOOLS}
+		${PYTHON_PKGNAMEPREFIX}routes>0:www/py-routes@${PY_FLAVOR} \
+		${PY_SETUPTOOLS} \
+		memcached:databases/memcached
 
 USES=		cpe python
 USE_PYTHON=	autoplist concurrent distutils pytest
