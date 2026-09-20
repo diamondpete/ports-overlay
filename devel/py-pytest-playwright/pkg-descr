@@ -1,0 +1,4 @@
+Pytest plugin for Playwright, Microsoft's browser automation library.  It
+supplies page, browser and context fixtures for driving Chromium, Firefox
+or WebKit, adds options for choosing the browser and running headed, and
+captures screenshots, videos and traces for failing tests.

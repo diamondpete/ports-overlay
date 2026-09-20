@@ -1,0 +1,18 @@
+--- pyproject.toml.orig	2026-11-05 00:00:00 UTC
++++ pyproject.toml
+@@ -1,5 +1,5 @@
+ [build-system]
+-requires = ["setuptools==75.4.0", "setuptools_scm==8.1.0"]
++requires = ["setuptools", "setuptools_scm"]
+ build-backend = "setuptools.build_meta"
+ 
+ [project]
+@@ -26,7 +26,7 @@
+     "playwright>=1.18",
+     "pytest>=6.2.4,<10.0.0",
+     "pytest-base-url>=1.0.0,<3.0.0",
+-    "python-slugify>=6.0.0,<9.0.0",
++    "python-slugify>=6.0.0",
+ ]
+ 
+ [project.urls]
