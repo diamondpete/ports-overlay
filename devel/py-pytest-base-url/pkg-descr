@@ -1,0 +1,3 @@
+Adds a --base-url option to pytest and a base_url fixture that returns it,
+so tests can be pointed at a different deployment without editing them.
+The URL can also come from the PYTEST_BASE_URL environment variable.
