@@ -73,6 +73,7 @@ PYTEST_IGNORED_TESTS=	TestBasicPages TestConfigCategories TestConfigLogin \
 			TestShowLogging test_no_permissions \
 			test_nonexistent_dir_without_permission \
 			test_permissions_450 test_permissions_600
+TEST_ARGS=	tests
 USE_RC_SUBR=	${PORTNAME}
 
 SHEBANG_FILES=	SABnzbd.py
@@ -128,9 +129,5 @@ post-install-NLS-on:
 post-install-NLS-off:
 	${MKDIR} ${STAGEDIR}${DATADIR}/email
 	${INSTALL_DATA} ${WRKSRC}/email/*-en.tmpl ${STAGEDIR}${DATADIR}/email
-
-do-test:
-	@cd ${WRKSRC} && ${SETENV} ${TEST_ENV} ${PYTHON_CMD} -m pytest \
-		-k '${_PYTEST_FILTER_EXPRESSION}' -rs -v -o addopts= tests
 
 .include <bsd.port.mk>
