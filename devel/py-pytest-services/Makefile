@@ -20,13 +20,16 @@ RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}psutil>0:sysutils/py-psutil@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}requests>0:www/py-requests@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}zc.lockfile>=2.0:devel/py-zc.lockfile@${PY_FLAVOR}
 TEST_DEPENDS=	${PYTHON_PKGNAMEPREFIX}astroid>=0:devel/py-astroid@${PY_FLAVOR} \
-			${PYTHON_PKGNAMEPREFIX}mysqlclient>=0:databases/py-mysqlclient@${PY_FLAVOR} \
-			${PYTHON_PKGNAMEPREFIX}pylibmc>=0:databases/py-pylibmc@${PY_FLAVOR} \
-			memcached:databases/memcached \
-			Xvfb:x11-servers/xorg-server@xvfb
+		${PYTHON_PKGNAMEPREFIX}mysqlclient>=0:databases/py-mysqlclient@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}pylibmc>=0:databases/py-pylibmc@${PY_FLAVOR} \
+		memcached:databases/memcached \
+		Xvfb:x11-servers/xorg-server@xvfb
 
 USES=		python
 USE_PYTHON=	autoplist pep517 pytest
+
+_TEST_USER!=	id -un
+TEST_ENV=	USER=${_TEST_USER}
 
 NO_ARCH=	yes
 
