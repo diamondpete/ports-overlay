@@ -26,14 +26,20 @@ testDepends=$(echo ${testDependsRaw} | sed 's,[^ ]*:,,g')
 # has to be cleared with it: poudriere exits rather than build as non-root
 # while it is set.
 conf=${poudriered}/${jail}-${ptname}-poudriere.conf
-if [ -e "${conf}" ]; then
-	echo "${0##*/}: ${conf} exists, refusing to overwrite it" >&2
-	exit 1
-fi
+# NLS is forced on for the port under test only, so translation tests have a
+# locale to load; _SET_FORCE outranks saved options, dependencies keep theirs.
+makeconf=${poudriered}/${jail}-${ptname}-make.conf
+for f in "${conf}" "${makeconf}"; do
+	if [ -e "${f}" ]; then
+		echo "${0##*/}: ${f} exists, refusing to overwrite it" >&2
+		exit 1
+	fi
+done
+trap 'rm -f "${conf}" "${makeconf}"' EXIT HUP INT TERM
 cat > "${conf}" <<-EOF
 	BUILD_AS_NON_ROOT=yes
 	CCACHE_DIR=
 EOF
-trap 'rm -f "${conf}"' EXIT HUP INT TERM
+echo "$(echo "${port%%@*}" | tr / _)_SET_FORCE+=NLS" > "${makeconf}"
 
 poudriere bulk -i -j "${jail}" -p "${ptname}" -O "${overlay}" ${port} ${buildDepends} ${testDepends}

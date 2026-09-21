@@ -232,6 +232,13 @@ Sharing a cache between root and `nobody` needs group ownership set up on the
 host; `CCACHE_DIR_NON_ROOT_SAFE=yes` plus that procedure is the alternative
 poudriere prints.
 
+It also writes `<category>_<port>_SET_FORCE+=NLS` to the per-jail, per-tree
+`make.conf`, so the port under test is built with NLS and its translation
+tests have a locale to load. The `_SET_FORCE` form beats a saved options file,
+and because it is keyed on the origin, dependencies keep their own options.
+Like the config file, it is removed on exit and the script refuses to run if
+one already exists.
+
 Running as `nobody` does not supply `USER`. The test phase is launched with
 `SETENVI`, which is `env -i`, and `WRK_ENV` carries only `HOME`, `LANG`,
 `MACHINE_ARCH`, `PWD`, `GIT_CEILING_DIRECTORIES`, `__MAKE_CONF`, `PATH`,
