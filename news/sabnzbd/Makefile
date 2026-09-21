@@ -66,15 +66,13 @@ TEST_DEPENDS=	${PYTHON_PKGNAMEPREFIX}black>=0:devel/py-black@${PY_FLAVOR} \
 
 USES=		python shebangfix
 USE_PYTHON=	pytest
-# Selenium has no FreeBSD driver, permission tests cannot fail as root,
-# TestWiki needs network and extract_pot needs builder/ (not in the tarball)
+# 13345 passed, 41 skipped, 28 deselected, 2 xfailed, 1 xpassed, 8 warnings
+# Selenium has no FreeBSD driver, TestWiki needs network and extract_pot
+# needs builder/ (not in the tarball)
 PYTEST_IGNORED_TESTS=	TestBasicPages TestConfigCategories TestConfigLogin \
 			TestConfigRSS TestConfigServers TestDaemonizing \
 			TestDownloadFlow TestDownloadSorting TestQueueRepair \
-			TestShowLogging TestWiki test_extract_pot \
-			test_no_permissions \
-			test_nonexistent_dir_without_permission \
-			test_permissions_450 test_permissions_600
+			TestShowLogging TestWiki test_extract_pot
 TEST_ARGS=	tests
 USE_RC_SUBR=	${PORTNAME}
 
