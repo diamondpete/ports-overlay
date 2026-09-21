@@ -221,7 +221,12 @@ out after the twenty-second watcher timeout. The script writes
 reads last and so wins over `poudriere.conf`, and removes it again on the way
 out. It refuses to run if that file already exists rather than clobber it.
 
-`CCACHE_DIR` is cleared in the same file, which costs the run its cache.
+Pass `-r` to stay root instead (`./scripts/test-port.sh -r news/sabnzbd`), for
+suites such as permission tests that expect it. The file then holds
+`BUILD_AS_NON_ROOT=no`, which has to be explicit because poudriere defaults to
+non-root whenever `CCACHE_DIR` is unset, and ccache is left as configured.
+
+Without `-r`, `CCACHE_DIR` is cleared in the same file, which costs the run its cache.
 poudriere does not merely warn about the pair, it stops:
 
 ```
