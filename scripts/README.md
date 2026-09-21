@@ -201,3 +201,44 @@ package set moved, since that is when those lines are most likely stale.
 `Makefile.nuget` is written in plain byte order, matching the `:O` modifier
 `shells/powershell/nuget.mk` applies. The first run normalises a few lines that
 had drifted from that order.
+
+## test-port.sh
+
+Builds a port and everything in its `BUILD_DEPENDS` and `TEST_DEPENDS` in a
+poudriere jail, then leaves you in the jail to run `make test` by hand:
+
+```sh
+./scripts/test-port.sh devel/py-pytest-services
+```
+
+With no argument it takes the origin of the port you are standing in.
+
+The interactive shell runs as `nobody`, not root, because service fixtures
+spawn real daemons and some refuse to start as root — `memcached` exits with
+`must add '-u root' to start as root`, so every test behind that fixture errors
+out after the twenty-second watcher timeout. The script writes
+`BUILD_AS_NON_ROOT=yes` to the per-jail, per-tree config file, which poudriere
+reads last and so wins over `poudriere.conf`, and removes it again on the way
+out. It refuses to run if that file already exists rather than clobber it.
+
+`CCACHE_DIR` is cleared in the same file, which costs the run its cache.
+poudriere does not merely warn about the pair, it stops:
+
+```
+BUILD_AS_NON_ROOT + CCACHE_DIR manual action required.
+```
+
+Sharing a cache between root and `nobody` needs group ownership set up on the
+host; `CCACHE_DIR_NON_ROOT_SAFE=yes` plus that procedure is the alternative
+poudriere prints.
+
+Running as `nobody` does not supply `USER`. The test phase is launched with
+`SETENVI`, which is `env -i`, and `WRK_ENV` carries only `HOME`, `LANG`,
+`MACHINE_ARCH`, `PWD`, `GIT_CEILING_DIRECTORIES`, `__MAKE_CONF`, `PATH`,
+`TERM`, `TMPDIR`, `OSVERSION` and the `UNAME_*` set. A port whose suite reads
+`os.environ["USER"]` has to pass it itself:
+
+```make
+_TEST_USER!=	id -un
+TEST_ENV=	USER=${_TEST_USER}
+```
