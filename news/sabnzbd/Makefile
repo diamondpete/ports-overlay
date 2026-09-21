@@ -66,11 +66,13 @@ TEST_DEPENDS=	${PYTHON_PKGNAMEPREFIX}black>=0:devel/py-black@${PY_FLAVOR} \
 
 USES=		python shebangfix
 USE_PYTHON=	pytest
-# Selenium has no FreeBSD driver; the permission tests cannot fail as root
+# Selenium has no FreeBSD driver, permission tests cannot fail as root,
+# TestWiki needs network and extract_pot needs builder/ (not in the tarball)
 PYTEST_IGNORED_TESTS=	TestBasicPages TestConfigCategories TestConfigLogin \
 			TestConfigRSS TestConfigServers TestDaemonizing \
 			TestDownloadFlow TestDownloadSorting TestQueueRepair \
-			TestShowLogging test_no_permissions \
+			TestShowLogging TestWiki test_extract_pot \
+			test_no_permissions \
 			test_nonexistent_dir_without_permission \
 			test_permissions_450 test_permissions_600
 TEST_ARGS=	tests
@@ -101,6 +103,7 @@ PYGOBJECT_DESC=		PyGObject support for system tray icon (requires cairo)
 7ZIP_RUN_DEPENDS=	7zz:archivers/7-zip
 DBUS_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}dbus>=0:devel/py-dbus@${PY_FLAVOR}
 NLS_USES=		gettext-tools
+NLS_VARS_OFF=		PYTEST_IGNORED_TESTS+=test_api_translate
 NOTIFY2_IMPLIES=	DBUS
 NOTIFY2_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}notify2>=0:devel/py-notify2@${PY_FLAVOR}
 PYGOBJECT_USES=		gnome
