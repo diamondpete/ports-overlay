@@ -14,6 +14,37 @@
 #                               (default: /var/db/phoenixadult).
 # phoenixadult_port (num):      TCP port to listen on   (default: 3000).
 #
+# phoenixadult_vpn_enable (bool):     Connect the VPN before starting (default NO).
+# phoenixadult_vpn_dir (str):         Directory to run the VPN setup from
+#                                     (default: /pia).
+# phoenixadult_vpn_cmd (str):         VPN setup command, run as root from
+#                                     phoenixadult_vpn_dir with /usr/local/bin on
+#                                     PATH (default: ./run_setup.sh).
+# phoenixadult_vpn_timeout (num):     Seconds before a hung VPN setup is abandoned
+#                                     so boot carries on; 0 waits forever
+#                                     (default: 120).
+# phoenixadult_vpn_watch (num):       Seconds between VPN health checks; when a
+#                                     check fails twice in a row the VPN setup is
+#                                     re-run. 0 turns the watchdog off (default: 60).
+# phoenixadult_vpn_check_host (str):  Name looked up to decide whether the VPN
+#                                     still carries traffic
+#                                     (default: one.one.one.one).
+# phoenixadult_tunnel_enable (bool):  Open a Cloudflare quick tunnel and write its
+#                                     URL into .env as PHOENIX_BASE_URL before the
+#                                     app starts (default NO). Needs cloudflared.
+# phoenixadult_tunnel_wait (num):     Seconds to wait for the tunnel URL (default: 60).
+#
+# The VPN connects at boot, and "service phoenixadult restart" reconnects it
+# only when the health check fails. A watchdog started with the service checks
+# it every phoenixadult_vpn_watch seconds and reconnects when lookups stop
+# working. The watchdog and the tunnel outlive a restart, so a restart keeps the
+# same URL. To act on demand:
+#   service phoenixadult vpn       re-run the VPN setup
+#   service phoenixadult vpncheck  check the VPN and reconnect only if it is down
+#   service phoenixadult tunnel    open a fresh tunnel and restart the app on it
+# If cloudflared drops, the tunnel is reopened and the app restarted on the new
+# URL. Output goes to ${phoenixadult_dir}/logs/vpn.log and tunnel.log.
+#
 # The app reads its configuration from ${phoenixadult_dir}/.env and the
 # config-UI overrides file in the same dir; PORT is passed via the environment.
 # The app writes its own rotating log at ${phoenixadult_dir}/logs/agent.log;
@@ -32,10 +63,22 @@ load_rc_config $name
 : ${phoenixadult_group:="phoenixadult"}
 : ${phoenixadult_dir:="/var/db/phoenixadult"}
 : ${phoenixadult_port:="3000"}
+: ${phoenixadult_vpn_enable:="NO"}
+: ${phoenixadult_vpn_dir:="/pia"}
+: ${phoenixadult_vpn_cmd:="./run_setup.sh"}
+: ${phoenixadult_vpn_timeout:="120"}
+: ${phoenixadult_vpn_watch:="60"}
+: ${phoenixadult_vpn_check_host:="one.one.one.one"}
+: ${phoenixadult_tunnel_enable:="NO"}
+: ${phoenixadult_tunnel_wait:="60"}
 
 datadir="%%DATADIR%%"
 piddir="/var/run/${name}"
 pidfile="${piddir}/${name}.pid"
+logdir="${phoenixadult_dir}/logs"
+vpn_marker="${piddir}/vpn.boottime"
+tunnel_pidfile="${piddir}/tunnel.pid"
+vpnwatch_pidfile="${piddir}/vpnwatch.pid"
 
 # Exported so the launcher (run as the service user) inherits them.
 export PHOENIXADULT_DIR="${phoenixadult_dir}"
@@ -49,20 +92,110 @@ command="/usr/sbin/daemon"
 command_args="-f -r -P ${pidfile} -t ${name} ${datadir}/phoenixadult-run"
 
 start_precmd="phoenixadult_prestart"
+extra_commands="vpn vpncheck tunnel"
+vpn_cmd="phoenixadult_vpn force"
+vpncheck_cmd="phoenixadult_vpncheck"
+tunnel_cmd="phoenixadult_tunnel force"
+
+_phoenixadult_dirs()
+{
+	# /var/run is not writable by the unprivileged service user, so create
+	# dedicated, pa-owned dirs for the pidfile, data and logs. Done on every
+	# start; install(1) is a no-op if they already exist.
+	for _d in "${phoenixadult_dir}" "${piddir}" "${logdir}"; do
+		[ -d "${_d}" ] || install -d -o "${phoenixadult_user}" -g "${phoenixadult_group}" -m 0750 "${_d}"
+	done
+}
 
 phoenixadult_prestart()
 {
-	# /var/run is not writable by the unprivileged service user, so create
-	# dedicated, pa-owned dirs for the pidfile and data. Done on every start;
-	# install(1) is a no-op if they already exist.
-	for _d in "${phoenixadult_dir}" "${piddir}"; do
-		[ -d "${_d}" ] || install -d -o "${phoenixadult_user}" -g "${phoenixadult_group}" -m 0750 "${_d}"
-	done
+	_phoenixadult_dirs
 	# The data dir is pkg-installed root-owned, so if STATE_DB_PATH points here the
 	# service user cannot create the database (readonly-db errors). Give it the dir
 	# (not the pkg files inside it) on every start, so a pkg upgrade that re-installs
 	# root-owned self-corrects. Harmless when the DB lives elsewhere.
 	chown "${phoenixadult_user}:${phoenixadult_group}" "${datadir}" 2>/dev/null || true
+
+	if checkyesno phoenixadult_vpn_enable; then
+		phoenixadult_vpn
+		phoenixadult_vpn_watchdog
+	fi
+	checkyesno phoenixadult_tunnel_enable && phoenixadult_tunnel
+	return 0
+}
+
+phoenixadult_vpn()
+{
+	_phoenixadult_dirs
+	_boot=$(sysctl -n kern.boottime)
+	if [ "$1" != "force" ] && [ "$(cat "${vpn_marker}" 2>/dev/null)" = "${_boot}" ] && _phoenixadult_vpn_ok; then
+		return 0
+	fi
+	echo "Connecting VPN: ${phoenixadult_vpn_dir}/${phoenixadult_vpn_cmd#./}"
+	echo "$(date '+%F %T') connecting VPN" >>"${logdir}/vpn.log"
+	_limit=""
+	[ "${phoenixadult_vpn_timeout}" -gt 0 ] && _limit="timeout --foreground ${phoenixadult_vpn_timeout}"
+	if (cd "${phoenixadult_vpn_dir}" && PATH="${PATH}:/usr/local/sbin:/usr/local/bin" ${_limit} ${phoenixadult_vpn_cmd}) </dev/null >>"${logdir}/vpn.log" 2>&1; then
+		echo "${_boot}" >"${vpn_marker}"
+	else
+		warn "VPN setup failed or timed out; see ${logdir}/vpn.log"
+	fi
+}
+
+_phoenixadult_vpn_ok()
+{
+	host -W 5 "${phoenixadult_vpn_check_host}" >/dev/null 2>&1
+}
+
+phoenixadult_vpncheck()
+{
+	_phoenixadult_vpn_ok && return 0
+	sleep 10
+	_phoenixadult_vpn_ok && return 0
+	echo "$(date '+%F %T') ${phoenixadult_vpn_check_host} does not resolve; reconnecting" >>"${logdir}/vpn.log"
+	phoenixadult_vpn force
+}
+
+phoenixadult_vpn_watchdog()
+{
+	[ "${phoenixadult_vpn_watch}" -gt 0 ] || return 0
+	pgrep -qF "${vpnwatch_pidfile}" 2>/dev/null && return 0
+	/usr/sbin/daemon -P "${vpnwatch_pidfile}" -t "${name}-vpnwatch" -o "${logdir}/vpn.log" \
+		/bin/sh -c "while sleep ${phoenixadult_vpn_watch}; do /usr/sbin/service ${name} vpncheck; done"
+}
+
+_phoenixadult_base_url()
+{
+	sed -n 's/^[[:space:]]*PHOENIX_BASE_URL[[:space:]]*=[[:space:]]*//p' "${phoenixadult_dir}/.env" 2>/dev/null | tail -n 1
+}
+
+phoenixadult_tunnel()
+{
+	_phoenixadult_dirs
+	if pgrep -qF "${tunnel_pidfile}" 2>/dev/null; then
+		[ "$1" = "force" ] || return 0
+		_old=$(cat "${tunnel_pidfile}")
+		kill "${_old}"
+		pwait -t 10 "${_old}" 2>/dev/null
+	fi
+	if [ ! -x /usr/local/bin/cloudflared ]; then
+		warn "phoenixadult_tunnel_enable is set but cloudflared is not installed (pkg install cloudflared)"
+		return 0
+	fi
+	_before=$(_phoenixadult_base_url)
+	echo "Opening Cloudflare tunnel to port ${phoenixadult_port}."
+	# The script restarts the app only when it is already running: at boot the
+	# app starts after this returns, and a later reconnect moves it to the new URL.
+	APPLY_CMD="service ${name} status >/dev/null 2>&1 && service ${name} restart || :" \
+		/usr/sbin/daemon -r -R 10 -P "${tunnel_pidfile}" -t "${name}-tunnel" -o "${logdir}/tunnel.log" \
+		/bin/sh "${datadir}/scripts/start-with-tunnel.sh"
+	_i=0
+	while [ "${_i}" -lt "${phoenixadult_tunnel_wait}" ]; do
+		[ "$(_phoenixadult_base_url)" != "${_before}" ] && return 0
+		sleep 1
+		_i=$((_i + 1))
+	done
+	warn "no tunnel URL after ${phoenixadult_tunnel_wait}s; starting with the old PHOENIX_BASE_URL (see ${logdir}/tunnel.log)"
 }
 
 run_rc_command "$1"

@@ -9,12 +9,12 @@ home=/var/db/phoenixadult
 
 case $2 in
 PRE-INSTALL)
-	if ! /usr/sbin/pw groupshow "${group}" >/dev/null 2>&1; then
-		/usr/sbin/pw groupadd "${group}" || exit 1
+	if ! pw groupshow "${group}" >/dev/null 2>&1; then
+		pw groupadd "${group}" || exit 1
 	fi
-	if ! /usr/sbin/pw usershow "${user}" >/dev/null 2>&1; then
-		/usr/sbin/pw useradd "${user}" -g "${group}" -d "${home}" \
-			-s /usr/sbin/nologin -c "PhoenixAdult provider" -w no || exit 1
+	if ! pw usershow "${user}" >/dev/null 2>&1; then
+		pw useradd "${user}" -g "${group}" -d "${home}" \
+			-s "/usr/sbin/nologin" -c "PhoenixAdult provider" -w no || exit 1
 	fi
 	;;
 POST-INSTALL)

@@ -6,8 +6,8 @@ PhoenixAdult has been installed.
 
 1. Configure it. Copy the sample env and edit it:
 
-     # cp %%DATADIR%%/env.sample %%PA_DIR%%/.env
-     # chown %%PA_USER%%:%%PA_GROUP%% %%PA_DIR%%/.env
+     # cp %%DATADIR%%/env.sample /var/db/phoenixadult/.env
+     # chown %%PA_USER%%:%%PA_GROUP%% /var/db/phoenixadult/.env
 
 2. Enable and start the service:
 
@@ -15,14 +15,14 @@ PhoenixAdult has been installed.
      # service phoenixadult start
 
    Then browse to http://<host>:3000/config for the web UI.
-   Logs: %%PA_DIR%%/logs/agent.log
+   Logs: /var/db/phoenixadult/logs/agent.log
 
 The optional feature extras (face cropping = opencv, the Impersonate
 bypass = curl_cffi, Playwright) depend on packages that are not in the
 ports tree; they stay disabled. To use them, install those packages
 into a virtualenv yourself -- the features no-op gracefully when absent.
 
-Uninstalling leaves %%PA_DIR%% (config + caches) and the "%%PA_USER%%"
+Uninstalling leaves /var/db/phoenixadult (config + caches) and the "%%PA_USER%%"
 account in place. Remove them by hand if you no longer need the data.
 =====================================================================
 EOM
