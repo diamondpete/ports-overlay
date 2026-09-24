@@ -71,6 +71,7 @@
 %%DATADIR%%/Definitions/agsvpt.yml
 %%DATADIR%%/Definitions/aidoruonline.yml
 %%DATADIR%%/Definitions/aither-api.yml
+%%DATADIR%%/Definitions/alingpt-api.yml
 %%DATADIR%%/Definitions/alingpt.yml
 %%DATADIR%%/Definitions/amigosshare.yml
 %%DATADIR%%/Definitions/anibt.yml
@@ -89,6 +90,7 @@
 %%DATADIR%%/Definitions/arabtorrents.yml
 %%DATADIR%%/Definitions/asiancinema.yml
 %%DATADIR%%/Definitions/asiandvdclub.yml
+%%DATADIR%%/Definitions/astratorrent.yml
 %%DATADIR%%/Definitions/audiences.yml
 %%DATADIR%%/Definitions/audionews.yml
 %%DATADIR%%/Definitions/aussierules.yml
@@ -162,6 +164,7 @@
 %%DATADIR%%/Definitions/dasunerwartete-api.yml
 %%DATADIR%%/Definitions/dasunerwartete.yml
 %%DATADIR%%/Definitions/datascene-api.yml
+%%DATADIR%%/Definitions/daxiangjiao-api.yml
 %%DATADIR%%/Definitions/daxiangjiao.yml
 %%DATADIR%%/Definitions/deildu.yml
 %%DATADIR%%/Definitions/depthstudio.yml
@@ -285,6 +288,7 @@
 %%DATADIR%%/Definitions/kinozal.yml
 %%DATADIR%%/Definitions/korsar.yml
 %%DATADIR%%/Definitions/krazyzone.yml
+%%DATADIR%%/Definitions/kufei-api.yml
 %%DATADIR%%/Definitions/kufei.yml
 %%DATADIR%%/Definitions/kufirc.yml
 %%DATADIR%%/Definitions/kufirc2fa.yml
@@ -374,6 +378,7 @@
 %%DATADIR%%/Definitions/opencd.yml
 %%DATADIR%%/Definitions/opensharing.yml
 %%DATADIR%%/Definitions/order66.yml
+%%DATADIR%%/Definitions/oshenpt-api.yml
 %%DATADIR%%/Definitions/oshenpt.yml
 %%DATADIR%%/Definitions/ourbits.yml
 %%DATADIR%%/Definitions/p2pbg.yml
@@ -416,6 +421,7 @@
 %%DATADIR%%/Definitions/ptlao.yml
 %%DATADIR%%/Definitions/ptlgs.yml
 %%DATADIR%%/Definitions/ptsbao.yml
+%%DATADIR%%/Definitions/ptskit-api.yml
 %%DATADIR%%/Definitions/ptskit.yml
 %%DATADIR%%/Definitions/pttey.yml
 %%DATADIR%%/Definitions/pttime.yml
@@ -474,6 +480,7 @@
 %%DATADIR%%/Definitions/slobitgames.yml
 %%DATADIR%%/Definitions/snowpt.yml
 %%DATADIR%%/Definitions/sosulki.yml
+%%DATADIR%%/Definitions/soulvoice-api.yml
 %%DATADIR%%/Definitions/soulvoice.yml
 %%DATADIR%%/Definitions/speedmasterhd.yml
 %%DATADIR%%/Definitions/spiritofrevolution.yml
@@ -561,6 +568,7 @@
 %%DATADIR%%/Definitions/ubits.yml
 %%DATADIR%%/Definitions/uindex.yml
 %%DATADIR%%/Definitions/ultrabits-api.yml
+%%DATADIR%%/Definitions/ultrahd-api.yml
 %%DATADIR%%/Definitions/ultrahd.yml
 %%DATADIR%%/Definitions/unbreakable.yml
 %%DATADIR%%/Definitions/unionfansub.yml
@@ -581,10 +589,12 @@
 %%DATADIR%%/Definitions/wintersakura.yml
 %%DATADIR%%/Definitions/world-of-tomorrow.yml
 %%DATADIR%%/Definitions/world-torrent.yml
+%%DATADIR%%/Definitions/xdy-api.yml
 %%DATADIR%%/Definitions/xdy.yml
 %%DATADIR%%/Definitions/xingtan.yml
 %%DATADIR%%/Definitions/xingwan.yml
 %%DATADIR%%/Definitions/xingyung.yml
+%%DATADIR%%/Definitions/xloli-api.yml
 %%DATADIR%%/Definitions/xloli.yml
 %%DATADIR%%/Definitions/xtorrenty.yml
 %%DATADIR%%/Definitions/xtremebytes.yml
@@ -600,6 +610,7 @@
 %%DATADIR%%/Definitions/zamundalife.yml
 %%DATADIR%%/Definitions/zappateers.yml
 %%DATADIR%%/Definitions/zenith.yml
+%%DATADIR%%/Definitions/zmpt-api.yml
 %%DATADIR%%/Definitions/zmpt.yml
 %%DATADIR%%/Definitions/zrpt.yml
 %%DATADIR%%/Definitions/ztracker.yml
