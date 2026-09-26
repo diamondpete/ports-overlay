@@ -1,4 +1,0 @@
-curl_cffi is a Python binding for curl-impersonate via cffi. It can impersonate
-the TLS/JA3 and HTTP/2 fingerprints of real browsers (Chrome, Safari, Firefox,
-...), letting it fetch sites protected by TLS-fingerprint anti-bot systems that
-plain requests/httpx cannot.
