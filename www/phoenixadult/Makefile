@@ -73,7 +73,7 @@ MAGICKX11_DESC=		ImageMagick7 with X11
 MAGICKNOX11_DESC=	ImageMagick7 without X11
 PLAYWRIGHT_DESC=	JS / AWS-WAF bypass via Playwright (needs a browser)
 
-IMPERSONATE_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}curl_cffi>0:www/py-curl_cffi@${PY_FLAVOR}
+IMPERSONATE_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}curl-cffi>0:ftp/py-curl-cffi@${PY_FLAVOR}
 FACE_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}opencv-python-headless>0:graphics/py-opencv-python-headless@${PY_FLAVOR} \
 			${PYTHON_PKGNAMEPREFIX}numpy>0:math/py-numpy@${PY_FLAVOR}
 MAGICKX11_RUN_DEPENDS=	magick:graphics/ImageMagick7@x11 \
