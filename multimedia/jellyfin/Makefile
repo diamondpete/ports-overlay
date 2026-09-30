@@ -83,7 +83,7 @@ ${DISTDIR}/$f:
 	${CP} -R ${FILESDIR}/packagejsons/* ${WRKDIR}/ui/node-modules-cache; \
 	cd ${WRKDIR}/ui/node-modules-cache && \
 	${SETENV} HOME=${WRKDIR} \
-		npm ci --ignore-scripts --no-progress --no-audit --no-fund --cpu=$c; \
+		npm ci --ignore-scripts --no-progress --no-audit --no-fund --allow-remote=root --cpu=$c; \
 	${FIND} ${WRKDIR}/ui/node-modules-cache -depth 1 -print | \
 		${GREP} -v node_modules | ${XARGS} ${RM} -r; \
 	${FIND} ${WRKDIR}/ui/node-modules-cache -type d -exec ${CHMOD} 755 {} ';'; \
