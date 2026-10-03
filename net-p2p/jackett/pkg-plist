@@ -73,6 +73,7 @@
 %%DATADIR%%/Definitions/agsvpt.yml
 %%DATADIR%%/Definitions/aidoruonline.yml
 %%DATADIR%%/Definitions/aither-api.yml
+%%DATADIR%%/Definitions/alabala.yml
 %%DATADIR%%/Definitions/alingpt-api.yml
 %%DATADIR%%/Definitions/alingpt.yml
 %%DATADIR%%/Definitions/amigosshare.yml
@@ -112,7 +113,6 @@
 %%DATADIR%%/Definitions/bitgamer.yml
 %%DATADIR%%/Definitions/bithumen.yml
 %%DATADIR%%/Definitions/bitmagnet.yml
-%%DATADIR%%/Definitions/bitpalace.yml
 %%DATADIR%%/Definitions/bitporn.yml
 %%DATADIR%%/Definitions/bitturk.yml
 %%DATADIR%%/Definitions/bjshare.yml
@@ -401,7 +401,10 @@
 %%DATADIR%%/Definitions/peeratiko.yml
 %%DATADIR%%/Definitions/peergarden.yml
 %%DATADIR%%/Definitions/peersfm.yml
+%%DATADIR%%/Definitions/periodical.yml
 %%DATADIR%%/Definitions/phoenixproject.yml
+%%DATADIR%%/Definitions/phoenixpt-api.yml
+%%DATADIR%%/Definitions/phoenixpt.yml
 %%DATADIR%%/Definitions/pier720.yml
 %%DATADIR%%/Definitions/pignetwork.yml
 %%DATADIR%%/Definitions/pixelcove.yml
