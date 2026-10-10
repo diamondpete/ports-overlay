@@ -1,5 +1,5 @@
 PORTNAME=	phoenixadult
-DISTVERSION=	1.0.0a500
+DISTVERSION=	1.0.0a505
 CATEGORIES=	www
 MASTER_SITES=	https://codeberg.org/PhoenixAdultProvider/PhoenixAdult/archive/
 DISTNAME=	${PA_COMMIT}
@@ -65,12 +65,11 @@ WRKSRC=		${WRKDIR}/${PORTNAME}-src
 PLIST_FILES=	${DATADIR_REL}/env.sample \
 		${DATADIR_REL}/phoenixadult-run \
 		${DATADIR_REL}/scripts/find_artwork_mismatches.py \
-		${DATADIR_REL}/scripts/migrate_snapshot_layout.py \
 		${DATADIR_REL}/scripts/rebuild_from_bundles.py \
 		${DATADIR_REL}/scripts/rename_studio.py \
 		${DATADIR_REL}/scripts/start-with-tunnel.sh
 
-PA_COMMIT=	9acc03422a4c40b8e876d9db802ab5973315da24
+PA_COMMIT=	4ad4061d4ace82e35dc32087f45f777bab80feac
 PA_USER=	phoenixadult
 PA_GROUP=	phoenixadult
 
@@ -105,7 +104,6 @@ post-install:
 	${INSTALL_DATA} ${FILESDIR}/phoenixadult.env.sample ${STAGEDIR}${DATADIR}/env.sample
 	${INSTALL_SCRIPT} ${WRKSRC}/scripts/rename_studio.py ${STAGEDIR}${DATADIR}/scripts/
 	${INSTALL_SCRIPT} ${WRKSRC}/scripts/find_artwork_mismatches.py ${STAGEDIR}${DATADIR}/scripts/
-	${INSTALL_SCRIPT} ${WRKSRC}/scripts/migrate_snapshot_layout.py ${STAGEDIR}${DATADIR}/scripts/
 	${INSTALL_SCRIPT} ${WRKSRC}/scripts/rebuild_from_bundles.py ${STAGEDIR}${DATADIR}/scripts/
 	${INSTALL_SCRIPT} ${WRKSRC}/scripts/start-with-tunnel.sh ${STAGEDIR}${DATADIR}/scripts/
 
