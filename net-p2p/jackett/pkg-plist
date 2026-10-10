@@ -238,6 +238,7 @@
 %%DATADIR%%/Definitions/hd-club.yml
 %%DATADIR%%/Definitions/hd-unit3d-api.yml
 %%DATADIR%%/Definitions/hdarea.yml
+%%DATADIR%%/Definitions/hdbao-api.yml
 %%DATADIR%%/Definitions/hdbao.yml
 %%DATADIR%%/Definitions/hdc.yml
 %%DATADIR%%/Definitions/hdclone.yml
