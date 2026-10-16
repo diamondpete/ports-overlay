@@ -27,3 +27,14 @@
      }
      // Workaround for nodejs/node#39313
      // All supported macOS versions have zlib as a system library
+@@ -214,6 +223,10 @@
+     }
+     args.push(...getConfigureArgs(getMajor(nodeVersion), targetPlatform, targetArch));
+     log_1.log.info("Running configure with: ", args.join(" "));
++    // Node 24 refuses Python 3.15; nodejs/node#65750 allowlists it
++    const configurePath = path_1.default.join(nodePath, 'configure');
++    (0, fs_1.writeFileSync)(configurePath, (0, fs_1.readFileSync)(configurePath, 'utf8')
++        .replace('acceptable_pythons = (', 'acceptable_pythons = ((3, 15), '));
+     // TODO same for windows?
+     await (0, utils_1.spawn)('/bin/sh', ['./configure', ...args], {
+         cwd: nodePath,
