@@ -1,14 +1,9 @@
 PORTNAME=	calibre
-PORTVERSION=	8.16.2
-PORTREVISION=	5
+PORTVERSION=	9.16.0
 CATEGORIES=	deskutils python
 MASTER_SITES=	https://download.calibre-ebook.com/${PORTVERSION}/
 DISTFILES=	${DISTNAME}${EXTRACT_SUFX}
 DIST_SUBDIR=	${PORTNAME}
-
-PATCH_SITES=	https://github.com/kovidgoyal/calibre/commit/
-PATCHFILES=	49af1f0904e00351ffbf9ad430a37bfe66226bae.patch
-PATCH_DIST_STRIP=	-p1
 
 MAINTAINER=	madpilot@FreeBSD.org
 COMMENT=	Ebook management application
@@ -30,11 +25,13 @@ BUILD_DEPENDS=		${LOCALBASE}/bin/cmake:devel/cmake-core \
 			${PYTHON_PKGNAMEPREFIX}pillow>=10.3.0:graphics/py-pillow@${PY_FLAVOR} \
 			${PYTHON_PKGNAMEPREFIX}python-dateutil>=2.8.2:devel/py-python-dateutil@${PY_FLAVOR} \
 			${PYTHON_PKGNAMEPREFIX}regex>=2023.8.8:textproc/py-regex@${PY_FLAVOR} \
+			${PYTHON_PKGNAMEPREFIX}tzlocal>0:devel/py-tzlocal@${PY_FLAVOR} \
 			${PYTHON_PKGNAMEPREFIX}xxhash>3.3.0:devel/py-xxhash@${PY_FLAVOR} \
 			${PYTHON_PKGNAMEPREFIX}zeroconf>0.115.0:net/py-zeroconf@${PY_FLAVOR} \
 			liberation-fonts-ttf>=2.1.3:x11-fonts/liberation-fonts-ttf \
 			MathJax3>0:www/mathjax3
 LIB_DEPENDS=		libavcodec.so:multimedia/ffmpeg \
+			libavif.so:graphics/libavif \
 			libfreetype.so:print/freetype2 \
 			libhunspell-1.7.so:textproc/hunspell \
 			libhyphen.so:textproc/hyphen \
@@ -49,18 +46,27 @@ RUN_DEPENDS=		${PYTHON_PKGNAMEPREFIX}apsw>=3.50.4.0:databases/py-apsw@${PY_FLAVO
 			${PYTHON_PKGNAMEPREFIX}css-parser>=1.0.10:www/py-css-parser@${PY_FLAVOR} \
 			${PYTHON_PKGNAMEPREFIX}dnspython>=2.6.1:dns/py-dnspython@${PY_FLAVOR} \
 			${PYTHON_PKGNAMEPREFIX}feedparser>=6.0.10:textproc/py-feedparser@${PY_FLAVOR} \
+			${PYTHON_PKGNAMEPREFIX}fonttools>0:print/py-fonttools@${PY_FLAVOR} \
+			${PYTHON_PKGNAMEPREFIX}html2text>0:textproc/py-html2text@${PY_FLAVOR} \
 			${PYTHON_PKGNAMEPREFIX}html5-parser>=0.4.12:www/py-html5-parser@${PY_FLAVOR} \
+			${PYTHON_PKGNAMEPREFIX}html5lib>0:www/py-html5lib@${PY_FLAVOR} \
 			${PYTHON_PKGNAMEPREFIX}jeepney>=0.8.0:devel/py-jeepney@${PY_FLAVOR} \
 			${PYTHON_PKGNAMEPREFIX}lxml>=6.0.1:devel/py-lxml@${PY_FLAVOR} \
+			${PYTHON_PKGNAMEPREFIX}lxml-html-clean>0:devel/py-lxml-html-clean@${PY_FLAVOR} \
 			${PYTHON_PKGNAMEPREFIX}markdown>=3.4.4:textproc/py-markdown@${PY_FLAVOR} \
 			${PYTHON_PKGNAMEPREFIX}mechanize>=0.4.8:www/py-mechanize@${PY_FLAVOR} \
 			${PYTHON_PKGNAMEPREFIX}msgpack>=1.0.7:devel/py-msgpack@${PY_FLAVOR} \
 			${PYTHON_PKGNAMEPREFIX}netifaces>=0.11.0:net/py-netifaces@${PY_FLAVOR} \
 			${PYTHON_PKGNAMEPREFIX}pillow>=10.3.0:graphics/py-pillow@${PY_FLAVOR} \
+			${PYTHON_PKGNAMEPREFIX}psutil>0:sysutils/py-psutil@${PY_FLAVOR} \
+			${PYTHON_PKGNAMEPREFIX}py7zr>0:archivers/py-py7zr@${PY_FLAVOR} \
 			${PYTHON_PKGNAMEPREFIX}pycryptodome>=3.19.1:security/py-pycryptodome@${PY_FLAVOR} \
+			${PYTHON_PKGNAMEPREFIX}pygments>0:textproc/py-pygments@${PY_FLAVOR} \
+			${PYTHON_PKGNAMEPREFIX}pystache>=0.6.8:textproc/py-pystache@${PY_FLAVOR} \
 			${PYTHON_PKGNAMEPREFIX}python-dateutil>=2.8.2:devel/py-python-dateutil@${PY_FLAVOR} \
 			${PYTHON_PKGNAMEPREFIX}regex>=2023.8.8:textproc/py-regex@${PY_FLAVOR} \
 			${PYTHON_PKGNAMEPREFIX}sqlite3>0:databases/py-sqlite3@${PY_FLAVOR} \
+			${PYTHON_PKGNAMEPREFIX}tzlocal>0:devel/py-tzlocal@${PY_FLAVOR} \
 			${PYTHON_PKGNAMEPREFIX}xxhash>=3.3.0:devel/py-xxhash@${PY_FLAVOR} \
 			${PYTHON_PKGNAMEPREFIX}zeroconf>0.115.0:net/py-zeroconf@${PY_FLAVOR} \
 			liberation-fonts-ttf>=2.1.3:x11-fonts/liberation-fonts-ttf \
@@ -69,11 +75,11 @@ RUN_DEPENDS=		${PYTHON_PKGNAMEPREFIX}apsw>=3.50.4.0:databases/py-apsw@${PY_FLAVO
 			xdg-open:devel/xdg-utils
 
 USES=		cpe desktop-file-utils gettext-runtime:build gl \
-		localbase:ldflags pkgconfig pyqt:6 python:3.11+ qt:6 \
+		localbase:ldflags pkgconfig pyqt:6 python:3.14+ qt:6 \
 		shared-mime-info shebangfix sqlite ssl tar:xz xorg
 CPE_VENDOR=	calibre-ebook
 USE_GITHUB=	nodefault
-GH_TUPLE=	kovidgoyal:calibre-translations:94d8062:translations \
+GH_TUPLE=	kovidgoyal:calibre-translations:e906570:translations \
 		LibreOffice:dictionaries:fe49c66:hypenation
 USE_GL=		opengl
 USE_PYQT=	pyqt6 pysip webengine qtbuilder:build sip:build
@@ -100,7 +106,7 @@ MAKE_ENV=	CALIBRE_CONFIG_DIRECTORY=${WRKDIR}/calibre-config \
 		XDG_UTILS_INSTALL_MODE=system
 SUB_LIST=	PYTHON_VERSION=${PYTHON_VERSION}
 
-ISOCODESWRKSRC_CMD=	${BSDMAKE} -C ${.CURDIR}/../../misc/iso-codes -V WRKSRC
+ISOCODESWRKSRC_CMD=	${BSDMAKE} -C ${PORTSDIR}/misc/iso-codes -V WRKSRC
 
 post-extract:
 	@${CP} ${FILESDIR}/user-agent-data.json ${WRKSRC}/resources
@@ -145,6 +151,10 @@ do-install:
 		${STAGEDIR}${PREFIX}/share/applications/defaults.list
 	@${RMDIR} ${STAGEDIR}${PREFIX}/share/desktop-directories
 	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/calibre/calibre/plugins/*
+
+# The CA directory is generated from ca_root_nss and named by certificate hash
+post-install:
+	@(cd ${STAGEDIR}${PREFIX} && ${FIND} ${DATADIR_REL}/mozilla-ca-certs -type f) >> ${TMPPLIST}
 
 update-recent-uas: patch
 	@(cd ${BUILD_WRKSRC}; ${SETENV} ${MAKE_ENV} ${PYTHON_CMD} \

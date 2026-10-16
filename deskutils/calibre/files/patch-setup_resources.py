@@ -1,11 +1,22 @@
---- setup/resources.py.orig	2025-08-08 02:10:36 UTC
+--- setup/resources.py.orig	2026-10-16 20:23:57 UTC
 +++ setup/resources.py
-@@ -104,7 +104,7 @@ class Resources(Command):  # {{{
- class Resources(Command):  # {{{
+@@ -51,7 +51,9 @@
+             shutil.rmtree(self.CA_PATH)
+         os.mkdir(self.CA_PATH)
+         create_CA_dir(raw, self.CA_PATH)
+-        self.verify_ca_certs()
++        # Verifying needs network access; a supplied bundle is trusted as is
++        if not opts.path_to_cacerts:
++            self.verify_ca_certs()
  
+     def verify_ca_certs(self):
+         from calibre.utils.https import get_https_resource_securely
+@@ -116,7 +118,7 @@
+ 
+ class Resources(Command):  # {{{
      description = 'Compile various needed calibre resources'
 -    sub_commands = ['liberation_fonts', 'mathjax', 'rapydscript', 'hyphenation', 'piper_voices']
 +    sub_commands = ['liberation_fonts', 'mathjax', 'rapydscript', 'hyphenation']
+     SYSTEM_CAMOUFOX_PATH = os.path.join(Command.RESOURCES, 'system-camoufox.json')
  
-     def run(self, opts):
-         from calibre.utils.serialize import msgpack_dumps
+     def add_options(self, parser):
