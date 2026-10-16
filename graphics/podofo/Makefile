@@ -1,6 +1,5 @@
 PORTNAME=	podofo
-PORTVERSION=	0.10.4
-PORTREVISION=	2
+PORTVERSION=	1.1.2
 CATEGORIES=	graphics print
 
 MAINTAINER=	sunpoet@FreeBSD.org
@@ -8,29 +7,33 @@ COMMENT=	PDF manipulation library and tools
 WWW=		https://podofo.sourceforge.net/ \
 		https://github.com/podofo/podofo
 
-LICENSE=	LGPL20
-LICENSE_FILE=	${WRKSRC}/COPYING
+LICENSE=	LGPL20+ MPL20
+LICENSE_COMB=	dual
+LICENSE_FILE_LGPL20+ =	${WRKSRC}/COPYING.LGPL
+LICENSE_FILE_MPL20=	${WRKSRC}/COPYING.MPL
 
 BUILD_DEPENDS=	fast_float>=0:math/fast_float \
 		date>=0:devel/date \
-		libfmt>=0:devel/libfmt \
-		utf8cpp>=4.0.3:devel/utf8cpp
+		libfmt>=0:devel/libfmt
 LIB_DEPENDS=	libfontconfig.so:x11-fonts/fontconfig \
 		libfreetype.so:print/freetype2 \
-		libidn.so:dns/libidn
+		libutf8proc.so:textproc/utf8proc
 
 USES=		cmake compiler:c++17-lang cpe gnome localbase:ldflags pkgconfig ssl
 USE_GNOME=	libxml2
 
-CFLAGS+=	-I${LOCALBASE}/include/fast_float
 CMAKE_ARGS=	-DFONTCONFIG_LIBRARIES=${LOCALBASE}/lib/libfontconfig.so \
 		-DOPENSSL_INCLUDE_DIR=${OPENSSLINC} \
 		-DOPENSSL_LIBRARIES=${OPENSSLLIB}
+CMAKE_ON=	PODOFO_DEVENDOR_DATE \
+		PODOFO_DEVENDOR_FASTFLOAT \
+		PODOFO_DEVENDOR_FMT_HEADER_ONLY \
+		PODOFO_DEVENDOR_UTF8PROC
 CMAKE_OFF=	PODOFO_BUILD_EXAMPLES \
 		PODOFO_BUILD_LIB_ONLY \
 		PODOFO_BUILD_STATIC \
 		PODOFO_BUILD_TEST \
-		PODOFO_BUILD_TOOLS
+		PODOFO_BUILD_UNSUPPORTED_TOOLS
 CMAKE_TESTING_ON=	PODOFO_BUILD_TEST
 USE_LDCONFIG=	yes
 
@@ -52,17 +55,17 @@ TIFF_LIB_DEPENDS=	libtiff.so:graphics/tiff
 
 # Clean up bundled libraries
 .if !defined(MAINTAINER_MODE)
-EXTRACT_AFTER_ARGS=	--exclude ${GH_PROJECT_DEFAULT}-${GH_TAGNAME_EXTRACT}/3rdparty/fast_float.h \
-			--exclude ${GH_PROJECT_DEFAULT}-${GH_TAGNAME_EXTRACT}/3rdparty/date \
-			--exclude ${GH_PROJECT_DEFAULT}-${GH_TAGNAME_EXTRACT}/3rdparty/fmt \
-			--exclude ${GH_PROJECT_DEFAULT}-${GH_TAGNAME_EXTRACT}/3rdparty/utf8cpp \
+EXTRACT_AFTER_ARGS=	--exclude ${GH_PROJECT_DEFAULT}-${GH_TAGNAME_EXTRACT}/3rdparty/date \
+			--exclude ${GH_PROJECT_DEFAULT}-${GH_TAGNAME_EXTRACT}/3rdparty/fastfloat \
+			--exclude ${GH_PROJECT_DEFAULT}-${GH_TAGNAME_EXTRACT}/3rdparty/fmtlib \
+			--exclude ${GH_PROJECT_DEFAULT}-${GH_TAGNAME_EXTRACT}/3rdparty/utf8proc \
 			--no-same-owner --no-same-permissions
 .else
 post-patch:
-	@${RM} ${WRKSRC}/3rdparty/fast_float.h
 	@${RM} -r ${WRKSRC}/3rdparty/date/
-	@${RM} -r ${WRKSRC}/3rdparty/fmt/
-	@${RM} -r ${WRKSRC}/3rdparty/utf8cpp/
+	@${RM} -r ${WRKSRC}/3rdparty/fastfloat/
+	@${RM} -r ${WRKSRC}/3rdparty/fmtlib/
+	@${RM} -r ${WRKSRC}/3rdparty/utf8proc/
 .endif
 
 .include <bsd.port.mk>
