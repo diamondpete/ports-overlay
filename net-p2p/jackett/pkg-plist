@@ -63,6 +63,7 @@
 %%DATADIR%%/Definitions/3dvault-api.yml
 %%DATADIR%%/Definitions/4thd.yml
 %%DATADIR%%/Definitions/52bt.yml
+%%DATADIR%%/Definitions/52movie.yml
 %%DATADIR%%/Definitions/52pt.yml
 %%DATADIR%%/Definitions/Bittorrentfiles.yml
 %%DATADIR%%/Definitions/abnormal-api.yml
@@ -73,7 +74,7 @@
 %%DATADIR%%/Definitions/agsvpt.yml
 %%DATADIR%%/Definitions/aidoruonline.yml
 %%DATADIR%%/Definitions/aither-api.yml
-%%DATADIR%%/Definitions/alabala.yml
+%%DATADIR%%/Definitions/alabala-api.yml
 %%DATADIR%%/Definitions/alingpt-api.yml
 %%DATADIR%%/Definitions/alingpt.yml
 %%DATADIR%%/Definitions/amigosshare.yml
@@ -179,6 +180,7 @@
 %%DATADIR%%/Definitions/digitalcore-api.yml
 %%DATADIR%%/Definitions/dimeadozen.yml
 %%DATADIR%%/Definitions/dirtybytes-api.yml
+%%DATADIR%%/Definitions/discfan-api.yml
 %%DATADIR%%/Definitions/discfan.yml
 %%DATADIR%%/Definitions/dmhy.yml
 %%DATADIR%%/Definitions/docspedia.yml
@@ -223,7 +225,6 @@
 %%DATADIR%%/Definitions/futuretorrent.yml
 %%DATADIR%%/Definitions/fuzer.yml
 %%DATADIR%%/Definitions/g3minitr4ck3r-api.yml
-%%DATADIR%%/Definitions/gamestorrents.yml
 %%DATADIR%%/Definitions/gay-torrents.yml
 %%DATADIR%%/Definitions/gaytorrentru.yml
 %%DATADIR%%/Definitions/generationfree-api.yml
@@ -418,7 +419,6 @@
 %%DATADIR%%/Definitions/podzemlje.yml
 %%DATADIR%%/Definitions/polishtorrent.yml
 %%DATADIR%%/Definitions/polishtracker-api.yml
-%%DATADIR%%/Definitions/polskie-torrenty.yml
 %%DATADIR%%/Definitions/pornolab.yml
 %%DATADIR%%/Definitions/pornotorrent.yml
 %%DATADIR%%/Definitions/pornrips.yml
@@ -458,6 +458,7 @@
 %%DATADIR%%/Definitions/qingwa.yml
 %%DATADIR%%/Definitions/r3vwtf.yml
 %%DATADIR%%/Definitions/racing4everyone-api.yml
+%%DATADIR%%/Definitions/racing4us.yml
 %%DATADIR%%/Definitions/racingforme.yml
 %%DATADIR%%/Definitions/railgunpt.yml
 %%DATADIR%%/Definitions/rainbowtracker.yml
@@ -499,7 +500,6 @@
 %%DATADIR%%/Definitions/skipthecommercials-api.yml
 %%DATADIR%%/Definitions/sktorrent-org.yml
 %%DATADIR%%/Definitions/sktorrent.yml
-%%DATADIR%%/Definitions/slobitgames.yml
 %%DATADIR%%/Definitions/snowpt.yml
 %%DATADIR%%/Definitions/sosulki.yml
 %%DATADIR%%/Definitions/soulvoice-api.yml
@@ -508,7 +508,6 @@
 %%DATADIR%%/Definitions/spiritofrevolution.yml
 %%DATADIR%%/Definitions/sportscora.yml
 %%DATADIR%%/Definitions/sportscult.yml
-%%DATADIR%%/Definitions/sportz247.yml
 %%DATADIR%%/Definitions/springsunday.yml
 %%DATADIR%%/Definitions/stellarwinds.yml
 %%DATADIR%%/Definitions/sukebeinyaasi.yml
@@ -601,6 +600,7 @@
 %%DATADIR%%/Definitions/uztracker.yml
 %%DATADIR%%/Definitions/v3x.yml
 %%DATADIR%%/Definitions/vault-network.yml
+%%DATADIR%%/Definitions/vc-lib-api.yml
 %%DATADIR%%/Definitions/vc-lib.yml
 %%DATADIR%%/Definitions/vietmediaf.yml
 %%DATADIR%%/Definitions/vsthouse.yml

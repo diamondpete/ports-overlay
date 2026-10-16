@@ -1,6 +1,6 @@
 NUGET_GROUPS=	NUGET
 NUGET_NUPKGS=	AngleSharp.Xml:1.2.0 \
-		AngleSharp:1.8.1 \
+		AngleSharp:1.8.4 \
 		Autofac.Extensions.DependencyInjection:9.0.0 \
 		Autofac:8.0.0 \
 		BencodeNET:4.0.0 \
@@ -10,19 +10,19 @@ NUGET_NUPKGS=	AngleSharp.Xml:1.2.0 \
 		Microsoft.AspNetCore.Http.Abstractions:2.3.12 \
 		Microsoft.AspNetCore.Http.Features:2.3.11 \
 		Microsoft.AspNetCore.Http:2.3.13 \
-		Microsoft.AspNetCore.JsonPatch:9.0.20 \
-		Microsoft.AspNetCore.Mvc.NewtonsoftJson:9.0.20 \
+		Microsoft.AspNetCore.JsonPatch:9.0.21 \
+		Microsoft.AspNetCore.Mvc.NewtonsoftJson:9.0.21 \
 		Microsoft.AspNetCore.WebUtilities:2.3.13 \
 		Microsoft.CSharp:4.7.0 \
-		Microsoft.Extensions.Configuration.Abstractions:9.0.20 \
-		Microsoft.Extensions.Configuration:9.0.20 \
+		Microsoft.Extensions.Configuration.Abstractions:9.0.21 \
+		Microsoft.Extensions.Configuration:9.0.21 \
 		Microsoft.Extensions.DependencyInjection.Abstractions:8.0.0 \
 		Microsoft.Extensions.DependencyInjection:8.0.0 \
 		Microsoft.Extensions.Logging.Abstractions:8.0.0 \
 		Microsoft.Extensions.Logging:8.0.0 \
 		Microsoft.Extensions.ObjectPool:8.0.11 \
 		Microsoft.Extensions.Options:8.0.2 \
-		Microsoft.Extensions.Primitives:9.0.20 \
+		Microsoft.Extensions.Primitives:9.0.21 \
 		Microsoft.NETCore.Platforms:5.0.0 \
 		Microsoft.Net.Http.Headers:2.3.12 \
 		MimeMapping:1.0.1.50 \
@@ -38,15 +38,15 @@ NUGET_NUPKGS=	AngleSharp.Xml:1.2.0 \
 		SharpZipLib:1.4.2 \
 		System.Buffers:4.6.0 \
 		System.Diagnostics.DiagnosticSource:7.0.2 \
-		System.Diagnostics.EventLog:9.0.20 \
+		System.Diagnostics.EventLog:9.0.21 \
 		System.IO.FileSystem.AccessControl:5.0.0 \
 		System.IO.Pipelines:5.0.1 \
 		System.Security.AccessControl:5.0.0 \
 		Microsoft.Extensions.Primitives:8.0.0 \
-		System.Security.Cryptography.ProtectedData:9.0.20 \
+		System.Security.Cryptography.ProtectedData:9.0.21 \
 		System.Security.Principal.Windows:5.0.0 \
-		System.ServiceProcess.ServiceController:9.0.20 \
-		System.Text.Encoding.CodePages:9.0.20 \
+		System.ServiceProcess.ServiceController:9.0.21 \
+		System.Text.Encoding.CodePages:9.0.21 \
 		System.Text.Encodings.Web:8.0.0 \
-		System.Text.Json:9.0.20 \
+		System.Text.Json:9.0.21 \
 		YamlDotNet:18.1.0
