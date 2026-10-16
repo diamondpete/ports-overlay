@@ -1,6 +1,6 @@
---- setup/commands.py.orig	2025-08-08 02:10:36 UTC
+--- setup/commands.py.orig	2026-10-16 11:23:37 UTC
 +++ setup/commands.py
-@@ -30,7 +30,6 @@ __all__ = [
+@@ -35,7 +35,6 @@
      'manual',
      'mathjax',
      'osx',
@@ -8,14 +8,14 @@
      'pot',
      'publish',
      'publish_betas',
-@@ -93,10 +92,6 @@ hyphenation = Hyphenation()
- from setup.hyphenation import Hyphenation
+@@ -100,10 +99,6 @@
  
  hyphenation = Hyphenation()
--
+ 
 -from setup.piper import PiperVoices
 -
 -piper_voices = PiperVoices()
+-
+ from setup.kokoro import KokoroVoices
  
- from setup.liberation import LiberationFonts
- 
+ kokoro_voices = KokoroVoices()
