@@ -1,6 +1,6 @@
---- libtransmission/CMakeLists.txt.orig	2026-02-20 00:30:46 UTC
+--- libtransmission/CMakeLists.txt.orig	2026-10-24 21:05:59 UTC
 +++ libtransmission/CMakeLists.txt
-@@ -272,12 +272,12 @@ target_link_libraries(${TR_NAME}
+@@ -276,12 +276,12 @@
  target_link_libraries(${TR_NAME}
      PRIVATE
          Threads::Threads
@@ -15,7 +15,7 @@
          dht::dht
          libutp::libutp
          libb64::libb64
-@@ -288,7 +288,7 @@ target_link_libraries(${TR_NAME}
+@@ -292,7 +292,7 @@
          RapidJSON
          utf8::cpp
          wildmat
@@ -24,7 +24,7 @@
          MadlerCrcany
          $<$<BOOL:${WIN32}>:crypt32>
          $<$<BOOL:${WIN32}>:shlwapi>
-@@ -297,9 +297,10 @@ target_link_libraries(${TR_NAME}
+@@ -301,9 +301,10 @@
          $<$<BOOL:${HAVE_LIBATOMIC}>:atomic>
      PUBLIC
          transmission::crypto_impl
