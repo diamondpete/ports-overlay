@@ -1,5 +1,5 @@
 PORTNAME=	calibre
-PORTVERSION=	9.16.0
+PORTVERSION=	9.17.0
 CATEGORIES=	deskutils python
 MASTER_SITES=	https://download.calibre-ebook.com/${PORTVERSION}/
 DISTFILES=	${DISTNAME}${EXTRACT_SUFX}
@@ -35,6 +35,7 @@ LIB_DEPENDS=		libavcodec.so:multimedia/ffmpeg \
 			libfreetype.so:print/freetype2 \
 			libhunspell-1.7.so:textproc/hunspell \
 			libhyphen.so:textproc/hyphen \
+			libjxl.so:graphics/libjxl \
 			libicudata.so:devel/icu \
 			libmtp.so:multimedia/libmtp \
 			libpodofo.so:graphics/podofo \
@@ -79,7 +80,7 @@ USES=		cpe desktop-file-utils gettext-runtime:build gl \
 		shared-mime-info shebangfix sqlite ssl tar:xz xorg
 CPE_VENDOR=	calibre-ebook
 USE_GITHUB=	nodefault
-GH_TUPLE=	kovidgoyal:calibre-translations:e906570:translations \
+GH_TUPLE=	kovidgoyal:calibre-translations:9afcab2:translations \
 		LibreOffice:dictionaries:fe49c66:hypenation
 USE_GL=		opengl
 USE_PYQT=	pyqt6 pysip webengine qtbuilder:build sip:build

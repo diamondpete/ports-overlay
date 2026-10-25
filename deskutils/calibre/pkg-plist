@@ -1314,6 +1314,7 @@ lib/calibre/calibre/plugins/hunspell.so
 lib/calibre/calibre/plugins/hyphen.so
 lib/calibre/calibre/plugins/icu.so
 lib/calibre/calibre/plugins/imageops.so
+lib/calibre/calibre/plugins/jxl.so
 lib/calibre/calibre/plugins/libheadless.so
 lib/calibre/calibre/plugins/libmtp.so
 lib/calibre/calibre/plugins/libusb.so
@@ -1453,6 +1454,7 @@ lib/calibre/calibre/utils/icu.py
 lib/calibre/calibre/utils/icu_test.py
 lib/calibre/calibre/utils/img.py
 lib/calibre/calibre/utils/imghdr.py
+lib/calibre/calibre/utils/imghdr_test.py
 lib/calibre/calibre/utils/inotify.py
 lib/calibre/calibre/utils/ip_routing.py
 lib/calibre/calibre/utils/ipc/__init__.py
@@ -1465,6 +1467,7 @@ lib/calibre/calibre/utils/ipc/worker.py
 lib/calibre/calibre/utils/iphlpapi.py
 lib/calibre/calibre/utils/ipython.py
 lib/calibre/calibre/utils/iso8601.py
+lib/calibre/calibre/utils/jxl_test.py
 lib/calibre/calibre/utils/linux_trash.py
 lib/calibre/calibre/utils/localization.py
 lib/calibre/calibre/utils/localization_test.py
@@ -1544,9 +1547,11 @@ lib/calibre/calibre/web/automate/browser.py
 lib/calibre/calibre/web/automate/camoufox.py
 lib/calibre/calibre/web/automate/camoufox_fonts.py
 lib/calibre/calibre/web/automate/download_deps.py
+lib/calibre/calibre/web/automate/metadata.py
 lib/calibre/calibre/web/automate/recipes.py
 lib/calibre/calibre/web/automate/test_camoufox.py
 lib/calibre/calibre/web/automate/test_download_deps.py
+lib/calibre/calibre/web/automate/test_metadata.py
 lib/calibre/calibre/web/automate/test_recipes.py
 lib/calibre/calibre/web/automate/test_worker.py
 lib/calibre/calibre/web/automate/worker.py
