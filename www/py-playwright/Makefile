@@ -1,7 +1,6 @@
 PORTNAME=	playwright
 DISTVERSIONPREFIX=	v
-DISTVERSION=	1.61.0
-PORTREVISION=	1
+DISTVERSION=	1.64.1
 CATEGORIES=	www python
 MASTER_SITES+=	https://registry.npmjs.org/playwright-core/-/:npm # the JS "driver" ships as the playwright-core npm package
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -16,7 +15,7 @@ WWW=		https://playwright.dev/python/ \
 LICENSE=	APACHE20
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-DRIVER_VERSION=	1.61.1-beta-1782139630000
+DRIVER_VERSION=	1.64.1
 
 BUILD_DEPENDS=	${PY_SETUPTOOLS} \
 		${PYTHON_PKGNAMEPREFIX}setuptools-scm>=0:devel/py-setuptools-scm@${PY_FLAVOR} \
@@ -55,6 +54,8 @@ XARCH:=		${ARCH:S/amd64/x64/:S/aarch64/arm64/}
 TEST_ENV=	${MAKE_ENV} PYTHONPATH=${STAGEDIR}${PYTHONPREFIX_SITELIBDIR}
 
 post-patch:
+	# use the stable driver rather than the build upstream pins; setup.py names the zip after it
+	@${ECHO_CMD} ${DRIVER_VERSION} > ${WRKSRC}/DRIVER_VERSION
 	@${REINPLACE_CMD} \
 		-e 's|^license = "Apache-2.0"|license = {text = "Apache-2.0"}|' \
 		-e 's|^requires = .*|requires = ["setuptools", "setuptools-scm", "wheel"]|' \

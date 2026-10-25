@@ -1,5 +1,5 @@
-TIMESTAMP = 1784323110
-SHA256 (playwright-core-1.61.1-beta-1782139630000.tgz) = b6d1fa7239b381f70f2fa2efce11b1020f89ae2c8117a24efe5b2563b20a9290
-SIZE (playwright-core-1.61.1-beta-1782139630000.tgz) = 2859705
-SHA256 (Microsoft-playwright-python-v1.61.0_GH0.tar.gz) = ed26e5ef51c730b2bb8019042cb529f56dd459acd1a9bcbe3c0373ca598104ed
-SIZE (Microsoft-playwright-python-v1.61.0_GH0.tar.gz) = 1412323
+TIMESTAMP = 1792896743
+SHA256 (playwright-core-1.64.1.tgz) = 3af03703c967c95037454f2283f709d53ce804a4776d4219d319f5bbcc2a0185
+SIZE (playwright-core-1.64.1.tgz) = 3172161
+SHA256 (Microsoft-playwright-python-v1.64.1_GH0.tar.gz) = 7fb347825975afdeabbf7284a273d2335fd05e64b6a3ed1ec005afaa7b8696a9
+SIZE (Microsoft-playwright-python-v1.64.1_GH0.tar.gz) = 1476125
