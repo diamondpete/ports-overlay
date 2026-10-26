@@ -24,10 +24,11 @@ else
 	port=$1
 fi
 
+# Entries are pattern:origin[:target]; keep the origin, never a trailing target
 buildDependsRaw=$(make -C "${portsdir}/${port}" -VBUILD_DEPENDS)
-buildDepends=$(echo ${buildDependsRaw} | sed 's,[^ ]*:,,g')
+buildDepends=$(echo ${buildDependsRaw} | tr ' ' '\n' | cut -d: -f2 | sort -u)
 testDependsRaw=$(make -C "${portsdir}/${port}" -VTEST_DEPENDS)
-testDepends=$(echo ${testDependsRaw} | sed 's,[^ ]*:,,g')
+testDepends=$(echo ${testDependsRaw} | tr ' ' '\n' | cut -d: -f2 | sort -u)
 
 # Run the interactive shell as nobody rather than root, so fixtures that spawn
 # a daemon are not refused.  poudriere reads this file last, after
