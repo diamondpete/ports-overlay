@@ -80,6 +80,7 @@ RUN_DEPENDS=		${PYTHON_PKGNAMEPREFIX}apsw>=3.50.4.0:databases/py-apsw@${PY_FLAVO
 			optipng:graphics/optipng \
 			pdftohtml:graphics/poppler-utils \
 			xdg-open:devel/xdg-utils
+TEST_DEPENDS=		${PYTHON_PKGNAMEPREFIX}feedparser-sgmllib>0:devel/py-feedparser-sgmllib@${PY_FLAVOR}
 
 USES=		cpe desktop-file-utils gettext-runtime:build gl \
 		localbase:ldflags pkgconfig pyqt:6 python:3.14+ qt:6 \
