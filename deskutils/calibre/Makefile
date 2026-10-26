@@ -1,5 +1,6 @@
 PORTNAME=	calibre
 PORTVERSION=	9.17.0
+PORTREVISION=	1
 CATEGORIES=	deskutils python
 MASTER_SITES=	https://download.calibre-ebook.com/${PORTVERSION}/
 DISTFILES=	${DISTNAME}${EXTRACT_SUFX}
@@ -44,6 +45,7 @@ LIB_DEPENDS=		libavcodec.so:multimedia/ffmpeg \
 			libxkbcommon.so:x11/libxkbcommon
 RUN_DEPENDS=		${PYTHON_PKGNAMEPREFIX}apsw>=3.50.4.0:databases/py-apsw@${PY_FLAVOR} \
 			${PYTHON_PKGNAMEPREFIX}beautifulsoup4>=4.12.2:www/py-beautifulsoup4@${PY_FLAVOR} \
+			${PYTHON_PKGNAMEPREFIX}chardet>=5.2.0:textproc/py-chardet@${PY_FLAVOR} \
 			${PYTHON_PKGNAMEPREFIX}css-parser>=1.0.10:www/py-css-parser@${PY_FLAVOR} \
 			${PYTHON_PKGNAMEPREFIX}dnspython>=2.6.1:dns/py-dnspython@${PY_FLAVOR} \
 			${PYTHON_PKGNAMEPREFIX}feedparser>=6.0.10:textproc/py-feedparser@${PY_FLAVOR} \
@@ -67,11 +69,15 @@ RUN_DEPENDS=		${PYTHON_PKGNAMEPREFIX}apsw>=3.50.4.0:databases/py-apsw@${PY_FLAVO
 			${PYTHON_PKGNAMEPREFIX}python-dateutil>=2.8.2:devel/py-python-dateutil@${PY_FLAVOR} \
 			${PYTHON_PKGNAMEPREFIX}regex>=2023.8.8:textproc/py-regex@${PY_FLAVOR} \
 			${PYTHON_PKGNAMEPREFIX}sqlite3>0:databases/py-sqlite3@${PY_FLAVOR} \
+			${PYTHON_PKGNAMEPREFIX}tzdata>=2023.3:devel/py-tzdata@${PY_FLAVOR} \
 			${PYTHON_PKGNAMEPREFIX}tzlocal>0:devel/py-tzlocal@${PY_FLAVOR} \
 			${PYTHON_PKGNAMEPREFIX}xxhash>=3.3.0:devel/py-xxhash@${PY_FLAVOR} \
 			${PYTHON_PKGNAMEPREFIX}zeroconf>0.115.0:net/py-zeroconf@${PY_FLAVOR} \
 			liberation-fonts-ttf>=2.1.3:x11-fonts/liberation-fonts-ttf \
 			MathJax3>0:www/mathjax3 \
+			cwebp:graphics/webp \
+			jpegtran:graphics/jpeg-turbo \
+			optipng:graphics/optipng \
 			pdftohtml:graphics/poppler-utils \
 			xdg-open:devel/xdg-utils
 
@@ -156,6 +162,45 @@ do-install:
 # The CA directory is generated from ca_root_nss and named by certificate hash
 post-install:
 	@(cd ${STAGEDIR}${PREFIX} && ${FIND} ${DATADIR_REL}/mozilla-ca-certs -type f) >> ${TMPPLIST}
+
+# calibre-debug --test-build has no way to deselect individual tests, so the
+# tests covering functionality this port intentionally does not ship are
+# renamed out of the way in pre-test.  Each entry here is a feature the port
+# cannot currently support:
+#
+#   7z		needs py7zr>=1.0.0 for the extractall(factory=...) API,
+#		archivers/py-py7zr is still at 0.22.0
+#   piper	the bundled piper TTS extension is not built
+#   plugins	imports calibre_extensions.piper, so it fails for the same reason
+#   pychm	no port for pychm
+#   pykakasi	no port for pykakasi
+#   qt		calls JxrDecApp, a bundled JPEG-XR tool that is not built
+#   sqlite	databases/py-sqlite3 lacks enable_load_extension()
+#   unrar	no port for unrardll
+#
+TEST_IGNORE?=	7z piper plugins pychm pykakasi qt sqlite unrar
+
+_TEST_BUILD_PY=	${STAGEDIR}${PREFIX}/lib/calibre/calibre/test_build.py
+
+pre-test:
+	@${REINPLACE_CMD} -E -e 's,^    def (test_(${TEST_IGNORE:ts|}))\(self\):,    def _skipped_\1(self):,' \
+		${_TEST_BUILD_PY}
+.for _t in ${TEST_IGNORE}
+	@${GREP} -q "^    def _skipped_test_${_t}(self):" ${_TEST_BUILD_PY} || \
+		(${ECHO_MSG} "=> TEST_IGNORE: no test_${_t} in test_build.py, drop it from TEST_IGNORE"; ${FALSE})
+.endfor
+
+do-test:
+	@(cd ${WRKDIR}; ${SETENV} \
+		CALIBRE_CONFIG_DIRECTORY=${WRKDIR}/calibre-config \
+		CALIBRE_EXECUTABLES_PATH=${STAGEDIR}${PREFIX}/bin \
+		CALIBRE_EXTENSIONS_PATH=${STAGEDIR}${PREFIX}/lib/calibre/calibre/plugins \
+		CALIBRE_PYTHON_PATH=${STAGEDIR}${PREFIX}/lib/calibre \
+		CALIBRE_RESOURCES_PATH=${STAGEDIR}${PREFIX}/share/calibre \
+		${STAGEDIR}${PREFIX}/bin/calibre-debug --test-build)
+
+post-test:
+	@${MV} ${_TEST_BUILD_PY}.bak ${_TEST_BUILD_PY}
 
 update-recent-uas: patch
 	@(cd ${BUILD_WRKSRC}; ${SETENV} ${MAKE_ENV} ${PYTHON_CMD} \
