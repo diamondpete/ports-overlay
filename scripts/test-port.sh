@@ -24,11 +24,11 @@ else
 	port=$1
 fi
 
+# make test runs every phase from fetch, so the shell needs all of their deps.
 # Entries are pattern:origin[:target]; keep the origin, never a trailing target
-buildDependsRaw=$(make -C "${portsdir}/${port}" -VBUILD_DEPENDS)
-buildDepends=$(echo ${buildDependsRaw} | tr ' ' '\n' | cut -d: -f2 | sort -u)
-testDependsRaw=$(make -C "${portsdir}/${port}" -VTEST_DEPENDS)
-testDepends=$(echo ${testDependsRaw} | tr ' ' '\n' | cut -d: -f2 | sort -u)
+dependsRaw=$(make -C "${portsdir}/${port}" -VFETCH_DEPENDS -VEXTRACT_DEPENDS \
+	-VPATCH_DEPENDS -VBUILD_DEPENDS -VLIB_DEPENDS -VRUN_DEPENDS -VTEST_DEPENDS)
+depends=$(echo ${dependsRaw} | tr ' ' '\n' | cut -d: -f2 | sort -u)
 
 # Run the interactive shell as nobody rather than root, so fixtures that spawn
 # a daemon are not refused.  poudriere reads this file last, after
@@ -56,4 +56,4 @@ else
 fi
 echo "$(echo "${port%%@*}" | tr / _)_SET_FORCE+=NLS" > "${makeconf}"
 
-poudriere bulk -i -j "${jail}" -p "${ptname}" -O "${overlay}" ${port} ${buildDepends} ${testDepends}
+poudriere bulk -i -j "${jail}" -p "${ptname}" -O "${overlay}" ${port} ${depends}

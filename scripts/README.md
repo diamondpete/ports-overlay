@@ -204,8 +204,9 @@ had drifted from that order.
 
 ## test-port.sh
 
-Builds a port and everything in its `BUILD_DEPENDS` and `TEST_DEPENDS` in a
-poudriere jail, then leaves you in the jail to run `make test` by hand:
+Builds a port and every dependency `make test` walks through — `FETCH`,
+`EXTRACT`, `PATCH`, `BUILD`, `LIB`, `RUN` and `TEST_DEPENDS` — in a poudriere
+jail, then leaves you in the jail to run `make test` by hand:
 
 ```sh
 ./scripts/test-port.sh devel/py-pytest-services
