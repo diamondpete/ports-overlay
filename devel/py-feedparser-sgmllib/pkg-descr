@@ -1,0 +1,4 @@
+feedparser-sgmllib is the sgmllib module from the Python 2.7 standard
+library, kept alive for feedparser, which uses it to parse malformed
+feeds. It is a maintained replacement for sgmllib3k, imported as
+feedparser_sgmllib.
