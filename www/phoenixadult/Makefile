@@ -1,5 +1,5 @@
 PORTNAME=	phoenixadult
-DISTVERSION=	1.0.0a506
+DISTVERSION=	1.0.0a510
 CATEGORIES=	www
 MASTER_SITES=	https://codeberg.org/PhoenixAdultProvider/PhoenixAdult/archive/
 DISTNAME=	${PA_COMMIT}
@@ -69,7 +69,7 @@ PLIST_FILES=	${DATADIR_REL}/env.sample \
 		${DATADIR_REL}/scripts/rename_studio.py \
 		${DATADIR_REL}/scripts/start-with-tunnel.sh
 
-PA_COMMIT=	cdbc64ac7eac4fc43e3ba359d46a6f530072d199
+PA_COMMIT=	0ce0352548e7e267dbb1db4e0c791b58a2e6be29
 PA_USER=	phoenixadult
 PA_GROUP=	phoenixadult
 
