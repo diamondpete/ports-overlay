@@ -230,6 +230,7 @@
 %%DATADIR%%/Definitions/ggpt.yml
 %%DATADIR%%/Definitions/gigatorrents.yml
 %%DATADIR%%/Definitions/girotorrent.yml
+%%DATADIR%%/Definitions/goldengate.yml
 %%DATADIR%%/Definitions/haidan.yml
 %%DATADIR%%/Definitions/haitang.yml
 %%DATADIR%%/Definitions/happyfappy.yml
@@ -519,7 +520,6 @@
 %%DATADIR%%/Definitions/teamflix.yml
 %%DATADIR%%/Definitions/teamhd.yml
 %%DATADIR%%/Definitions/teamos.yml
-%%DATADIR%%/Definitions/thebrothers.yml
 %%DATADIR%%/Definitions/thecrazyones.yml
 %%DATADIR%%/Definitions/theempire.yml
 %%DATADIR%%/Definitions/thefallingangels.yml
