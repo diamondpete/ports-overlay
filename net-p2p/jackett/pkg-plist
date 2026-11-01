@@ -170,6 +170,7 @@
 %%DATADIR%%/Definitions/datascene-api.yml
 %%DATADIR%%/Definitions/daxiangjiao-api.yml
 %%DATADIR%%/Definitions/daxiangjiao.yml
+%%DATADIR%%/Definitions/deep-water-api.yml
 %%DATADIR%%/Definitions/deildu.yml
 %%DATADIR%%/Definitions/depthstudio-api.yml
 %%DATADIR%%/Definitions/depthstudio.yml
