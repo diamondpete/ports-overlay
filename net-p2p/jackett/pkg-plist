@@ -412,7 +412,6 @@
 %%DATADIR%%/Definitions/phoenixpt-api.yml
 %%DATADIR%%/Definitions/phoenixpt.yml
 %%DATADIR%%/Definitions/pier720.yml
-%%DATADIR%%/Definitions/pignetwork.yml
 %%DATADIR%%/Definitions/pixelcove.yml
 %%DATADIR%%/Definitions/pixelcove2fa.yml
 %%DATADIR%%/Definitions/playletpt.yml
@@ -462,6 +461,7 @@
 %%DATADIR%%/Definitions/railgunpt.yml
 %%DATADIR%%/Definitions/rainbowtracker.yml
 %%DATADIR%%/Definitions/rastastugan-api.yml
+%%DATADIR%%/Definitions/redangel.yml
 %%DATADIR%%/Definitions/redstartorrent.yml
 %%DATADIR%%/Definitions/reelflix-api.yml
 %%DATADIR%%/Definitions/retromoviesclub-api.yml
@@ -490,6 +490,7 @@
 %%DATADIR%%/Definitions/sewerpt.yml
 %%DATADIR%%/Definitions/sextorrent-api.yml
 %%DATADIR%%/Definitions/sexypics.yml
+%%DATADIR%%/Definitions/shadow-api.yml
 %%DATADIR%%/Definitions/shadowbit.yml
 %%DATADIR%%/Definitions/shakaw.yml
 %%DATADIR%%/Definitions/shanaproject.yml
@@ -618,7 +619,6 @@
 %%DATADIR%%/Definitions/xingyung.yml
 %%DATADIR%%/Definitions/xloli-api.yml
 %%DATADIR%%/Definitions/xloli.yml
-%%DATADIR%%/Definitions/xtorrenty.yml
 %%DATADIR%%/Definitions/xtremebytes.yml
 %%DATADIR%%/Definitions/xwtclassics.yml
 %%DATADIR%%/Definitions/xwtclassics2fa.yml
@@ -634,6 +634,7 @@
 %%DATADIR%%/Definitions/zenith.yml
 %%DATADIR%%/Definitions/zmpt-api.yml
 %%DATADIR%%/Definitions/zmpt.yml
+%%DATADIR%%/Definitions/zootoons.yml
 %%DATADIR%%/Definitions/zrpt.yml
 %%DATADIR%%/Definitions/ztracker.yml
 %%DATADIR%%/FlareSolverrSharp.dll

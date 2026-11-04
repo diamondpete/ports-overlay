@@ -1,6 +1,6 @@
 NUGET_GROUPS=	NUGET
 NUGET_NUPKGS=	AngleSharp.Xml:1.2.0 \
-		AngleSharp:1.8.6 \
+		AngleSharp:1.9.0 \
 		Autofac.Extensions.DependencyInjection:9.0.0 \
 		Autofac:8.0.0 \
 		BencodeNET:4.0.0 \
@@ -33,8 +33,8 @@ NUGET_NUPKGS=	AngleSharp.Xml:1.2.0 \
 		NLog:5.5.1 \
 		Newtonsoft.Json.Bson:1.0.2 \
 		Newtonsoft.Json:13.0.4 \
-		Polly.Core:8.8.0 \
-		Polly:8.8.0 \
+		Polly.Core:8.9.0 \
+		Polly:8.9.0 \
 		SharpZipLib:1.4.2 \
 		System.Buffers:4.6.0 \
 		System.Diagnostics.DiagnosticSource:7.0.2 \
