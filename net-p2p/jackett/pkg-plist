@@ -134,6 +134,7 @@
 %%DATADIR%%/Definitions/bwtorrents.yml
 %%DATADIR%%/Definitions/byrbt.yml
 %%DATADIR%%/Definitions/byrutor.yml
+%%DATADIR%%/Definitions/bytepeer.yml
 %%DATADIR%%/Definitions/c411.yml
 %%DATADIR%%/Definitions/cangbaoge.yml
 %%DATADIR%%/Definitions/capybarabr.yml
@@ -159,6 +160,7 @@
 %%DATADIR%%/Definitions/crnaberza2fa.yml
 %%DATADIR%%/Definitions/crt2fa.yml
 %%DATADIR%%/Definitions/cspt.yml
+%%DATADIR%%/Definitions/cyanbug-api.yml
 %%DATADIR%%/Definitions/cyanbug.yml
 %%DATADIR%%/Definitions/cyclingarchiveclub.yml
 %%DATADIR%%/Definitions/czteam-api.yml
@@ -243,6 +245,7 @@
 %%DATADIR%%/Definitions/hdbao-api.yml
 %%DATADIR%%/Definitions/hdbao.yml
 %%DATADIR%%/Definitions/hdc.yml
+%%DATADIR%%/Definitions/hdchina.yml
 %%DATADIR%%/Definitions/hdclone.yml
 %%DATADIR%%/Definitions/hddolby.yml
 %%DATADIR%%/Definitions/hdfans.yml
@@ -276,7 +279,6 @@
 %%DATADIR%%/Definitions/hqmusic.yml
 %%DATADIR%%/Definitions/hudbt.yml
 %%DATADIR%%/Definitions/huntorrent.yml
-%%DATADIR%%/Definitions/hxpt.yml
 %%DATADIR%%/Definitions/ilcorsaroblu.yml
 %%DATADIR%%/Definitions/ildragonero.yml
 %%DATADIR%%/Definitions/immortuos.yml
