@@ -334,6 +334,19 @@ def edge_targets(pkgs: set, tfm: str) -> set:
     return out
 
 
+def load_project(path: str, only_tfm: str = "") -> ET.Element:
+    """Parse a project, retargeting its newest netX.Y to only_tfm as post-patch does."""
+    with open(path, encoding="utf-8-sig") as fh:
+        text = fh.read()
+    if only_tfm:
+        tfms = W.project_tfms(ET.fromstring(text))
+        modern = [t for t in tfms if re.match(r"^net\d+\.\d+$", t)]
+        if only_tfm not in tfms and modern:
+            newest = max(modern, key=lambda t: W.vkey(t[3:]))
+            text = re.sub(r"(?<![\w.])%s(?![\w.])" % re.escape(newest), only_tfm, text)
+    return ET.fromstring(text)
+
+
 def walk_packages(srcdir: str, project: str, carry: set,
                   only_tfm: str = "", unified: bool = False) -> set:
     """Walk api.nuget.org from the project's PackageReferences.
@@ -345,12 +358,12 @@ def walk_packages(srcdir: str, project: str, carry: set,
     proj_path = os.path.join(srcdir, project)
     if not os.path.exists(proj_path):
         die("restore project not found under %s: %s" % (srcdir, project))
-    root = ET.parse(proj_path).getroot()
+    root = load_project(proj_path, only_tfm)
     projects = [(project, root)]
     for rel in W.project_refs(root):
         p = os.path.normpath(os.path.join(os.path.dirname(proj_path), rel))
         if os.path.exists(p):
-            projects.append((rel, ET.parse(p).getroot()))
+            projects.append((rel, load_project(p, only_tfm)))
 
     out: set = set()
     for label, proj in projects:

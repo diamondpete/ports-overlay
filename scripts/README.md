@@ -108,17 +108,23 @@ cuts the other frameworks out of the projects instead, where no restore can put
 them back:
 
 ```make
-DOTNET_TFM=	net9.0
+DOTNET_TFM=	net10.0
 
 post-patch:
-	${REINPLACE_CMD} "s|<TargetFrameworks>.*</TargetFrameworks>|<TargetFrameworks>${DOTNET_TFM}</TargetFrameworks>|" \
+	${REINPLACE_CMD} -e "s|<TargetFrameworks>.*</TargetFrameworks>|<TargetFrameworks>${DOTNET_TFM}</TargetFrameworks>|" \
+		-e "s|net9\.0|${DOTNET_TFM}|g" \
 		${WRKSRC}/src/Jackett.Server/Jackett.Server.csproj \
 		${WRKSRC}/src/Jackett.Common/Jackett.Common.csproj \
 		${WRKSRC}/src/DateTimeRoutines/DateTimeRoutines.csproj
 ```
 
 The framework-gated `ItemGroup`s upstream keeps for the frameworks that are now
-gone simply stop matching, so nothing else in the projects needs touching.
+gone simply stop matching. The second expression exists because
+`lang/dotnet` is newer than upstream's framework: the FreeBSD SDK ships
+targeting and host packs for its own version only, so jackett has to build
+`net10.0`, and the references upstream gates on `net9.0` would otherwise stop
+matching too. The walk does the same: a project that does not target the
+port's framework has its newest `netX.Y` rewritten to it before it is read.
 
 The script reads `DOTNET_TFM` straight out of the Makefile rather than from
 `dotnet-ports.json`, so the walk, the patch and the publish cannot disagree about
@@ -171,7 +177,7 @@ upstream source trees that feed `pkg-plist`:
 ```json
 "net-p2p/jackett": {
     "restore_project": "src/Jackett.Server/Jackett.Server.csproj",
-    "tfm": "net9.0",
+    "tfm": "net10.0",
     "keep": ["Microsoft.Extensions.Primitives:8.0.0"],
     "plist_maps": [
         {
