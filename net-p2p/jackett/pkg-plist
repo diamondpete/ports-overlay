@@ -780,6 +780,7 @@
 %%DATADIR%%/Microsoft.Extensions.Options.DataAnnotations.dll
 %%DATADIR%%/Microsoft.Extensions.Options.dll
 %%DATADIR%%/Microsoft.Extensions.Primitives.dll
+%%DATADIR%%/Microsoft.Extensions.Validation.dll
 %%DATADIR%%/Microsoft.Extensions.WebEncoders.dll
 %%DATADIR%%/Microsoft.JSInterop.dll
 %%DATADIR%%/Microsoft.Net.Http.Headers.dll
@@ -834,6 +835,7 @@
 %%DATADIR%%/System.Drawing.dll
 %%DATADIR%%/System.Dynamic.Runtime.dll
 %%DATADIR%%/System.Formats.Asn1.dll
+%%DATADIR%%/System.Formats.Cbor.dll
 %%DATADIR%%/System.Formats.Tar.dll
 %%DATADIR%%/System.Globalization.Calendars.dll
 %%DATADIR%%/System.Globalization.Extensions.dll
@@ -854,6 +856,7 @@
 %%DATADIR%%/System.IO.Pipes.dll
 %%DATADIR%%/System.IO.UnmanagedMemoryStream.dll
 %%DATADIR%%/System.IO.dll
+%%DATADIR%%/System.Linq.AsyncEnumerable.dll
 %%DATADIR%%/System.Linq.Expressions.dll
 %%DATADIR%%/System.Linq.Parallel.dll
 %%DATADIR%%/System.Linq.Queryable.dll
@@ -870,6 +873,7 @@
 %%DATADIR%%/System.Net.Quic.dll
 %%DATADIR%%/System.Net.Requests.dll
 %%DATADIR%%/System.Net.Security.dll
+%%DATADIR%%/System.Net.ServerSentEvents.dll
 %%DATADIR%%/System.Net.ServicePoint.dll
 %%DATADIR%%/System.Net.Sockets.dll
 %%DATADIR%%/System.Net.WebClient.dll
@@ -940,6 +944,7 @@
 %%DATADIR%%/System.Text.Encodings.Web.dll
 %%DATADIR%%/System.Text.Json.dll
 %%DATADIR%%/System.Text.RegularExpressions.dll
+%%DATADIR%%/System.Threading.AccessControl.dll
 %%DATADIR%%/System.Threading.Channels.dll
 %%DATADIR%%/System.Threading.Overlapped.dll
 %%DATADIR%%/System.Threading.RateLimiting.dll
