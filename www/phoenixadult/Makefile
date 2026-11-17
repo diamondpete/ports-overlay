@@ -1,5 +1,5 @@
 PORTNAME=	phoenixadult
-DISTVERSION=	1.0.0a510
+DISTVERSION=	1.0.0a530
 CATEGORIES=	www
 MASTER_SITES=	https://codeberg.org/PhoenixAdultProvider/PhoenixAdult/archive/
 DISTNAME=	${PA_COMMIT}
@@ -49,8 +49,9 @@ TEST_DEPENDS=	${PYTHON_PKGNAMEPREFIX}httpx>=0.27:www/py-httpx@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}pytest>=8.3,1:devel/py-pytest@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}respx>=0.21:www/py-respx@${PY_FLAVOR}
 
-USES=		python:3.13+
+USES=		python:3.13+ shebangfix
 USE_PYTHON=	autoplist cryptography noflavors pep517 pytest
+SHEBANG_FILES=	scripts/*.py
 USE_RC_SUBR=	phoenixadult
 
 NO_ARCH=	yes
@@ -69,7 +70,7 @@ PLIST_FILES=	${DATADIR_REL}/env.sample \
 		${DATADIR_REL}/scripts/rename_studio.py \
 		${DATADIR_REL}/scripts/start-with-tunnel.sh
 
-PA_COMMIT=	0ce0352548e7e267dbb1db4e0c791b58a2e6be29
+PA_COMMIT=	6e65d701d7e29e9ccdfc9877f6bb209aa9d729ae
 PA_USER=	phoenixadult
 PA_GROUP=	phoenixadult
 
