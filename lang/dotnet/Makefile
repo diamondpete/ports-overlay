@@ -42,6 +42,9 @@ SHEBANG_FILES+=	src/diagnostics/src/Tools/dotnet-trace/*.sh
 
 BINARY_ALIAS=	grep=${LOCALBASE}/bin/ggrep
 DOTNET_ENV+=	PYTHON=${PYTHON_CMD}
+# Node reuse makes MSBuild enumerate processes, which races with exiting
+# processes in the bootstrap runtime ("sysctl 1 failed with 3 error").
+DOTNET_ENV+=	MSBUILDDISABLENODEREUSE=1
 
 # devel/libunwind-devel keeps its development files outside of the default
 # paths so that it can be installed alongside devel/libunwind.  CPATH is used
@@ -126,6 +129,7 @@ post-extract:
 do-build:
 	cd ${WRKSRC} && ${SETENV} ${MAKE_ENV} ${DOTNET_ENV} ./build.sh \
 		${DOTNET_BUILD_SH_SOURCELINK_FLAG} \
+		--ci \
 		--clean-while-building \
 		--with-sdk ${WRKDIR}/bootstrap_sdk \
 		--with-packages ${WRKDIR}/packages \
