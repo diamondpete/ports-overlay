@@ -334,17 +334,40 @@ def edge_targets(pkgs: set, tfm: str) -> set:
     return out
 
 
+def retarget(text: str, only_tfm: str) -> str:
+    """Rename the project's newest netX.Y to only_tfm, as post-patch does."""
+    tfms = W.project_tfms(ET.fromstring(text))
+    modern = [t for t in tfms if re.match(r"^net\d+\.\d+$", t)]
+    if only_tfm not in tfms and modern:
+        newest = max(modern, key=lambda t: W.vkey(t[3:]))
+        text = re.sub(r"(?<![\w.])%s(?![\w.])" % re.escape(newest), only_tfm, text)
+    return text
+
+
 def load_project(path: str, only_tfm: str = "") -> ET.Element:
-    """Parse a project, retargeting its newest netX.Y to only_tfm as post-patch does."""
     with open(path, encoding="utf-8-sig") as fh:
         text = fh.read()
-    if only_tfm:
-        tfms = W.project_tfms(ET.fromstring(text))
-        modern = [t for t in tfms if re.match(r"^net\d+\.\d+$", t)]
-        if only_tfm not in tfms and modern:
-            newest = max(modern, key=lambda t: W.vkey(t[3:]))
-            text = re.sub(r"(?<![\w.])%s(?![\w.])" % re.escape(newest), only_tfm, text)
-    return ET.fromstring(text)
+    return ET.fromstring(retarget(text, only_tfm) if only_tfm else text)
+
+
+def pin_projects(srcdir: str, project: str, only_tfm: str, drop_refs: list):
+    """Apply post-patch's framework cut and PackageReference deletions before a restore."""
+    pending, seen = [os.path.normpath(os.path.join(srcdir, project))], set()
+    while pending:
+        p = pending.pop()
+        if p in seen or not os.path.exists(p):
+            continue
+        seen.add(p)
+        pending += [os.path.normpath(os.path.join(os.path.dirname(p), rel))
+                    for rel in W.project_refs(load_project(p))]
+        with open(p, encoding="utf-8-sig") as fh:
+            text = retarget(fh.read(), only_tfm)
+        text = re.sub(r"<TargetFrameworks>.*?</TargetFrameworks>",
+                      "<TargetFrameworks>%s</TargetFrameworks>" % only_tfm, text)
+        for ref in drop_refs:
+            text = re.sub(r'[ \t]*<PackageReference Include="%s"[^>]*/>\r?\n' % re.escape(ref), "", text)
+        with open(p, "w", encoding="utf-8") as fh:
+            fh.write(text)
 
 
 def walk_packages(srcdir: str, project: str, carry: set,
@@ -573,9 +596,11 @@ def main() -> int:
             pkgs = cased_ids(packages_from_dir(args.packages_dir), args.packages_dir)
             source = "packages dir %s" % args.packages_dir
         elif not args.no_restore and sdk_available(args.dotnet):
+            if spec.get("tfm"):
+                pin_projects(tree, spec["restore_project"], spec["tfm"], spec.get("drop_refs", []))
             pkgs = restore_packages(args.dotnet, tree, spec["restore_project"],
                                     os.path.join(workdir, "packages"))
-            source = "dotnet restore"
+            source = "dotnet restore%s" % (", pinned to " + spec["tfm"] if spec.get("tfm") else "")
         elif old_version == new_version:
             die("no .NET SDK, and the old and new tags match, so there is no "
                 "delta to walk; pass --packages-dir or install an SDK")

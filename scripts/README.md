@@ -126,6 +126,12 @@ targeting and host packs for its own version only, so jackett has to build
 matching too. The walk does the same: a project that does not target the
 port's framework has its newest `netX.Y` rewritten to it before it is read.
 
+A real restore runs before post-patch, so when `dotnet-ports.json` sets `tfm`
+the script applies the same cut to the extracted projects first, following
+`ProjectReference`s all the way down, and deletes the `PackageReference`s named
+in `drop_refs` — the ones post-patch deletes. Without that, jackett's restore
+pulls the whole `net471` graph back in, about 240 packages.
+
 The script reads `DOTNET_TFM` straight out of the Makefile rather than from
 `dotnet-ports.json`, so the walk, the patch and the publish cannot disagree about
 which framework the port builds. A port that does not set it cannot be pruned.

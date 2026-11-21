@@ -3,6 +3,8 @@
         "restore_project": "src/Jackett.Server/Jackett.Server.csproj",
         "tfm": "net10.0",
         "keep": ["Microsoft.Extensions.Primitives:8.0.0"],
+        "drop_refs": ["Microsoft.CSharp", "Microsoft.Extensions.Configuration",
+                      "System.Text.Encoding.CodePages", "System.Text.Json"],
         "plist_maps": [
             {
                 "plist": "%%DATADIR%%/Definitions/",
