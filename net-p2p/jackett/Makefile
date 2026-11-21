@@ -1,6 +1,6 @@
 PORTNAME=	jackett
 DISTVERSIONPREFIX=	v
-DISTVERSION=	0.24.3067
+DISTVERSION=	0.25.8
 CATEGORIES=	net-p2p
 
 MAINTAINER=	tremere@cainites.net
@@ -11,9 +11,8 @@ LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
 BUILD_DEPENDS=	dotnet>=${DOTNET_VERSION}:lang/dotnet
-LIB_DEPENDS=	libbrotlidec.so:archivers/brotli \
-		libinotify.so:devel/libinotify \
-		libunwind.so:devel/libunwind
+LIB_DEPENDS=	libinotify.so:devel/libinotify \
+		libunwind.so.11:devel/libunwind-devel
 RUN_DEPENDS=	${LOCALBASE}/lib/libicuuc.so:devel/icu \
 		dotnet:lang/dotnet-host
 

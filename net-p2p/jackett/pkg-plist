@@ -461,6 +461,7 @@
 %%DATADIR%%/Definitions/racing4everyone-api.yml
 %%DATADIR%%/Definitions/racing4us.yml
 %%DATADIR%%/Definitions/racingforme.yml
+%%DATADIR%%/Definitions/railgunpt-api.yml
 %%DATADIR%%/Definitions/railgunpt.yml
 %%DATADIR%%/Definitions/rainbowtracker.yml
 %%DATADIR%%/Definitions/rastastugan-api.yml
@@ -578,6 +579,7 @@
 %%DATADIR%%/Definitions/totheglory.yml
 %%DATADIR%%/Definitions/totheglory2fa.yml
 %%DATADIR%%/Definitions/tr4ker.yml
+%%DATADIR%%/Definitions/trackerformers.yml
 %%DATADIR%%/Definitions/trackermk.yml
 %%DATADIR%%/Definitions/trackerzero.yml
 %%DATADIR%%/Definitions/traht.yml
