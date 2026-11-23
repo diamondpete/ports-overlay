@@ -1,5 +1,5 @@
 PORTNAME=	sphinx
-PORTVERSION=	9.1.0
+PORTVERSION=	9.2.0
 PORTEPOCH=	1
 CATEGORIES=	textproc python
 MASTER_SITES=	PYPI
@@ -19,16 +19,16 @@ LICENSE_FILE=	${WRKSRC}/LICENSE.rst
 
 BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}flit-core>=3.7:devel/py-flit-core@${PY_FLAVOR}
 RUN_DEPENDS=	ca_root_nss>=0:security/ca_root_nss \
-		${PYTHON_PKGNAMEPREFIX}alabaster>=0.7.14:textproc/py-alabaster@${PY_FLAVOR} \
-		${PYTHON_PKGNAMEPREFIX}Babel>=2.13:devel/py-babel@${PY_FLAVOR} \
-		${PYTHON_PKGNAMEPREFIX}docutils>=0.21,1<0.23,1:textproc/py-docutils@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}alabaster>=1.0:textproc/py-alabaster@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}Babel>=2.18:devel/py-babel@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}docutils>=0.21,1<0.24,1:textproc/py-docutils@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}imagesize>=1.3:graphics/py-imagesize@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}Jinja2>=3.1:devel/py-Jinja2@${PY_FLAVOR} \
-		${PYTHON_PKGNAMEPREFIX}packaging>=23.0:devel/py-packaging@${PY_FLAVOR} \
-		${PYTHON_PKGNAMEPREFIX}pygments>=2.17:textproc/py-pygments@${PY_FLAVOR} \
-		${PYTHON_PKGNAMEPREFIX}requests>=2.30.0:www/py-requests@${PY_FLAVOR} \
-		${PYTHON_PKGNAMEPREFIX}roman-numerals>=1.0.0:textproc/py-roman-numerals@${PY_FLAVOR} \
-		${PYTHON_PKGNAMEPREFIX}snowballstemmer>=2.2:textproc/py-snowballstemmer@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}packaging>=25.0:devel/py-packaging@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}pygments>=2.19:textproc/py-pygments@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}requests>=2.32.5:www/py-requests@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}roman-numerals>=3.0:textproc/py-roman-numerals@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}snowballstemmer>=3.0.1:textproc/py-snowballstemmer@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}sphinxcontrib-applehelp>=1.0.7:textproc/py-sphinxcontrib-applehelp@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}sphinxcontrib-devhelp>=1.0.6:textproc/py-sphinxcontrib-devhelp@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}sphinxcontrib-htmlhelp>=2.0.6:textproc/py-sphinxcontrib-htmlhelp@${PY_FLAVOR} \
@@ -38,11 +38,11 @@ RUN_DEPENDS=	ca_root_nss>=0:security/ca_root_nss \
 		${PYTHON_PKGNAMEPREFIX}typing-extensions>=0:devel/py-typing-extensions@${PY_FLAVOR}
 TEST_DEPENDS=	graphviz>=0:graphics/graphviz \
 		${PYTHON_PKGNAMEPREFIX}defusedxml>=0.7.1:devel/py-defusedxml@${PY_FLAVOR} \
-		${PYTHON_PKGNAMEPREFIX}pytest-xdist>=3.4:devel/py-pytest-xdist@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}pytest-xdist>=3.7:devel/py-pytest-xdist@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}setuptools>=0:devel/py-setuptools@${PY_FLAVOR} \
-		${PYTHON_PKGNAMEPREFIX}typing-extensions>=4.9:devel/py-typing-extensions@${PY_FLAVOR}
+		${PYTHON_PKGNAMEPREFIX}typing-extensions>=4.15:devel/py-typing-extensions@${PY_FLAVOR}
 
-USES=		magick:test python:3.12+
+USES=		magick:test python:3.13+
 USE_PYTHON=	autoplist concurrent pep517 pytest
 
 NO_ARCH=	yes
