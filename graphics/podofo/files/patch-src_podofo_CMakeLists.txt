@@ -1,6 +1,6 @@
---- src/podofo/CMakeLists.txt.orig	2026-10-16 18:37:23 UTC
+--- src/podofo/CMakeLists.txt.orig	2026-11-16 09:52:58 UTC
 +++ src/podofo/CMakeLists.txt
-@@ -93,7 +93,7 @@
+@@ -105,7 +105,7 @@
      # Visual Studio, since it produces invalid warnings about STL
      # use.
      set_target_properties(podofo_shared PROPERTIES
@@ -9,7 +9,7 @@
          SOVERSION "${PODOFO_SOVERSION}"
          CLEAN_DIRECT_OUTPUT 1
          OUTPUT_NAME "podofo"
-@@ -113,7 +113,7 @@
+@@ -136,7 +136,7 @@
          @ONLY)
      install(
          FILES "${PROJECT_BINARY_DIR}/libpodofo.pc"

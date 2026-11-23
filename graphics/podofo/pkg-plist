@@ -147,6 +147,6 @@ lib/cmake/podofo/podofo-config.cmake
 lib/cmake/podofo/podofo-targets-%%CMAKE_BUILD_TYPE%%.cmake
 lib/cmake/podofo/podofo-targets.cmake
 lib/libpodofo.so
-lib/libpodofo.so.4
-lib/libpodofo.so.4.%%PORTVERSION%%
+lib/libpodofo.so.5
+lib/libpodofo.so.5.%%PORTVERSION%%
 libdata/pkgconfig/libpodofo.pc

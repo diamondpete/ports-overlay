@@ -1,6 +1,6 @@
---- CMakeLists.txt.orig	2026-10-16 18:37:23 UTC
+--- CMakeLists.txt.orig	2026-11-16 09:52:58 UTC
 +++ CMakeLists.txt
-@@ -189,6 +189,7 @@
+@@ -268,6 +268,7 @@
      endif()
  endif()
  
@@ -8,31 +8,33 @@
  find_package(JPEG)
  
  if(JPEG_FOUND)
-@@ -197,7 +198,9 @@
+@@ -276,7 +277,9 @@
  else()
      message("Libjpeg not found. JPEG support will be disabled")
  endif()
+-
 +endif()
- 
++
 +if(WANT_TIFF)
  find_package(TIFF)
  
  if(TIFF_FOUND)
-@@ -206,7 +209,9 @@
+@@ -285,7 +288,9 @@
  else()
      message("Libtiff not found. TIFF support will be disabled")
  endif()
+-
 +endif()
- 
++
 +if(WANT_PNG)
  find_package(PNG)
  
  if(PNG_FOUND)
-@@ -216,6 +221,7 @@
+@@ -294,6 +299,7 @@
+ else()
      message("LibPng not found. PNG support will be disabled")
      set(PNG_LIBRARIES "")
- endif()
 +endif()
+ endif()
  
  find_package(Freetype REQUIRED)
- message("Found freetype library at ${FREETYPE_LIBRARIES}, headers ${FREETYPE_INCLUDE_DIRS}")
