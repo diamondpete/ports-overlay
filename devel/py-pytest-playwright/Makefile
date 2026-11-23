@@ -1,5 +1,5 @@
 PORTNAME=	pytest-playwright
-DISTVERSION=	0.9.0
+DISTVERSION=	0.10.0
 CATEGORIES=	devel python
 MASTER_SITES=	PYPI
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -17,13 +17,17 @@ BUILD_DEPENDS=	${PY_SETUPTOOLS} \
 		${PYTHON_PKGNAMEPREFIX}wheel>=0:devel/py-wheel@${PY_FLAVOR}
 RUN_DEPENDS=	${PY_EXCEPTIONGROUP} \
 		${PYTHON_PKGNAMEPREFIX}playwright>=1.18:www/py-playwright@${PY_FLAVOR} \
-		${PYTHON_PKGNAMEPREFIX}pytest>=6.2.4:devel/py-pytest@${PY_FLAVOR} \
-		${PYTHON_PKGNAMEPREFIX}pytest-base-url>=1.0.0:devel/py-pytest-base-url@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}pytest>=7.0.0:devel/py-pytest@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}python-slugify>=6.0.0:textproc/py-python-slugify@${PY_FLAVOR}
 
 USES=		python:3.10+
 USE_PYTHON=	autoplist concurrent pep517
 
 NO_ARCH=	yes
+
+OPTIONS_DEFINE=	BASEURL
+BASEURL_DESC=	Take base_url from pytest-base-url instead of the built-in fixture
+
+BASEURL_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pytest-base-url>=1.0.0:devel/py-pytest-base-url@${PY_FLAVOR}
 
 .include <bsd.port.mk>
