@@ -1,6 +1,5 @@
 PORTNAME=	calibre
-PORTVERSION=	9.17.0
-PORTREVISION=	4
+PORTVERSION=	9.19.0
 CATEGORIES=	deskutils python
 MASTER_SITES=	https://download.calibre-ebook.com/${PORTVERSION}/
 DISTFILES=	${DISTNAME}${EXTRACT_SUFX}
@@ -39,6 +38,7 @@ LIB_DEPENDS=		libavcodec.so:multimedia/ffmpeg \
 			libjxl.so:graphics/libjxl \
 			libicudata.so:devel/icu \
 			libmtp.so:multimedia/libmtp \
+			libonnxruntime.so:misc/onnxruntime \
 			libpodofo.so:graphics/podofo \
 			libstemmer.so:textproc/snowballstemmer \
 			libuchardet.so:textproc/uchardet \
@@ -54,6 +54,7 @@ RUN_DEPENDS=		${PYTHON_PKGNAMEPREFIX}apsw>=3.50.4.0:databases/py-apsw@${PY_FLAVO
 			${PYTHON_PKGNAMEPREFIX}html5-parser>=0.4.12:www/py-html5-parser@${PY_FLAVOR} \
 			${PYTHON_PKGNAMEPREFIX}html5lib>0:www/py-html5lib@${PY_FLAVOR} \
 			${PYTHON_PKGNAMEPREFIX}jeepney>=0.8.0:devel/py-jeepney@${PY_FLAVOR} \
+			${PYTHON_PKGNAMEPREFIX}kovidgoyal-langtool>=1.3.0:textproc/py-kovidgoyal-langtool@${PY_FLAVOR} \
 			${PYTHON_PKGNAMEPREFIX}lxml>=6.0.1:devel/py-lxml@${PY_FLAVOR} \
 			${PYTHON_PKGNAMEPREFIX}lxml-html-clean>0:devel/py-lxml-html-clean@${PY_FLAVOR} \
 			${PYTHON_PKGNAMEPREFIX}markdown>=3.4.4:textproc/py-markdown@${PY_FLAVOR} \
@@ -88,7 +89,7 @@ USES=		cpe desktop-file-utils gettext-runtime:build gl \
 		shared-mime-info shebangfix sqlite ssl tar:xz xorg
 CPE_VENDOR=	calibre-ebook
 USE_GITHUB=	nodefault
-GH_TUPLE=	kovidgoyal:calibre-translations:9afcab2:translations \
+GH_TUPLE=	kovidgoyal:calibre-translations:0c43da5:translations \
 		LibreOffice:dictionaries:fe49c66:hypenation
 USE_GL=		opengl
 USE_PYQT=	pyqt6 pysip webengine qtbuilder:build sip:build
@@ -170,8 +171,6 @@ post-install:
 # renamed out of the way in pre-test.  Each entry here is a feature the port
 # cannot currently support:
 #
-#   7z		needs py7zr>=1.0.0 for the extractall(factory=...) API,
-#		archivers/py-py7zr is still at 0.22.0
 #   piper	the bundled piper TTS extension is not built
 #   plugins	imports calibre_extensions.piper, so it fails for the same reason
 #   pychm	no port for pychm
@@ -179,7 +178,7 @@ post-install:
 #   qt		calls JxrDecApp, a bundled JPEG-XR tool that is not built
 #   sqlite	databases/py-sqlite3 lacks enable_load_extension()
 #
-TEST_IGNORE?=	7z piper plugins pychm pykakasi qt sqlite
+TEST_IGNORE?=	piper plugins pychm pykakasi qt sqlite
 
 _TEST_BUILD_PY=	${STAGEDIR}${PREFIX}/lib/calibre/calibre/test_build.py
 

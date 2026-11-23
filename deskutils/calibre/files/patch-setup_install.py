@@ -1,6 +1,6 @@
---- setup/install.py.orig	2026-10-25 03:20:04 UTC
+--- setup/install.py.orig	2026-11-21 06:05:05 UTC
 +++ setup/install.py
-@@ -358,7 +358,7 @@
+@@ -359,7 +359,7 @@
  class Bootstrap(Command):
      description = 'Bootstrap a fresh checkout of calibre from git to a state where it can be installed. Requires various development tools/libraries/headers'
      TRANSLATIONS_REPO = 'kovidgoyal/calibre-translations'

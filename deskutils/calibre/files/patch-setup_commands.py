@@ -1,6 +1,6 @@
---- setup/commands.py.orig	2026-10-16 11:23:37 UTC
+--- setup/commands.py.orig	2026-11-21 06:05:05 UTC
 +++ setup/commands.py
-@@ -35,7 +35,6 @@
+@@ -36,7 +36,6 @@
      'manual',
      'mathjax',
      'osx',
@@ -8,7 +8,7 @@
      'pot',
      'publish',
      'publish_betas',
-@@ -100,10 +99,6 @@
+@@ -101,10 +100,6 @@
  
  hyphenation = Hyphenation()
  
