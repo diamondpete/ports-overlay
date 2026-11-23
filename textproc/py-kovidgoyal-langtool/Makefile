@@ -27,6 +27,12 @@ USE_PYTHON=	autoplist concurrent pep517 pytest
 MAKE_ENV=	LANGTOOL_RULE_TABLES_JOBS=${MAKE_JOBS_NUMBER}
 TEST_ENV=	PYTHONPATH=${STAGEDIR}${PYTHONPREFIX_SITELIBDIR}
 
+post-patch:
+	@${REINPLACE_CMD} \
+		-e 's|^license = "LGPL-2.1-or-later"|license = {text = "LGPL-2.1-or-later"}|' \
+		-e 's|"setuptools>=69"|"setuptools"|' \
+		${WRKSRC}/pyproject.toml
+
 post-install:
 	@${FIND} ${STAGEDIR}${PYTHONPREFIX_SITELIBDIR} -name '*.so' -exec ${STRIP_CMD} {} +
 
