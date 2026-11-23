@@ -14,11 +14,8 @@
  	case $1 in
  
  		-s | --secure_link_secret )
-@@ -10,28 +13,33 @@
- 				SECURE_LINK_SECRET=$2
- 				shift
+@@ -12,26 +15,29 @@
  			fi
-+			shift
  		;;
  
 -                -r | --restart )
@@ -32,7 +29,6 @@
 +				RESTART_CONDITION=$2
 +				shift
 +			fi
-+			shift
 +		;;
  
  		--generate-secret )
@@ -60,7 +56,7 @@
  			echo
  			exit 0
  		;;
-@@ -40,27 +48,36 @@
+@@ -40,27 +46,36 @@
  	shift
  done
  
