@@ -1,5 +1,5 @@
 PORTNAME=	phoenixadult
-DISTVERSION=	1.0.0a530
+DISTVERSION=	1.0.0a531
 CATEGORIES=	www
 MASTER_SITES=	https://codeberg.org/PhoenixAdultProvider/PhoenixAdult/archive/
 DISTNAME=	${PA_COMMIT}
@@ -51,7 +51,7 @@ TEST_DEPENDS=	${PYTHON_PKGNAMEPREFIX}httpx>=0.27:www/py-httpx@${PY_FLAVOR} \
 
 USES=		python:3.13+ shebangfix
 USE_PYTHON=	autoplist cryptography noflavors pep517 pytest
-SHEBANG_FILES=	scripts/*.py
+SHEBANG_FILES=	scripts/*/*.py
 USE_RC_SUBR=	phoenixadult
 
 NO_ARCH=	yes
@@ -70,7 +70,7 @@ PLIST_FILES=	${DATADIR_REL}/env.sample \
 		${DATADIR_REL}/scripts/rename_studio.py \
 		${DATADIR_REL}/scripts/start-with-tunnel.sh
 
-PA_COMMIT=	6e65d701d7e29e9ccdfc9877f6bb209aa9d729ae
+PA_COMMIT=	693acae8914284c477549e67ff29716b4f09334a
 PA_USER=	phoenixadult
 PA_GROUP=	phoenixadult
 
@@ -103,9 +103,9 @@ post-install:
 	@${MKDIR} ${STAGEDIR}${DATADIR} ${STAGEDIR}${DATADIR}/scripts
 	${INSTALL_SCRIPT} ${WRKDIR}/phoenixadult-run ${STAGEDIR}${DATADIR}/phoenixadult-run
 	${INSTALL_DATA} ${FILESDIR}/phoenixadult.env.sample ${STAGEDIR}${DATADIR}/env.sample
-	${INSTALL_SCRIPT} ${WRKSRC}/scripts/rename_studio.py ${STAGEDIR}${DATADIR}/scripts/
-	${INSTALL_SCRIPT} ${WRKSRC}/scripts/find_artwork_mismatches.py ${STAGEDIR}${DATADIR}/scripts/
-	${INSTALL_SCRIPT} ${WRKSRC}/scripts/rebuild_from_bundles.py ${STAGEDIR}${DATADIR}/scripts/
-	${INSTALL_SCRIPT} ${WRKSRC}/scripts/start-with-tunnel.sh ${STAGEDIR}${DATADIR}/scripts/
+	${INSTALL_SCRIPT} ${WRKSRC}/scripts/maintenance/rename_studio.py ${STAGEDIR}${DATADIR}/scripts/
+	${INSTALL_SCRIPT} ${WRKSRC}/scripts/maintenance/find_artwork_mismatches.py ${STAGEDIR}${DATADIR}/scripts/
+	${INSTALL_SCRIPT} ${WRKSRC}/scripts/maintenance/rebuild_from_bundles.py ${STAGEDIR}${DATADIR}/scripts/
+	${INSTALL_SCRIPT} ${WRKSRC}/scripts/dev/start-with-tunnel.sh ${STAGEDIR}${DATADIR}/scripts/
 
 .include <bsd.port.mk>
