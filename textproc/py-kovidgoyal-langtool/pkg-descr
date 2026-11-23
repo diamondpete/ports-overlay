@@ -1,0 +1,5 @@
+kovidgoyal-langtool checks grammar, style and typography in more than 30
+languages with the rules of LanguageTool. It is a port of the LanguageTool
+core from Java to Python, with a C extension and precompiled rule tables
+for speed, so no Java or server is needed. calibre uses it for the grammar
+check in its e-book editor.
