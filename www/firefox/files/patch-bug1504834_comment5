@@ -1,0 +1,51 @@
+https://bugzilla.mozilla.org/show_bug.cgi?id=1504834#c5
+https://bugzilla.mozilla.org/attachment.cgi?id=9028600
+Rough progress patch
+
+
+diff --git gfx/skia/skia/modules/skcms/skcms.cc gfx/skia/skia/modules/skcms/skcms.cc
+index 00b19eca7ed3..e6426c296df9 100644
+--- gfx/skia/skia/modules/skcms/skcms.cc
++++ gfx/skia/skia/modules/skcms/skcms.cc
+@@ -31,6 +31,8 @@
+         #include <avx512fintrin.h>
+         #include <avx512dqintrin.h>
+     #endif
++#else
++    #define SKCMS_PORTABLE
+ #endif
+ 
+ using namespace skcms_private;
+@@ -379,20 +381,28 @@ enum {
+ static uint16_t read_big_u16(const uint8_t* ptr) {
+     uint16_t be;
+     memcpy(&be, ptr, sizeof(be));
+-#if defined(_MSC_VER)
+-    return _byteswap_ushort(be);
++#if __BYTE_ORDER__ == __ORDER_BIG_ENDIAN__
++    return be;
+ #else
++    #if defined(_MSC_VER)
++    return _byteswap_ushort(be);
++    #else
+     return __builtin_bswap16(be);
++    #endif
+ #endif
+ }
+ 
+ static uint32_t read_big_u32(const uint8_t* ptr) {
+     uint32_t be;
+     memcpy(&be, ptr, sizeof(be));
+-#if defined(_MSC_VER)
+-    return _byteswap_ulong(be);
++#if __BYTE_ORDER == __ORDER_BIG_ENDIAN__
++    return be;
+ #else
++    #if defined(_MSC_VER)
++    return _byteswap_ulong(be);
++    #else
+     return __builtin_bswap32(be);
++    #endif
+ #endif
+ }
+ 

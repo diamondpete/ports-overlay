@@ -1,0 +1,65 @@
+PORTNAME=	firefox
+DISTVERSION=	161.0
+PORTEPOCH=	2
+CATEGORIES=	www wayland
+MASTER_SITES=	MOZILLA/${PORTNAME}/releases/${DISTVERSION}${DISTVERSIONSUFFIX}/source \
+		MOZILLA/${PORTNAME}/candidates/${DISTVERSION}${DISTVERSIONSUFFIX}-candidates/build1/source
+DISTFILES=	${DISTNAME}.source${EXTRACT_SUFX}
+
+MAINTAINER=	gecko@FreeBSD.org
+COMMENT=	Web browser based on the browser portion of Mozilla
+WWW=		https://www.firefox.com/
+
+NOT_FOR_ARCHS=		i386
+NOT_FOR_ARCHS_REASON=	fails to build: rust needs more address space than platform can provide
+
+BUILD_DEPENDS=	nspr>=4.32:devel/nspr \
+		nss>=3.133:security/nss \
+		libevent>=2.1.8:devel/libevent \
+		png>=1.6.45:graphics/png \
+		dav1d>=1.0.0:multimedia/dav1d \
+		libvpx>=1.15.0:multimedia/libvpx \
+		${PYTHON_PKGNAMEPREFIX}sqlite3>0:databases/py-sqlite3@${PY_FLAVOR} \
+		v4l_compat>0:multimedia/v4l_compat \
+		nasm:devel/nasm \
+		yasm:devel/yasm \
+		zip:archivers/zip
+
+USE_GECKO=	gecko
+CONFLICTS_INSTALL=	firefox-esr
+USE_MOZILLA=	-sqlite
+
+USES=		tar:xz
+# helpful when testing beta
+WRKSRC=		${WRKDIR}/${PORTNAME}-${DISTVERSION}
+
+FIREFOX_ICON=		${MOZILLA}.png
+FIREFOX_ICON_SRC=	${PREFIX}/lib/${MOZILLA}/browser/chrome/icons/default/default48.png
+MOZ_OPTIONS=	--enable-application=browser \
+		--enable-official-branding
+
+.include "${.CURDIR}/../../www/firefox/Makefile.options"
+
+.include <bsd.port.options.mk>
+
+.if ${ARCH} != powerpc64
+BUILD_DEPENDS+=	${LOCALBASE}/share/wasi-sysroot/lib/wasm32-wasip1/libc++abi.a:devel/wasi-libcxx${LLVM_VERSION} \
+		${LOCALBASE}/share/wasi-sysroot/lib/wasm32-wasip1/libc.a:devel/wasi-libc@${LLVM_VERSION} \
+		wasi-compiler-rt${LLVM_VERSION}>0:devel/wasi-compiler-rt${LLVM_VERSION}
+MOZ_OPTIONS+=	--with-wasi-sysroot=${LOCALBASE}/share/wasi-sysroot
+.endif
+
+post-extract:
+	@${SED} -e 's|@FIREFOX_ICON@|${FIREFOX_ICON:R}|;s|@MOZILLA@|${MOZILLA}|' \
+		<${FILESDIR}/firefox.desktop.in >${WRKDIR}/${MOZILLA_EXEC_NAME}.desktop
+
+post-patch:
+	@${REINPLACE_CMD} -e 's|%%LOCALBASE%%|${LOCALBASE}|g' \
+		${WRKSRC}/browser/app/nsBrowserApp.cpp
+
+post-install:
+	${INSTALL_DATA} ${WRKDIR}/${MOZILLA_EXEC_NAME}.desktop ${STAGEDIR}${PREFIX}/share/applications
+	${MKDIR} ${STAGEDIR}${PREFIX}/share/pixmaps
+	${LN} -sf ${FIREFOX_ICON_SRC} ${STAGEDIR}${PREFIX}/share/pixmaps/${FIREFOX_ICON}
+
+.include <bsd.port.mk>
