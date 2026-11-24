@@ -25,7 +25,7 @@ index ebdb04510231..357ed6d229fa 100644
 +# pypi-optional:psutil>=5.4.2:telemetry will be missing some data
 +# pypi-optional:rtoml>=0.11.0:toml operations will be slower in various tools
 +# pypi-optional:zstandard>=0.11.1,<=0.25.0:zstd archives will not be possible to extract
-+vendored:pyyaml:third_party/python/pyyaml/lib/:faster native loading is disabled
++vendored:third_party/python/pyyaml/lib/
  vendored:third_party/python/ansicon
  vendored:third_party/python/appdirs
  vendored:third_party/python/async_timeout
