@@ -184,10 +184,10 @@ TEST_IGNORE?=	piper plugins pychm pykakasi qt sqlite
 _TEST_BUILD_PY=	${STAGEDIR}${PREFIX}/lib/calibre/calibre/test_build.py
 
 pre-test:
-	@${REINPLACE_CMD} -E -e 's,^    def (test_(${TEST_IGNORE:ts|}))\(self\):,    def _skipped_\1(self):,' \
+	@${REINPLACE_CMD} -E -e 's,^    def (test_(${TEST_IGNORE:ts|}))\(,    def _skipped_\1(,' \
 		${_TEST_BUILD_PY}
 .for _t in ${TEST_IGNORE}
-	@${GREP} -q "^    def _skipped_test_${_t}(self):" ${_TEST_BUILD_PY} || \
+	@${GREP} -q "^    def _skipped_test_${_t}(" ${_TEST_BUILD_PY} || \
 		(${ECHO_MSG} "=> TEST_IGNORE: no test_${_t} in test_build.py, drop it from TEST_IGNORE"; ${FALSE})
 .endfor
 
