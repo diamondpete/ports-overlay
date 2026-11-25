@@ -5,15 +5,17 @@ set -eu
 
 jail=151Ramd64
 ptname=HEAD
-overlay=overlay
-portsdir=/usr/local/poudriere/ports/${overlay}
+overlay=
+treesdir=/usr/local/poudriere/ports
 poudriered=/usr/local/etc/poudriere.d
 
 asRoot=no
-while getopts r opt; do
+while getopts op:r opt; do
 	case ${opt} in
+	o)	overlay=overlay ;;
+	p)	ptname=${OPTARG} ;;
 	r)	asRoot=yes ;;
-	*)	echo "usage: ${0##*/} [-r] [origin]" >&2; exit 1 ;;
+	*)	echo "usage: ${0##*/} [-or] [-p tree] [origin]" >&2; exit 1 ;;
 	esac
 done
 shift $((OPTIND - 1))
@@ -24,9 +26,16 @@ else
 	port=$1
 fi
 
+portsdir=${treesdir}/${ptname}
+portdir=${portsdir}/${port%%@*}
+if [ -n "${overlay}" ] && [ -d "${treesdir}/${overlay}/${port%%@*}" ]; then
+	portdir=${treesdir}/${overlay}/${port%%@*}
+fi
+
 # make test runs every phase from fetch, so the shell needs all of their deps.
-# Entries are pattern:origin[:target]; keep the origin, never a trailing target
-dependsRaw=$(make -C "${portsdir}/${port}" -VFETCH_DEPENDS -VEXTRACT_DEPENDS \
+# Entries are pattern:origin[:target]; keep the origin, never a trailing target.
+# PORTSDIR points an overlay port at the tree it overlays, which holds Mk/.
+dependsRaw=$(make -C "${portdir}" PORTSDIR="${portsdir}" -VFETCH_DEPENDS -VEXTRACT_DEPENDS \
 	-VPATCH_DEPENDS -VBUILD_DEPENDS -VLIB_DEPENDS -VRUN_DEPENDS -VTEST_DEPENDS)
 depends=$(echo ${dependsRaw} | tr ' ' '\n' | cut -d: -f2 | sort -u)
 
@@ -56,4 +65,4 @@ else
 fi
 echo "$(echo "${port%%@*}" | tr / _)_SET_FORCE+=NLS" > "${makeconf}"
 
-poudriere bulk -i -j "${jail}" -p "${ptname}" -O "${overlay}" ${port} ${depends}
+poudriere bulk -i -j "${jail}" -p "${ptname}" ${overlay:+-O "${overlay}"} ${port} ${depends}

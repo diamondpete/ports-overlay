@@ -214,17 +214,28 @@ package set moved, since that is when those lines are most likely stale.
 `shells/powershell/nuget.mk` applies. The first run normalises a few lines that
 had drifted from that order.
 
-## test-port.sh
+## port-test.sh
 
 Builds a port and every dependency `make test` walks through — `FETCH`,
 `EXTRACT`, `PATCH`, `BUILD`, `LIB`, `RUN` and `TEST_DEPENDS` — in a poudriere
 jail, then leaves you in the jail to run `make test` by hand:
 
 ```sh
-./scripts/test-port.sh devel/py-pytest-services
+./scripts/port-test.sh devel/py-pytest-services
 ```
 
 With no argument it takes the origin of the port you are standing in.
+
+| Option | Effect |
+| --- | --- |
+| *(none)* | `HEAD` tree, no overlay |
+| `-o` | adds the `overlay` overlay (`-O overlay`) |
+| `-p tree` | uses the `tree` ports tree, e.g. `-p 2026Q4` |
+| `-r` | stays root, see below |
+
+Dependencies are read from the overlay's copy of the port when `-o` is given
+and the overlay has one, otherwise from the tree under
+`/usr/local/poudriere/ports/<tree>`.
 
 The interactive shell runs as `nobody`, not root, because service fixtures
 spawn real daemons and some refuse to start as root — `memcached` exits with
@@ -234,7 +245,7 @@ out after the twenty-second watcher timeout. The script writes
 reads last and so wins over `poudriere.conf`, and removes it again on the way
 out. It refuses to run if that file already exists rather than clobber it.
 
-Pass `-r` to stay root instead (`./scripts/test-port.sh -r news/sabnzbd`), for
+Pass `-r` to stay root instead (`./scripts/port-test.sh -r news/sabnzbd`), for
 suites such as permission tests that expect it. The file then holds
 `BUILD_AS_NON_ROOT=no`, which has to be explicit because poudriere defaults to
 non-root whenever `CCACHE_DIR` is unset, and ccache is left as configured.
