@@ -1,9 +1,14 @@
 PORTNAME=	kovidgoyal-langtool
 DISTVERSION=	1.3.0
+PORTREVISION=	1
 CATEGORIES=	textproc python
-MASTER_SITES=	PYPI
+MASTER_SITES=	PYPI \
+		https://repo1.maven.org/maven2/org/languagetool/language-de/6.8/:de
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 DISTNAME=	${PORTNAME:S/-/_/g}-${DISTVERSION}
+DISTFILES=	${DISTNAME}${EXTRACT_SUFX} \
+		language-de-6.8.jar:de
+EXTRACT_ONLY=	${DISTNAME}${EXTRACT_SUFX}
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Grammar and style checker based on the LanguageTool rules
@@ -24,7 +29,8 @@ TEST_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pytest-xdist>0:devel/py-pytest-xdist@${PY_F
 USES=		python:3.11+
 USE_PYTHON=	autoplist concurrent pep517 pytest
 
-MAKE_ENV=	LANGTOOL_RULE_TABLES_JOBS=${MAKE_JOBS_NUMBER}
+MAKE_ENV=	LANGTOOL_DICT_PATH=${DISTDIR}/language-de-6.8.jar \
+		LANGTOOL_RULE_TABLES_JOBS=${MAKE_JOBS_NUMBER}
 TEST_ENV=	PYTHONPATH=${STAGEDIR}${PYTHONPREFIX_SITELIBDIR}
 
 post-patch:
