@@ -43,5 +43,8 @@ post-patch:
 
 post-install:
 	@${FIND} ${STAGEDIR}${PYTHONPREFIX_SITELIBDIR} -name '*.so' -exec ${STRIP_CMD} {} +
+# setup.py only warns when table generation fails, e.g. on a dictionary it could not download
+	@${TEST} -f ${STAGEDIR}${PYTHONPREFIX_SITELIBDIR}/langtool/_rule_tables/en.ltrt || \
+		(${ECHO_MSG} "=> no static rule tables were generated, see the build log"; ${FALSE})
 
 .include <bsd.port.mk>
