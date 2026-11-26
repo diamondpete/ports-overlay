@@ -250,15 +250,17 @@ suites such as permission tests that expect it. The file then holds
 `BUILD_AS_NON_ROOT=no`, which has to be explicit because poudriere defaults to
 non-root whenever `CCACHE_DIR` is unset.
 
-Without `-r`, the file also sets `CCACHE_DIR_NON_ROOT_SAFE=yes`, so the run keeps
-the cache. Without that flag poudriere refuses the pair outright:
+With `CCACHE_DIR` set, a non-root run needs `CCACHE_DIR_NON_ROOT_SAFE=yes` in
+`poudriere.conf`, or poudriere refuses it outright:
 
 ```
 BUILD_AS_NON_ROOT + CCACHE_DIR manual action required.
 ```
 
-The flag only promises that `nobody` can write the cache, so set that up once on
-the host. The builders' `nobody` is uid and gid 65534, the host's `nobody` group:
+That flag also makes poudriere default to non-root, so add
+`BUILD_AS_NON_ROOT=no` beside it to keep plain bulk builds as root. The flag only
+promises that `nobody` can write the cache, so set that up once on the host. The
+builders' `nobody` is uid and gid 65534, the host's `nobody` group:
 
 ```sh
 echo "umask = 002" >> /var/cache/ccache/ccache.conf
