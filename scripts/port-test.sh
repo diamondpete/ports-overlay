@@ -41,9 +41,9 @@ depends=$(echo ${dependsRaw} | tr ' ' '\n' | cut -d: -f2 | sort -u)
 
 # Run the interactive shell as nobody rather than root, so fixtures that spawn
 # a daemon are not refused.  poudriere reads this file last, after
-# poudriere.conf and the per-tree and per-jail ones, so it wins.  CCACHE_DIR
-# has to be cleared with it: poudriere exits rather than build as non-root
-# while it is set.  -r pins root instead and leaves CCACHE_DIR alone.
+# poudriere.conf and the per-tree and per-jail ones, so it wins.  poudriere
+# refuses non-root with CCACHE_DIR set unless the cache is marked safe for it,
+# which needs the host setup in scripts/README.md.  -r pins root instead.
 conf=${poudriered}/${jail}-${ptname}-poudriere.conf
 # NLS is forced on for the port under test only, so translation tests have a
 # locale to load; _SET_FORCE outranks saved options, dependencies keep theirs.
@@ -60,7 +60,7 @@ if [ "${asRoot}" = yes ]; then
 else
 	cat > "${conf}" <<-EOF
 		BUILD_AS_NON_ROOT=yes
-		CCACHE_DIR=
+		CCACHE_DIR_NON_ROOT_SAFE=yes
 	EOF
 fi
 echo "$(echo "${port%%@*}" | tr / _)_SET_FORCE+=NLS" > "${makeconf}"

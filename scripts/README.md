@@ -248,18 +248,24 @@ out. It refuses to run if that file already exists rather than clobber it.
 Pass `-r` to stay root instead (`./scripts/port-test.sh -r news/sabnzbd`), for
 suites such as permission tests that expect it. The file then holds
 `BUILD_AS_NON_ROOT=no`, which has to be explicit because poudriere defaults to
-non-root whenever `CCACHE_DIR` is unset, and ccache is left as configured.
+non-root whenever `CCACHE_DIR` is unset.
 
-Without `-r`, `CCACHE_DIR` is cleared in the same file, which costs the run its cache.
-poudriere does not merely warn about the pair, it stops:
+Without `-r`, the file also sets `CCACHE_DIR_NON_ROOT_SAFE=yes`, so the run keeps
+the cache. Without that flag poudriere refuses the pair outright:
 
 ```
 BUILD_AS_NON_ROOT + CCACHE_DIR manual action required.
 ```
 
-Sharing a cache between root and `nobody` needs group ownership set up on the
-host; `CCACHE_DIR_NON_ROOT_SAFE=yes` plus that procedure is the alternative
-poudriere prints.
+The flag only promises that `nobody` can write the cache, so set that up once on
+the host. The builders' `nobody` is uid and gid 65534, the host's `nobody` group:
+
+```sh
+echo "umask = 002" >> /var/cache/ccache/ccache.conf
+find /var/cache/ccache -type d -exec chmod 2775 {} +
+find /var/cache/ccache -type f -exec chmod 0664 {} +
+chown -R :nobody /var/cache/ccache
+```
 
 It also writes `<category>_<port>_SET_FORCE+=NLS` to the per-jail, per-tree
 `make.conf`, so the port under test is built with NLS and its translation
