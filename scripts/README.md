@@ -267,7 +267,11 @@ echo "umask = 002" >> /var/cache/ccache/ccache.conf
 find /var/cache/ccache -type d -exec chmod 2775 {} +
 find /var/cache/ccache -type f -exec chmod 0664 {} +
 chown -R :nobody /var/cache/ccache
+mkdir -p /var/cache/ccache/tmp && chmod 1777 /var/cache/ccache/tmp
 ```
+
+Without the last line, ccache cannot write its temporary files and every
+compile fails with `Failed to create temporary file for /root/.ccache/tmp/...`.
 
 It also writes `<category>_<port>_SET_FORCE+=NLS` to the per-jail, per-tree
 `make.conf`, so the port under test is built with NLS and its translation
