@@ -1,5 +1,6 @@
 PORTNAME=	sphinx
 PORTVERSION=	9.2.0
+PORTREVISION=	1
 PORTEPOCH=	1
 CATEGORIES=	textproc python
 MASTER_SITES=	PYPI
@@ -20,7 +21,7 @@ LICENSE_FILE=	${WRKSRC}/LICENSE.rst
 BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}flit-core>=3.7:devel/py-flit-core@${PY_FLAVOR}
 RUN_DEPENDS=	ca_root_nss>=0:security/ca_root_nss \
 		${PYTHON_PKGNAMEPREFIX}alabaster>=1.0:textproc/py-alabaster@${PY_FLAVOR} \
-		${PYTHON_PKGNAMEPREFIX}Babel>=2.18:devel/py-babel@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}babel>=2.18:devel/py-babel@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}docutils>=0.21,1<0.24,1:textproc/py-docutils@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}imagesize>=1.3:graphics/py-imagesize@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}Jinja2>=3.1:devel/py-Jinja2@${PY_FLAVOR} \
