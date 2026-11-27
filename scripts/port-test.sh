@@ -37,7 +37,8 @@ fi
 # PORTSDIR points an overlay port at the tree it overlays, which holds Mk/.
 dependsRaw=$(make -C "${portdir}" PORTSDIR="${portsdir}" -VFETCH_DEPENDS -VEXTRACT_DEPENDS \
 	-VPATCH_DEPENDS -VBUILD_DEPENDS -VLIB_DEPENDS -VRUN_DEPENDS -VTEST_DEPENDS)
-depends=$(echo ${dependsRaw} | tr ' ' '\n' | cut -d: -f2 | sort -u)
+# The jail's WITH_CCACHE_BUILD adds devel/ccache, which the host make cannot see.
+depends=$(echo ${dependsRaw} devel/ccache | tr ' ' '\n' | cut -d: -f2 | sort -u)
 
 # Run the interactive shell as nobody rather than root, so fixtures that spawn
 # a daemon are not refused.  poudriere reads this file last, after
