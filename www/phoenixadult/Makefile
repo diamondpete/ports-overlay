@@ -1,5 +1,6 @@
 PORTNAME=	phoenixadult
 DISTVERSION=	1.0.0a536
+PORTREVISION=	1
 CATEGORIES=	www
 MASTER_SITES=	https://codeberg.org/PhoenixAdultProvider/PhoenixAdult/archive/
 DISTNAME=	${PA_COMMIT}
@@ -15,7 +16,7 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}setuptools>0:devel/py-setuptools@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}wheel>0:devel/py-wheel@${PY_FLAVOR}
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}argon2-cffi>=23.1:security/py-argon2-cffi@${PY_FLAVOR} \
-		${PYTHON_PKGNAMEPREFIX}Babel>=2.16:devel/py-babel@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}babel>=2.16:devel/py-babel@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}cachetools>=5.3:devel/py-cachetools@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}ddgs>=9.0:www/py-ddgs@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}fastapi>=0.115:www/py-fastapi@${PY_FLAVOR} \
