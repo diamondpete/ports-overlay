@@ -62,22 +62,21 @@ TEST_DEPENDS=	${PYTHON_PKGNAMEPREFIX}black>=0:devel/py-black@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}tavalidate>=0:devel/py-tavalidate@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}tavern>=0:devel/py-tavern@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}werkzeug>=0:www/py-werkzeug@${PY_FLAVOR} \
-		${PYTHON_PKGNAMEPREFIX}xmltodict>=0:devel/py-xmltodict@${PY_FLAVOR}
+		${PYTHON_PKGNAMEPREFIX}xmltodict>=0:devel/py-xmltodict@${PY_FLAVOR} \
+		chromedriver:www/chromium
 
 USES=		cpe python shebangfix
 USE_PYTHON=	pytest
-# 13345 passed, 41 skipped, 28 deselected, 2 xfailed, 1 xpassed, 8 warnings
-# Selenium has no FreeBSD driver, TestWiki needs network and extract_pot
-# needs builder/ (not in the tarball)
-PYTEST_IGNORED_TESTS=	TestBasicPages TestConfigCategories TestConfigLogin \
-			TestConfigRSS TestConfigServers TestDaemonizing \
-			TestDownloadFlow TestDownloadSorting TestQueueRepair \
-			TestShowLogging TestWiki test_extract_pot
+# 13370 passed, 41 skipped, 2 deselected, 2 xfailed, 2 xpassed, 8 warnings
+# TestWiki needs network and extract_pot needs builder/ (not in the tarball)
+PYTEST_IGNORED_TESTS=	TestWiki test_extract_pot
 USE_RC_SUBR=	${PORTNAME}
 
 SHEBANG_FILES=	SABnzbd.py
 
 TEST_ARGS=	tests
+# CI makes the Selenium tests run Chrome headless
+TEST_ENV=	${MAKE_ENV} CI=1 SE_OFFLINE=true
 
 NO_ARCH=	yes
 NO_BUILD=	yes
